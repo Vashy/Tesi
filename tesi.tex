@@ -104,9 +104,11 @@
 \input{tesi-config}                     % file con le impostazioni personali
 
 \begin{document}
+
 %**************************************************************
 % Materiale iniziale
 %**************************************************************
+
 \frontmatter
 \input{inizio-fine/frontespizio}
 \input{inizio-fine/colophon}
@@ -119,9 +121,10 @@
 %**************************************************************
 % Materiale principale
 %**************************************************************
+
 \mainmatter
 \input{capitoli/capitolo-1}             % Introduzione
-\input{capitoli/capitolo-2}             % Processi
+% \input{capitoli/capitolo-2}             % Processi
 \input{capitoli/capitolo-3}             % Kick-Off
 \input{capitoli/capitolo-4}             % Concept Preview
 \input{capitoli/capitolo-5}             % Product Prototype
@@ -133,7 +136,9 @@
 %**************************************************************
 % Materiale finale
 %**************************************************************
+
 \backmatter
-\printglossaries
 \input{inizio-fine/bibliografia}
+\glsaddall
+\printglossaries
 \end{document}
