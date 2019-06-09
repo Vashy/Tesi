@@ -9,6 +9,8 @@
 
 Introduzione al contesto applicativo.\bigskip
 
+Sarà presentata nel presente capitolo l'azienda ospitante, Sync Lab, e la descrizione del progetto di stage.
+
 \noindent Esempio di utilizzo di un termine nel glossario \par
 \noindent \gls{api}.\bigskip
 
@@ -19,6 +21,32 @@ Introduzione al contesto applicativo.\bigskip
 \noindent citazione\footcite{womak:lean-thinking}
 
 %**************************************************************
+
+\section{Convenzioni tipografiche}
+
+% \begin{description}
+% \item[{\hyperref[cap:processi-metodologie]{Il secondo capitolo}}] descrive ...
+
+% \item[{\hyperref[cap:descrizione-stage]{Il terzo capitolo}}] approfondisce ...
+
+% \item[{\hyperref[cap:analisi-requisiti]{Il quarto capitolo}}] approfondisce ...
+
+% \item[{\hyperref[cap:progettazione-codifica]{Il quinto capitolo}}] approfondisce ...
+
+% \item[{\hyperref[cap:verifica-validazione]{Il sesto capitolo}}] approfondisce ...
+
+% \item[{\hyperref[cap:conclusioni]{Nel settimo capitolo}}] descrive ...
+% \end{description}
+
+Riguardo la stesura del testo, relativamente al documento sono state adottate le seguenti convenzioni tipografiche:
+\begin{itemize}
+	\item Gli acronimi, le abbreviazioni e i termini ambigui o di uso non comune menzionati vengono definiti nel glossario, situato alla fine del presente documento;
+	\item Per la prima occorrenza dei termini riportati nel glossario viene utilizzata la seguente nomenclatura: \gloss{parola}.
+	\item I termini in lingua straniera o facenti parti del gergo tecnico sono evidenziati con il carattere \emph{corsivo}.
+\end{itemize}
+
+%**************************************************************
+
 \section{L'azienda}
 
 \begin{figure}[H]
@@ -89,6 +117,8 @@ d'eccellenza per la gestione delle cliniche private.
 L'azienda inoltre ha recentemente fondato una collegata \textbf{Sync Security} che si occupa
 espressamente del mondo della \textit{cyber security} e sicurezza informatica in genere.
 
+%**************************************************************
+
 \section{Lo stage}
 
 Lo stage si è svolto nella sede di Padova dell'azienda ospitante, Sync Lab, nell'arco delle otto settimane previste nel piano di lavoro:
@@ -96,44 +126,22 @@ Lo stage si è svolto nella sede di Padova dell'azienda ospitante, Sync Lab, nel
 	\item inizio il 6 maggio 2019;
 	\item fine il 28 giugno 2019.
 \end{itemize}
-Il progetto di stage consiste nell'implementazione di una \textit{web application} a microservizi per il trasporto in una nuova piattaforma del servizio di \textit{skill matrix} usato da Sync Lab per organizzare le competenze delle persone che vanno in azienda per un colloquio.
+Il progetto di stage consiste nell'implementazione di una \textit{web application} a microservizi per il trasferimento in una nuova piattaforma del servizio di \textit{skill matrix} usato da Sync Lab per organizzare le competenze delle persone che vanno in azienda per un colloquio.
 
 Prima di ogni colloquio a Sync Lab, è richiesto al candidato di compilare un foglio di calcolo contenente le competenze di interesse
-per l'azienda e il livello, valore che il candidato dovrà inserire.
+per l'azienda e il livello, valore che il candidato dovrà indicare.
 
 L'idea è quella di un portale web in cui il candidato compilerà i livelli delle competenze, in alternativa al vecchio foglio di calcolo.
 Per fare ciò, è stato scelto un approccio moderno: 
 \begin{itemize}
-	\item il front-end utilizzerà \textit{framework} di ultima generazione (nel nostro caso, Angular);
-	\item il back-end utilizzerà un'architettura a microservizi, i quali saranno implementati con il framework Spring (Java), per questioni di uniformità e semplicità.
+	\item il \textit{front-end} utilizzerà \textit{framework} di ultima generazione (nel nostro caso, Angular);
+	\item il \textit{back-end} utilizzerà un'architettura a microservizi, i quali saranno implementati con il framework Spring (Java), per questioni di uniformità e semplicità, con MongoDB come DBMS.
 \end{itemize}
 
+A svolgere tale progetto, ci saranno altri stagisti oltre al sottoscritto, a cui a ognuno sarà assegnato un equo carico di lavoro.
 
+Per quanto riguarda il back-end, l'azienda possiede già un portale web usato per caricare i dati dei candidati. Il DBMS utilizzato per i dati di tale portale è Oracle SQL.
+Parte del lavoro dello stage consisterà nello spostare e riadattare il codice del vecchio portale a quello del nuovo.
+
+Il mio ruolo nel progetto consisterà prettamente nell'implementazione di alcuni microservizi back-end e nel riadattamento del vecchio portale.
 %**************************************************************
-\section{L'idea}
-
-Introduzione all'idea dello stage.
-
-%**************************************************************
-\section{Convenzioni tipografiche}
-
-% \begin{description}
-    % \item[{\hyperref[cap:processi-metodologie]{Il secondo capitolo}}] descrive ...
-
-    % \item[{\hyperref[cap:descrizione-stage]{Il terzo capitolo}}] approfondisce ...
-
-    % \item[{\hyperref[cap:analisi-requisiti]{Il quarto capitolo}}] approfondisce ...
-
-    % \item[{\hyperref[cap:progettazione-codifica]{Il quinto capitolo}}] approfondisce ...
-
-    % \item[{\hyperref[cap:verifica-validazione]{Il sesto capitolo}}] approfondisce ...
-
-    % \item[{\hyperref[cap:conclusioni]{Nel settimo capitolo}}] descrive ...
-% \end{description}
-
-Riguardo la stesura del testo, relativamente al documento sono state adottate le seguenti convenzioni tipografiche:
-\begin{itemize}
-	\item Gli acronimi, le abbreviazioni e i termini ambigui o di uso non comune menzionati vengono definiti nel glossario, situato alla fine del presente documento;
-	\item Per la prima occorrenza dei termini riportati nel glossario viene utilizzata la seguente nomenclatura: \gloss{parola}.
-	\item I termini in lingua straniera o facenti parti del gergo tecnico sono evidenziati con il carattere \emph{corsivo}.
-\end{itemize}
