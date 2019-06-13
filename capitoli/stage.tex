@@ -10,7 +10,7 @@ stage, il piano di lavoro ...}
 
 %**************************************************************
 
-\section{Il progetto: Syncrec}
+\section{Il progetto: SyncRec}
 
 Si richiede al tirocinante, come prima parte dello stage, di apprendere le tecnologie necessari a poter svolgere le fasi di analisi, progettazione e implementazione del progetto di stage conclusivo.
 Le tematiche da apprendere sono le seguenti:
@@ -36,7 +36,7 @@ Le tematiche da apprendere sono le seguenti:
 
 Lo studio delle tecnologie per il front-end è puramente didattico, e non è pertanto prevista una concretizzazione, compito lasciato ad altri stagisti.
 
-La seconda parte dello stage è invece incentrata all'effettiva implementazione dei microservizi del back-end per il prodotto \textit{Syncrec} (?), il nuovo portale aziendale per la gestione delle competenze dei candidati.
+La seconda parte dello stage è invece incentrata all'effettiva implementazione dei microservizi del back-end per il prodotto \textit{SyncRec} (?), il nuovo portale aziendale per la gestione delle competenze dei candidati.
  % TODO da dire di REST
 
 Il committente di tale prodotto è l'azienda Sync Lab stessa, in quanto sarà un \textit{software} usato internamente a soli scopi burocratici.
@@ -49,12 +49,46 @@ Nello specifico, sarà lo stesso \fabio\ a coprire il ruolo di committente.
 I microservizi accordati da implementare sono riportati nel dettaglio in seguito. Ognuno di essi esporrà le API tramite degli specifici \textit{endpoint}
 raggiungibili tramite i vari tipi di richieste HTTP (GET, POST, DELETE, etc\dots).
 Ogni tipo di richiesta ha la sua semantica e un significato ben specifico, che verrà spiegato nei paragrafi dedicati.
+% TODO Verrà spiegato nel dettaglio nel capitolo 3 
 
-\subsubsection{Servizio Email}
+\subsubsection{Microservizio: Email}
+
+Il microservizio email ha il semplice compito di inviare una email specifica.
+Testo, oggetto e destinatario sono dati definiti nel database MongoDB
+\textit{syncrec-emailSender}, mentre le proprietà del server SMTP sono definite in un file di configurazione.
+
+L'invio della email avviene in modo sincrono quando viene effettuata una richiesta POST tramite l'endpoint \texttt{/sendEmail}.
+I parametri richiesti nel corpo della richiesta sono:
+\begin{itemize}
+	\item \texttt{receiver}: il destinatario della mail.
+\end{itemize}
+
+\subsubsection{Microservizio: User e Login}
+
+Questo microservizio espone la risorsa \texttt{User} nell'endpoint
+\texttt{syncrec/users}, accessibile e modificabile via API REST. I dati persistenti sono salvati e acceduti tramite il database \textit{syncrec-users} di
+MongoDB.
+
+Inoltre, tramite l'endpoint \texttt{/users/login} e una richiesta POST,
+è possibile effettuare l'operazione di login.
+
+I parametri richiesti sono:
+\begin{itemize}
+	\item \texttt{username}: campo contenente lo \textit{username} o l'email dell'utente che vuole autenticarsi;
+	\item \texttt{password}: campo contenente la password relativa all'utente da autenticare.
+\end{itemize}
+
+Le possibili risposte che verranno inoltrate al chiamante sono:
+\begin{itemize}
+	\item \textbf{Ok}: 200 (Equivalente all'HTTP status \textit{ok}), e il JSON contenente i campi relativi all'utente autenticato;
+	\item \textbf{Bad request}: 400 (equivalente all'HTTP status \textit{bad request}) se il corpo della richiesta non contiene i campi riportati sopra, con corpo contenente un messaggio d'errore (sempre in formato JSON);
+	\item \textbf{Not found}: 404 (equivalente all'HTTP status \textit{not found}) se l'autenticazione fallisce, con corpo vuoto.
+\end{itemize}
 
 %\section{Piano di lavoro}
 %Viene riportato in seguito i contenuti di maggior rilievo presenti nel piano di stage che ha pianificato
 %le attività dello stesso.
+
 
 \subsection{Obiettivi}
 
