@@ -247,7 +247,21 @@ tra i vari servizi.
 
 Come è possibile mantenere tale consistenza di dati?
 
-\paragraph*{Soluzione} Implementare ogni transazione di \textit{business} come un saga, in modo che qualvolta avvenga una transazione, il saga pubblichi un messaggio o evento che inneschi il prossimo saga nella catena ad effettuare la propria transazione locale, il quale a sua volta pubblichi il messaggio di transazione avvenuta.
+\paragraph*{Soluzione} Implementare ogni transazione di \textit{business} come un saga in modo che, qualvolta avvenga una transazione, il saga pubblichi un messaggio o evento che inneschi il prossimo saga nella catena ad effettuare la propria transazione locale, che a sua volta pubblicherà il messaggio di transazione avvenuta.
+Dev'essere previsto un meccanismo di ``rollback'' di tutte le transazioni avvenute se una di esse nella catena fallisce, nel caso qualche regola venisse violata.
+
+Ci sono due modi per coordinare il \textit{Saga pattern}:
+\begin{itemize}
+	\item \textit{Choreography}: ogni transazione locale pubblica un evento che scatena le transazioni locali in altri servizi;
+	\item \textit{Orchestration}: un \textit{orchestrator} dice ai partecipanti quali transazioni locali eseguire.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textheight]{immagini/saga-example.png}
+	\caption[Esempio di Saga pattern]{Esempio di applicazione del Saga pattern\footnotemark}
+\end{figure}
+\footnotetext{Fonte immagine: \url{https://commons.wikimedia.org}}
 
 % ------------------------------------------------------------------
 
