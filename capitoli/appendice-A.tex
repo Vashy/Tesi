@@ -87,4 +87,172 @@ nella figura che segue:
 \end{figure}
 \footnotetext{Fonte immagine: \href{https://www.sam-solutions.com/blog/microservices-vs-monolithic-real-business-examples/}{https://www.sam-solutions.com}}
 
-In un'architettura a microservizi, 
+Qui il sistema non è composto da un unico grande monolite, ma viene suddiviso in molti componenti indipendenti, chiamati microservizi poiché contenuti e di limitata responsabilità.
+È buona prassi dare a ognuno di essi una singola responsabilità, ove possibile, aderendo al \textit{Single Responsibility Principle}.
+
+Come si può vedere in figura \ref{fig:microservices-arch}, ogni microservizio ha un suo database da cui poter attingere.
+
+Per poter comunicare, ognuno di essi espone delle API, comunemente via HTTP e opzionalmente viene sfruttata una coda di messaggi (e.g. \gloss{Apache Kafka}).
+
+\medskip
+
+Vediamo i vantaggi più salienti di un approccio a microservizi per un applicativo.
+
+\paragraph*{Basso accoppiamento} Uno dei primi vantaggi a cui viene naturale pensare in sistema a microservizi è che mantiene un basso accoppiamento. I servizi, comunicando via HTTP API, sono tra loro totalmente disaccoppiati e indipendenti.
+
+\paragraph*{Manutenzione} La manutenzione, vista la responsabilità e dimensione limitata dei servizi, è di facile approccio.
+Non avendo a che fare con \textit{code base} intimorenti come nell'architettura monolitica, scovare e risolvere \textit{bug} richiede
+molte meno risorse e tempo, poiché localizzati in un perimetro contenuto.
+
+\paragraph*{Continuous Deployment} La pratica del \textit{continuous deployment} è praticabile con semplicità.
+Ogni microservizio può essere rilasciato indipendemente dagli altri,
+evitando così la necessità di dover programmare i rilasci che causano l'indisponibilità totale
+dell'applicativo per tempo variabile.
+
+\paragraph*{Divisione di business} Dividendo le responsabilità dei microservizi, è possibile dividere totalmente i compiti aziendali in base alle
+competenze: chi si occupa di back-end, potrà occuparsi esclusivamente di
+back-end, così come chi si occupa di front-end, sviluppo di app per \textit{smartphone}, UI/UX Design etc\dots
+
+\paragraph*{Scalabilità} Uno dei maggiori punti di forza dei microservizi è l'alta scalabilità. La loro natura rende semplice scalare le
+applicazioni: nessun servizio avrà una mole di dati enorme da gestire e risponderà in modo rapido. Aggiungendone di nuovi, gli esistenti non vengono rallentati, cosa che invece può accadere aggiungendo funzionalità in un monolite.
+
+\bigskip
+
+Ovviamente, la scelta di tale stile architetturale porta con sé diversi svantaggi che non vanno sottovalutati. Vediamone alcuni.
+
+\paragraph*{Testabilità} Vista la natura distribuita dei microservizi, i test di integrazione e di sistema possono risultare veramente complessi
+da attuare. Ad esempio, alcuni servizi potrebbero essere momentaneamente non disponibili, altri con problemi non risolti, invalidando i test.
+
+\paragraph*{Complessità architetturale} I microservizi portano con sé complessità architetturale che in un monolite non c'è.
+Con essa, sviluppatori e ingegneri devono tenere conto di molti più fattori, quali:
+\begin{itemize}
+	\item latenza della rete;
+	\item \textit{fault tolerance}: capita spesso che un servizio non sia disponibile. Per questo va previsto un meccanismo di gestione delle
+	condizioni di errore;
+	\item \textit{message parsing}: per la comunicazione molto spesso vengono usati messaggi in formato JSON.
+\end{itemize}
+
+\paragraph*{Comunicazione} Per poter funzionare, i microservizi necessitano di meccanismi per poter comunicare e scambiare messaggi tra loro.
+
+\subsection{Monolite vs. Microservizi: quale scegliere?}
+% TODO
+Monolite
+
+% ------------------------------------------------------------------
+
+\section{Design pattern per microservizi}
+
+Implementare un'architettura a microservizi non è una pratica semplice:. non è sufficiente dividere il sistema in tanti componenti disaccoppiati per poter dire che un sistema segue questo paradigma.
+Vanno seguite le \textit{best practice} delineate da chi si è trovato ad affrontare gli stessi problemi in precedenza.
+Tra queste sono stati estrapolati nel corso degli anni diversi \textit{design pattern} per poter raggiungere tale obiettivo.
+
+Segue la discussione solo di alcuni di essi, quelli ritenuti di maggior interesse:
+
+\begin{itemize}
+	\item \textit{API Gateway};
+	\item \textit{Aggregator};
+
+	\item \textit{Database per service};
+	\item \textit{Saga};
+
+	\item \textit{Service discovery};
+	\item \textit{Log aggregation};
+	\item \textit{Health check};
+	\item \textit{Circuit breaker}.
+\end{itemize}
+
+% ------------------------------------------------------------------
+
+\subsection{API Gateway pattern}
+
+\paragraph*{Problema} Immaginiamo di avere un applicativo che  che debba supportare diversi tipi di interfaccia utente, quali: 
+\begin{itemize}[noitemsep]
+	\item una pagina web che utilizza le normali tecnologie del web, quali HTML5, CSS e Javascript;
+	\item applicazione Android e iOS.
+\end{itemize}
+
+L'applicazione in questione potrebbe mettere a disposizione i seguenti servizi (sotto forma di microservizi):
+\begin{itemize}[noitemsep]
+	\item servizio informativo;
+	\item servizio di login;
+	\item servizio di registrazione;
+	\item servizio di inventario;
+	\item etc\dots
+\end{itemize}
+
+%Inoltre il servizio deve esporre via API REST i dati per permettere a software terzi di interagire con tali informazioni.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{immagini/apigateway.png}
+	\caption[API Gateway]{Esempio d'uso dell'API Gateway pattern\footnotemark}
+	\label{fig:api-gateway}
+\end{figure}
+\footnotetext{Fonte immagine: \url{https://microservices.io/patterns/microservices.html}}
+
+Come possono i vari consumatori dell'app sapere a quale microservizio accedere per una determinata funzionalità?
+
+\paragraph*{Soluzione} Mettere a disposizione un unico punto d'entrata per l'intero sistema, per tutti i \textit{client}.
+Questo \textit{entry point} viene chiamato API Gateway.
+
+Esso gestisce le richieste principalmente in due modi:
+mappandole verso i servizi che si occupano di quel compito specifico oppure espandendo la singola richiesta a multiple chiamate di vari servizi distinti.
+
+Ci sono almeno un paio di varianti dell'API Gateway:
+
+\begin{itemize}
+	\item esporre API diverse, differenziate per tipo di client;
+	\item definire un API Gateway differente per ogni tipo di client.
+\end{itemize}
+
+% ------------------------------------------------------------------
+
+\subsection{Aggregator pattern}
+
+\paragraph*{Problema} Quando si dividono le funzionalità del \textit{business} in tanti piccoli frammenti logici (i microservizi), è necessario pensare
+a come far collaborare i dati ottenuti da ognuno di essi.
+Questa non è una responsabilità che può essere lasciata ai consumatori del servizio, anche perché li potrebbe portare a comprendere l'implementazione interna del prodotto, rompendo il principio di \textit{information hiding}.
+
+\paragraph*{Soluzione} L'\textit{Aggregator pattern} si occupa di risolvere questo problema: ``aggrega'' i dati ottenuti dai vari servizi e
+manda la risposta finale ai consumatori.
+
+Ci sono due modi di fare ciò:
+\begin{itemize}
+	\item un microservizio composto che fa le chiamate ai servizi necessari
+	unificando e trasformando i dati;
+	\item Come detto in precedenza, un \textit{API Gateway} stesso può occuparsi di coprire il ruolo di \textit{aggregator}.
+\end{itemize}
+
+% ------------------------------------------------------------------
+
+\subsection{Database per service pattern}
+
+\paragraph*{Problema} Ci sono alcuni concetti da tenere in considerazione quando si va a progettare un sistema a microservizi:
+\begin{itemize}[noitemsep]
+	\item i servizi vanno tenuti scarsamente accoppiati;
+	\item alcune transazioni hanno bisogno di ottenere dati presenti in diversi servizi;
+	\item i database hanno bisogno di essere replicati per poter scalare.
+\end{itemize}
+
+\paragraph*{Soluzione} Per risolvere i problemi sopra descritti, in fase di progettazione va previsto il paradigma di \textit{database per service}.
+I dati persistenti di un servizio non possono essere acceduti direttamente da altri servizi, ma vanno ottenuti tramite le API esposte dal servizio.
+
+% ------------------------------------------------------------------
+
+\subsection{Saga pattern}
+
+\paragraph*{Problema} Immagina di aver applicato il pattern ``database per service''.
+A questo punto, i servizi sono scarsamente accoppiati, tuttavia sorge un nuovo problema: alcune funzionalità di \textit{business}, si diffondono su più servizi e serve un meccanismo per garantire la consistenza dei dati
+tra i vari servizi. 
+
+Come è possibile mantenere tale consistenza di dati?
+
+\paragraph*{Soluzione} Implementare ogni transazione di \textit{business} come un saga, in modo che qualvolta avvenga una transazione, il saga pubblichi un messaggio o evento che inneschi il prossimo saga nella catena ad effettuare la propria transazione locale, il quale a sua volta pubblichi il messaggio di transazione avvenuta.
+
+% ------------------------------------------------------------------
+
+\subsection{pattern}
+
+\paragraph*{Problema}
+
+\paragraph*{Soluzione}

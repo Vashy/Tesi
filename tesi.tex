@@ -107,6 +107,8 @@
 
 \input{tesi-config}                     % file con le impostazioni personali
 
+\includeonly{capitoli/appendice-A}
+
 \begin{document}
 
 %**************************************************************
@@ -127,15 +129,15 @@
 %**************************************************************
 
 \mainmatter
-\input{capitoli/introduzione}           % Introduzione
-% \input{capitoli/capitolo-2}           % Processi
-\input{capitoli/stage}                  % Kick-Off
-\input{capitoli/requisiti}              % Concept Preview
-\input{capitoli/progettazione}          % Product Prototype
-\input{capitoli/verifica}               % Product Design Freeze e SOP
-\input{capitoli/conclusioni}            % Conclusioni
+\include{capitoli/introduzione}           % Introduzione
+% \include{capitoli/capitolo-2}           % Processi
+\include{capitoli/stage}                  % Kick-Off
+\include{capitoli/requisiti}              % Concept Preview
+\include{capitoli/progettazione}          % Product Prototype
+\include{capitoli/verifica}               % Product Design Freeze e SOP
+\include{capitoli/conclusioni}            % Conclusioni
 \appendix
-\input{capitoli/appendice-A}            % Appendice A
+\include{capitoli/appendice-A}            % Appendice A
 
 %**************************************************************
 % Materiale finale
