@@ -152,12 +152,12 @@
 % Impostazioni di listings
 %**************************************************************
 \lstset{
-    language=[LaTeX]Tex,%C++,
-    keywordstyle=\color{RoyalBlue}, %\bfseries,
-    basicstyle=\small\ttfamily,
-    %identifierstyle=\color{NavyBlue},
-    commentstyle=\color{Green}\ttfamily,
-    stringstyle=\rmfamily,
+    language=Java,
+    keywordstyle=\color{BurntOrange}\bfseries,
+    basicstyle=\ttfamily,
+%    identifierstyle=\color{Green},
+    commentstyle=\color{Bittersweet}\ttfamily,
+    stringstyle=\rmfamily\color{Green},
     numbers=none, %left,%
     numberstyle=\scriptsize, %\tiny
     stepnumber=5,
@@ -165,7 +165,7 @@
     showstringspaces=false,
     breaklines=true,
     frameround=ftff,
-    frame=single
+    frame=none,
 }
 
 
@@ -273,3 +273,11 @@
 % ecc..
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
+
+% this sets up \jobname.exs which will store the 
+% contentslines added on each example or examples
+\makeatletter
+\newcommand\listcodesname{Elenco degli snippet}
+\newcommand\listofcodes{%
+	\chapter*{\listcodesname}\@starttoc{codes}}
+\makeatother

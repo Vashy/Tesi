@@ -1,0 +1,16 @@
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Cambio nome applicazione (Spring)}{30}{subsection.Alph2.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Esempio Spring Cloud client side configuration}{30}{subsection.Alph2.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Attivazione server side configuration (Spring Cloud)}{30}{lstnumber.-1.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Discover dei servizi registrati su EurekaServer}{32}{lstnumber.-2.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Esempio di Circuit Breaker con Netflix Hystrix}{34}{lstnumber.-3.12}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Configurazione di routing con Netflix Zuul}{35}{subsection.Alph2.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Pattern ignorati da Zuul}{35}{subsection.Alph2.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Zuul: GET /routes}{36}{subsection.Alph2.4.2}% 

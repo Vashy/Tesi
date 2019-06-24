@@ -105,9 +105,17 @@
 
 \usepackage{enumitem} % noitemsep
 
+\usepackage{fancyvrb}
+\usepackage{tcolorbox}
+
 \input{tesi-config}                     % file con le impostazioni personali
 
-\includeonly{capitoli/appendice-A}
+\includeonly{%
+	capitoli/introduzione,
+	capitoli/stage,
+	capitoli/appendice-A,
+	capitoli/spring-cloud
+}
 
 \begin{document}
 
@@ -138,6 +146,7 @@
 \include{capitoli/conclusioni}            % Conclusioni
 \appendix
 \include{capitoli/appendice-A}            % Appendice A
+\include{capitoli/spring-cloud}
 
 %**************************************************************
 % Materiale finale

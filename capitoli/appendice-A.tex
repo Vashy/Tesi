@@ -6,6 +6,8 @@
 \chapter{I Microservizi}
 %**************************************************************
 
+%\intro{arg1}
+
 %\epigraph{Citazione}{Autore della citazione}
 
 \section{Architettura software}
@@ -163,7 +165,7 @@ Segue la discussione solo di alcuni di essi, quelli ritenuti di maggior interess
 
 % ------------------------------------------------------------------
 
-\subsection{API Gateway pattern}
+\subsection{API Gateway pattern}\label{api-gateway}
 
 \paragraph*{Problema} Immaginiamo di avere un applicativo che  che debba supportare diversi tipi di interfaccia utente, quali: 
 \begin{itemize}[noitemsep]
@@ -258,14 +260,22 @@ Ci sono due modi per coordinare il \textit{Saga pattern}:
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textheight]{immagini/saga-example.png}
+	\includegraphics[width=0.8\textwidth]{immagini/saga-example.png}
 	\caption[Esempio di Saga pattern]{Esempio di applicazione del Saga pattern\footnotemark}
 \end{figure}
 \footnotetext{Fonte immagine: \url{https://commons.wikimedia.org}}
 
 % ------------------------------------------------------------------
 
-\subsection{pattern}
+\subsection{Service Discovery pattern}\label{service-discovery}
+
+\paragraph*{Problema}
+
+\paragraph*{Soluzione}
+
+% ------------------------------------------------------------------
+
+\subsection{Circuit Breaker pattern}\label{circuit-breaker}
 
 \paragraph*{Problema}
 
