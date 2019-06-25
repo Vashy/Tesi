@@ -9,11 +9,11 @@
 %\epigraph{Citazione}{Autore della citazione}
 
 \intro{Spring Cloud è un \textit{framework} del team Pivotal che offre gli strumenti necessari agli sviluppatori per implementare alcuni dei \textit{pattern} più comuni per i sistemi distribuiti,
-quali ad esempio \textit{Service Discovery}, \textit{Circuit Breaker} e \textit{Intelligent Routing}.}
+quali ad esempio \textit{Service Discovery}, \textit{Circuit Breaker} e \textit{Intelligent Routing} (\textit{API Gateway}).}
 
 \bigskip
 
-Coordinare sistemi distribuiti basati su microservizi porta notoriamente a cosiddetti \textit{boiler plate practices}. \textit{Spring Cloud} subentra fornendo dei meccanismi che implementano le pratiche comuni, per fornire immediatezza e automazione nella gestione dei sistemi distribuiti.
+Coordinare sistemi distribuiti basati su microservizi porta notoriamente a cosiddetti \textit{boiler plate practices}. \textit{Spring Cloud} subentra offrendo dei meccanismi che implementano le pratiche comuni, per fornire robustezza e automazione nella gestione dei sistemi distribuiti.
 
 \clearpage
 
@@ -21,8 +21,8 @@ Coordinare sistemi distribuiti basati su microservizi porta notoriamente a cosid
 
 \section{Spring Cloud Config}
 
-\textit{Spring Cloud Config} è il modulo con il compito di gestire le configurazioni del sistema distribuito, il cosiddetto \textit{Configuration Management}.
-Per fare ciò, viene fornita la possibilità di configurare sia il \textit{client side} che il \textit{server side}.
+\textit{Spring Cloud Config} è il modulo con il compito di gestire le configurazioni del sistema distribuito: copre il ruolo di \textit{Configuration Management}.
+Viene fornita la possibilità di configurare sia il \textit{client side} che il \textit{server side}.
 
 \subsection{Configurazioni lato client} Le configurazioni \textit{client side} si effettuano tramite
 il file \texttt{bootstrap.properties}. Ad esempio, per configurare il nome dell'applicazione, si deve
@@ -75,7 +75,7 @@ Come default, \texttt{EnvironmentRepository} usa come \textit{backend} il sistem
 La proprietà \texttt{spring.cloud.config.server.git.uri} può essere impostata per cambiare l'URL della repository di \textit{back-end}.
 Può puntare sia a una \textit{repository} remota (tramite prefissi \texttt{http:}, \texttt{https:}, etc\dots) che una locale (tramite il prefisso \texttt{file:}).
 
-Tramite Cloud Config è possibile fare una miriade di altre configurazioni, tra cui:
+Tramite \textit{Cloud Config} è possibile fare una miriade di altre configurazioni, tra cui:
 
 \begin{itemize}
 	\item Disabilitare la validazione tramite certificato SSL;
@@ -96,8 +96,8 @@ tiene sotto controllo lo stato dell'\texttt{Environment Repository} configurata.
 
 \section{Service Discovery con Netflix Eureka}
 
-Per implementare il pattern \textit{Service Discovery}, discusso in \S\ref{service-discovery}, Spring si appoggia a \textit{Netflix Open Source Software} (\textit{Netflix OSS}), una raccolta di librerie offerte da Netflix.
-In particolare, integra \textit{Netflix Eureka}, un servizio con la funzionalità di \textit{Service Discovery} lato client e server.
+Per implementare il pattern \textit{Service Discovery} (discusso in \S\ref{service-discovery}) e molti altri, Spring si appoggia a \textit{Netflix Open Source Software} (\textit{Netflix OSS}), una raccolta di librerie offerte da Netflix.
+Integra \textit{Netflix Eureka} come servizio con ruolo di \textit{Service Discovery}, lato client e server. \textit{Spring Cloud} offre diverse alternative per i vari pattern, tuttavia ne verranno discussi solo alcuni.
 
 \begin{figure}[H]
 	\centering
@@ -144,7 +144,7 @@ public String serviceUrl() {
 \footnotetext{Fonte immagine: \href{https://cloud.spring.io/spring-cloud-static/Greenwich.SR1/single/spring-cloud.html}{https://cloud.spring.io}}
 
 \textit{Spring Cloud} usa \textit{Hystrix} come \textit{Circuit Breaker}:
-quando una chiamata a un particolare servizio eccede la proprietà \texttt{requestVolumeThreshold} (il valore di default è 20 richieste) la percentuale di fallimento è maggiore di \texttt{errorThresholdPercentage} (default 50\%), in una finestra di tempo limitato,
+quando una chiamata a un particolare servizio eccede la proprietà \texttt{requestVolumeThreshold} (il valore di default è 20 richieste) e la percentuale di fallimento è maggiore di \texttt{errorThresholdPercentage} (default 50\%) in una finestra di tempo limitato,
 il \textit{Circuit Breaker} si apre e le chiamate vengono prevenute e sostituite da chiamate di \textit{fallback} definite nel circuito.
 
 \subsection{Abilitare Hystrix} Per abilitare \textit{Hystrix} in un'applicazione \textit{Spring},
@@ -170,7 +170,7 @@ public class StoreIntegration {
 	\end{lstlisting}
 \end{tcolorbox}\addcontentsline{codes}{section}{Esempio di Circuit Breaker con Netflix Hystrix}
 
-Viene definito il metodo \texttt{getStores()} che fa qualcosa con una \texttt{Map} passata come parametro.
+Viene definito il metodo \texttt{getStores()} che effettua della logica con una \texttt{Map} passata come parametro.
 L'annotazione \texttt{@HystrixCommand} definisce una chiamata di \textit{callback} in caso di attivazione del \textit{Circuit Breaker} verso il metodo \texttt{defaultStores()}.
 
 
@@ -213,7 +213,7 @@ In questo caso, tutte le chiamate a \texttt{/myusers} sono mappate all'\textit{e
 	\end{verbatim}
 \end{tcolorbox}\addcontentsline{codes}{section}{Pattern ignorati da Zuul}
 
-In questo caso, considerando anche la proprietà impostata nell'esempio precedente, tutte le chiamate a \texttt{/myusers} vengono mappate tali quali a prima, ad eccezione di quelle che includono il \textit{pattern} \texttt{/admin/}.
+In questo caso, considerando anche la proprietà impostata nell'esempio precedente, tutte le chiamate a \texttt{/myusers} vengono mappate tali quali a prima, ad eccezione di quelle che includono il \textit{pattern} \texttt{/admin/}, le quali vengono rigettate.
 
 \subsection{Endpoint di Zuul} \textit{Zuul} mette a disposizione due \textit{endpoint}:
 \begin{itemize}
@@ -234,3 +234,53 @@ Una chiamata GET all'endpoint \texttt{/routes} può risultare in una risposta si
 Vengono restituiti tutti i servizi gestiti dal \textit{routing} di \textit{Zuul}, con nome e indirizzo originale.
 
 Attraverso \texttt{/filters} è possibile ottenere una mappa dei filtri di \textit{Zuul} divisi per tipo.
+
+%--------------------------------------------------------------------------------------
+
+\section{Spring Cloud Stream}
+
+\textit{Spring Cloud Stream} è un modulo di \textit{Spring Cloud} che permette di connettere l'applicazione a un \textit{message broker},
+ossia un gestore di code di messaggi (quali \textit{Apache Kafka} o \textit{RabbitMQ}).
+
+Il modulo può essere visto comunemente come la ``fusione'' tra \textit{Spring Boot} e \textit{Spring Integration}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{immagini/message-broker.png}
+	\caption[Message broker]{Message broker\footnotemark}
+	\label{message-broker}
+\end{figure}
+\footnotetext{Fonte immagine: \url{https://www.researchgate.net}}
+
+L'uso di un \textit{broker} permette di rendere i microservizi tra loro asincroni e trasferire alcune responsabilità di \textit{business logic} alla gestione dei messaggi del \textit{broker} stesso.
+
+Comunicando esclusivamente via HTTP non si avrebbe il vantaggio dell'asincronicità dei microservizi: cosa succederebbe se il \textit{client} A notificasse un evento di interesse del \textit{client} B, immaginando che quest'ultimo sia momentaneamente indisponibile?
+In caso di servizi sincroni, il messaggio verrebbe perso. Avendo invece a disposizione una coda di messaggi, il \textit{client} B potrebbe recuperare il messaggio in qualsiasi momento, una volta tornato disponibile.
+
+Vediamo un esempio d'uso di \textit{Spring Cloud Stream}.
+\begin{tcolorbox}
+	\begin{lstlisting}
+@SpringBootApplication
+@EnableBinding(Sink.class)
+public class LoggingConsumerApplication {
+
+  public static void main(String[] args) {
+    SpringApplication.run(LoggingConsumerApplication.class, args);
+  }
+
+  @StreamListener(Sink.INPUT)
+  public void handle(Person person) {
+    System.out.println("Received: " + person);
+  }
+}
+	\end{lstlisting}
+\end{tcolorbox}\addcontentsline{codes}{section}{Uso di Spring Cloud Stream}
+
+Abbiamo il metodo \texttt{handle()} che gestisce i messaggi in entrata per il tipo \texttt{Person}.
+Qui entra in gioco il \textit{framework}: cerca di convertire automaticamente il messaggio (in formato JSON) nel tipo \texttt{Person} riconosciuto dall'applicazione, che potrà usarlo per qualsivoglia logica.
+
+In questo caso, stampa semplicemente a video un messaggio che mostra la persona ricevuta e convertita dal messaggio.
+
+\bigskip
+
+\textit{Spring Cloud Stream} offre dei \textit{binder} sia per \textit{Apache Kafka} che per \textit{Rabbit MQ}.
