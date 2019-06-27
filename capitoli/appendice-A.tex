@@ -269,9 +269,27 @@ Ci sono due modi per coordinare il \textit{Saga pattern}:
 
 \subsection{Service Discovery pattern}\label{service-discovery}
 
-\paragraph*{Problema}
+\paragraph*{Problema} In un'architettura basata su microservizi, come si può gestire il \textit{routing}, ossia il processo di selezione di un percorso su una rete, che sarà comunemente composta da diverse istanze di più servizi?
+Ogni servizio avrà il suo indirizzo (mappato su una porta specifica):  in un sistema distribuito non è ragionevole tenere traccia degli indirizzi manualmente, poiché l'IP di \textit{container} e macchine virtuali è spesso assegnato dinamicamente, cambiando nel tempo.
 
-\paragraph*{Soluzione}
+È necessario avere un processo che si occupi di tenere traccia di tutti i servizi coinvolti nel sistema e permetta di scoprire la loro posizione nella rete.
+
+\paragraph*{Soluzione} Va fornito un \textit{Service Registry} che abbia esattamente questo ruolo:
+ogni istanza di ogni servizio che viene inizializzata, va registrata nel \textit{Service Registry}, e ogni istanza non disponibile o eliminata va rimossa dal registro.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{immagini/service-registry.png}
+	\caption[Esempio di Saga pattern]{Service registry\footnotemark}
+\end{figure}
+\footnotetext{Fonte immagine: \href{https://auth0.com/blog/an-introduction-to-microservices-part-3-the-service-registry/}{https://auth0.com}}
+
+L'attività di ``scoperta'' dei microservizi è chiamata \textit{Service Discovery}. Ne sono presenti due tipi:
+\begin{itemize}
+	\item \textit{Client-side discovery};
+	\item \textit{Server-side discovery}.
+\end{itemize}
+Alcuni esempi saranno discussi in \S\ref{cap:spring-cloud}.
 
 % ------------------------------------------------------------------
 
