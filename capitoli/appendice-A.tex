@@ -295,6 +295,18 @@ Alcuni esempi saranno discussi in \S\ref{cap:spring-cloud}.
 
 \subsection{Circuit Breaker pattern}\label{circuit-breaker}
 
-\paragraph*{Problema}
+\paragraph*{Problema} È comune in sistemi distribuiti fare chiamate remote a software che girano in processi differenti, probabilmente in macchine diverse di una rete.
+La più grande differenza tra chiamate \textit{in-memory} e chiamate remote è che queste ultime possono fallire, o rimanere pendenti senza dare alcuna risposta finché il limite di tempo massimo viene raggiunto.
 
-\paragraph*{Soluzione}
+Questo può causare chiamate fallimentari a cascata che possono minare l'esperienza utente e rallentare il server. Come evitare il fallimento delle chiamate remote e gestire gli errori in modo robusto?
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{immagini/circuit-breaker.png}
+	\caption[Esempio di Circuit Breaker]{Esempio di Circuit Breaker\footnotemark}
+\end{figure}
+\footnotetext{Fonte immagine: \href{https://dotnetvibes.com/2018/08/06/making-your-microservices-resilient-and-fault-tolerant/}{https://dotnetvibes.com}}
+
+\paragraph*{Soluzione} Il \textit{client} dovrebbe chiamare i servizi remoti tramite un \textit{proxy} che si comporta come un interruttore di un circuito elettrico: quando il numero di chiamate fallite raggiunge una cerca soglia, l'interruttore viene azionato e per una durata di tempo specificata e configurabile tutte le chiamate remote al servizio falliranno immediatamente.
+
+Passato il periodo di tempo, l'interruttore viene nuovamente disabilitato e le chiamate al servizio possono riprendere, eventualmente con un limite di carico per testare se il servizio effettivamente è tornato a funzionare a pieno regime.
