@@ -6,13 +6,13 @@
 \chapter{Descrizione dello stage}\label{cap:descrizione-stage}
 
 \intro{In questo capitolo, viene descritto nel dettaglio il progetto di
-stage, il piano di lavoro ...}
+stage ed esplicato il piano di lavoro stipulato insieme al relatore aziendale e revisionato del relatore interno.}
 
 %**************************************************************
 
 \section{Il progetto: SyncRec}
 
-Si richiede al tirocinante, come prima parte dello stage, di apprendere le tecnologie necessari a poter svolgere le fasi di analisi, progettazione e implementazione del progetto di stage conclusivo.
+Si richiede al tirocinante, come prima parte dello stage, di apprendere le tecnologie necessarie a poter svolgere le fasi di analisi, progettazione e implementazione del progetto di stage conclusivo.
 Le tematiche da apprendere sono le seguenti:
 \begin{itemize}
 	\item \textit{Java SE} e \textit{Java EE};
@@ -34,9 +34,10 @@ Le tematiche da apprendere sono le seguenti:
 	\end{itemize}
 \end{itemize}
 
-Lo studio delle tecnologie per il front-end è puramente didattico, e non è pertanto prevista una concretizzazione, compito lasciato ad altri stagisti.
+Lo studio delle tecnologie per il \textit{front-end} è puramente didattico, e non è pertanto prevista una concretizzazione.
+Sviluppare il \textit{front-end} sarà un'attività delegata ad altri stagisti.
 
-La seconda parte dello stage è invece incentrata all'effettiva implementazione dei microservizi del back-end per il prodotto \textit{SyncRec} (?), il nuovo portale aziendale per la gestione delle competenze dei candidati.
+La seconda parte dello stage è invece incentrata all'effettiva implementazione dei microservizi del \textit{back-end} per il prodotto \textit{SyncRec}, il nuovo portale aziendale per la gestione delle competenze dei candidati.
  % TODO da dire di REST
 
 Il committente di tale prodotto è l'azienda Sync Lab stessa, in quanto sarà un \textit{software} usato internamente a soli scopi burocratici.
@@ -58,10 +59,12 @@ Testo, oggetto e destinatario sono dati definiti nel database MongoDB
 \textit{syncrec-emailSender}, mentre le proprietà del server SMTP sono definite in un file di configurazione.
 
 L'invio della email avviene in modo sincrono quando viene effettuata una richiesta POST tramite l'endpoint \texttt{/sendEmail}.
-I parametri richiesti nel corpo della richiesta sono:
+I campi richiesti nel corpo della richiesta sono:
 \begin{itemize}
 	\item \texttt{receiver}: il destinatario della mail.
 \end{itemize}
+
+%Un esempio di richiesta POST è la seguente:
 
 \subsubsection{Microservizio: User e Login}
 
