@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# lanciare con flag -s per silenziare l'output
+
+if [[ $# -eq 1 ]] && [[ $1 == '-s' ]] ; then
+	silent=1
+else
+	silent=0
+fi
+
+name=tesi
+extensions=(acr alg codes glg gls glsdefs aux acn bcf glo glsdefs ist lof log lot run.xml synctex.gz toc)
+
+log_msg() {
+	if [[ $silent -eq 0 ]] ; then
+		echo $1
+	fi
+}
+
+log_msg "Eliminazione files ausiliari in root .."
+
+for i in "${extensions[@]}"; do 
+	rm -rf *.$i 
+done
+
+log_msg ok.
+
+log_msg "Eliminazione file capitoli/*.aux .."
+rm -rf capitoli/*.aux
+log_msg "ok."
+
+log_msg "Eliminazione file .pdf .."
+rm -rf *.pdf
+log_msg "ok."
+
