@@ -10,6 +10,34 @@ stage ed esplicato il piano di lavoro stipulato insieme al relatore aziendale e 
 
 %**************************************************************
 
+\section{Lo stage}
+
+Lo stage si è svolto nella sede di Padova dell'azienda ospitante, Sync Lab, nell'arco delle otto settimane previste nel piano di lavoro:
+\begin{itemize}
+	\item inizio il 6 maggio 2019;
+	\item fine il 28 giugno 2019.
+\end{itemize}
+Il progetto di stage consiste nell'implementazione di una \textit{web application} a microservizi per il trasferimento in una nuova piattaforma del servizio di \textit{skill matrix} usato da Sync Lab per organizzare le competenze delle persone che vanno in azienda per un colloquio.
+
+Prima di ogni colloquio a Sync Lab, è richiesto al candidato di compilare un foglio di calcolo contenente le competenze di interesse
+per l'azienda e il livello, valore che il candidato dovrà indicare.
+
+L'idea è quella di un portale web in cui il candidato compilerà i livelli delle competenze, in alternativa al vecchio foglio di calcolo.
+Per fare ciò, è stato scelto un approccio moderno: 
+\begin{itemize}
+	\item il \textit{front-end} utilizzerà \textit{framework} di ultima generazione (nel nostro caso, Angular);
+	\item il \textit{back-end} utilizzerà un'architettura a microservizi, i quali saranno implementati con il framework Spring (Java), per questioni di uniformità e semplicità, con MongoDB come DBMS.
+\end{itemize}
+
+A svolgere tale progetto ci saranno altri stagisti oltre al sottoscritto, a cui a ognuno sarà assegnato un equo carico di lavoro.
+
+Per quanto riguarda il back-end, l'azienda possiede già un portale web usato per caricare i dati dei candidati. Il DBMS utilizzato per i dati di tale portale è Oracle SQL.
+%Parte del lavoro dello stage consisterà nello spostare e riadattare il codice del vecchio portale a quello del nuovo.
+
+Il mio ruolo nel progetto consisterà prettamente nell'implementazione di alcuni microservizi back-end e nel riadattamento del vecchio portale.
+
+%**************************************************************
+
 \section{Il progetto: SyncRec}
 
 Si richiede al tirocinante, come prima parte dello stage, di apprendere le tecnologie necessarie a poter svolgere le fasi di analisi, progettazione e implementazione del progetto di stage conclusivo.
@@ -45,13 +73,13 @@ Nello specifico, sarà lo stesso \fabio\ a coprire il ruolo di committente.
 
 \section{Requisiti e obiettivi}
 
-\subsection{Microservizi da sviluppare}
+\subsection{Servizi  da sviluppare}
 
 I microservizi accordati da implementare sono riportati nel dettaglio in seguito. Ognuno di essi esporrà le API tramite degli specifici \textit{endpoint}
 raggiungibili tramite i vari tipi di richieste HTTP (GET, POST, DELETE, etc\dots).
-Ogni tipo di richiesta ha la sua semantica e un significato ben specifico, che verrà spiegato nei paragrafi dedicati.
+Ogni tipo di richiesta ha la sua semantica e un significato ben specifico, che verrà spiegato nei paragrafi dedicati % TODO Specificare quale sezione.
 
-% TODO Verrà spiegato nel dettaglio nel capitolo 3 
+% TODO appendice REST?
 
 \subsubsection{Microservizio: Email}
 
@@ -71,7 +99,7 @@ La seguente potrebbe essere un esempio di richiesta al servizio Email:
 	\begin{verbatim} curl -X POST http://localhost:8080/syncrec/sendEmail -d \
 '{ "receiver":  "emailReceiver@email.it" }'
 	\end{verbatim}
-\end{tcolorbox}\addcontentsline{codes}{section}{Zuul: GET /routes}
+\end{tcolorbox}\addcontentsline{codes}{section}{Esempio richiesta POST per microservizio email}
 
 Come risposta, è possibile ottenere 2 risultati:
 \begin{itemize}
@@ -175,4 +203,134 @@ Nelle risorse \textit{applicants}, verrà salvato l'ID dei documenti associati, 
 %**************************************************************
 \section{Pianificazione}
 
+In questa sezione viene mostrata la pianificazione delle settimane e delle ore per ogni attività concordata con il relatore aziendale e il relatore interno.
+
+\subsection{Pianificazione settimane}
+
+\begin{itemize}
+	\item \textbf{Prima Settimana}
+	\begin{itemize}
+		\item Presentazione strumenti di lavoro per la condivisione del materiale di studio e per la gestione
+		dell'avanzamento del percorso (Slack, Trello, Git);
+		\item Condivisione scaletta di argomenti;
+		\item Veloce panorama su metodologie Agile/Scrum; % 8
+		\item Java Standard Edition - ripasso generale; % 24
+		\item Introduzione al DBMS noSQL MongoDB. % 8
+	\end{itemize}
+
+	\item \textbf{Seconda Settimana}
+	\begin{itemize}
+		\item Approfondimenti MongoDB; % 8
+		\item Java Enterprise Edition:
+		\begin{itemize}
+			\item JSP/Servlet; % 8
+			\item Spring Boot; % 8
+			\item Spring Core; % 8
+			\item Spring MVC, introduzione. % 8
+		\end{itemize}
+	\end{itemize}
+
+	\item \textbf{Terza Settimana}
+	\begin{itemize}
+		\item Java Enterprise Edition:
+		\begin{itemize}
+			\item Spring MVC; % 8
+			\item Spring Data MongoDB; % 16
+			\item Spring Data REST. % 16
+		\end{itemize}
+	\end{itemize}
+
+	\item \textbf{Quarta Settimana}
+	\begin{itemize}
+		\item Java Enterprise Edition:
+		\begin{itemize}
+			\item Spring Data REST, approfondimento; % 8
+		\end{itemize}
+		\item Studio architettura a micro-servizi. % 32
+	\end{itemize}
+
+	\clearpage
+
+	\item \textbf{Quinta Settimana}
+	\begin{itemize}
+		\item Front-end web: Javascript/Typescript e Angular.
+	\end{itemize}
+
+	\item \textbf{Sesta Settimana}
+	\begin{itemize}
+		\item Analisi dei requisiti richiesti dal cliente e degli impatti sull'applicazione di studio;
+		\item Implementazione delle modifiche richieste.
+	\end{itemize}
+
+	\item \textbf{Settima Settimana}
+	\begin{itemize}
+		\item Implementazione delle modifiche richieste.
+	\end{itemize}
+
+	\item \textbf{Ottava Settimana}
+	\begin{itemize}
+		\item Conclusione dell'implementazione richiesta;
+		\item Verifica dell'intervento - collaudo finale;
+		\item Consegna software e messa in esercizio.
+	\end{itemize}
+\end{itemize}
+
 %**************************************************************
+\begin{table}
+	\begin{paddedtablex}[1.4]{\textwidth}{cX}
+		\textbf{Durata in ore} & \textbf{Descrizione dell'attività} \\\toprule
+		
+		\textbf{8} & \textbf{Presentazione del percorso, ripasso metodologie Agile/Scrum e attivazione degli strumenti e degli ambienti di lavoro} \\
+		%\hline
+		
+		\textbf{24} & \textbf{Studio Java Standard Edition}\\%\hline
+		\textbf{16} & \textbf{Studio del DBMS NoSQL MongoDB}\\%\hline
+		\midrule
+		\textbf{80} & \textbf{Studio Java Enterprise Edition}\\\hdashline
+		
+		\multirow{6}{0cm}\\
+		\textit{8} &
+		\textit{Java EE: JSP/Servlet}\\
+		\textit{8} &
+		\textit{Java EE: Spring Boot}\\
+		\textit{8} &
+		\textit{Java EE: Spring Core}\\
+		\textit{16} &
+		\textit{Java EE: Spring MVC}\\
+		\textit{16} &
+		\textit{Java EE: Spring Data MongoDB}\\
+		\textit{24} &
+		\textit{Java EE: Spring Data REST}\\%\hline
+		
+		\midrule
+		\textbf{32} & \textbf{Studio architettura a micro-servizi} \\%\hline
+		
+		\midrule
+		\textbf{40} & \textbf{Studio front-end web}\\\hdashline
+		\multirow{2}{0cm}\\%
+		\textit{16} &
+		\textit{Front-end: Javascirpt/Typescript}\\%
+		\textit{24} &
+		\textit{Front-end: Angular 6}\\%\hline
+	
+		\midrule
+		\textbf{92} & \textbf{Implementazione progetto di studio}\\\hdashline
+		\multirow{2}{0cm}\\
+		\textit{8} &
+		\textit{Analisi dei requisiti utente e degli impatti}\\
+		\textit{84} &
+		\textit{Implementazione modifiche} \\%\hline
+		
+		\midrule
+		\textbf{8} & \textbf{Collaudo Finale}\\\hdashline
+		\multirow{2}{0cm}\\
+		\textit{4} &
+		\textit{Verifica dell'intervento}\\
+		\textit{4} &
+		\textit{Consegna del software e messa in esercizio} \\%\hline
+		\bottomrule
+		\textbf{Totale ore} & \multicolumn{1}{c}{\textbf{300}} \\%\hline
+	
+	\end{paddedtablex}
+	\caption{Tabella ripartizione ore pianificate}
+\end{table}
