@@ -108,7 +108,7 @@ Come risposta, è possibile ottenere 2 risultati:
 	\item \textbf{Unprocessable entity}: 406, se non è stato possibile inviare l'email (per errori di connessioni al database, al server SMTP etc\dots).
 \end{itemize}
 
-\subsubsection{Microservizio: User e Login}
+\subsubsection{Microservizio: User/Login}
 
 Questo microservizio espone la risorsa \texttt{User} nell'endpoint
 \texttt{syncrec/users}, accessibile e modificabile via API REST. I dati persistenti sono salvati e acceduti tramite il database \textit{syncrec-users} di
@@ -160,13 +160,19 @@ all'\textit{endpoint} \texttt{syncrec/documents}.
 
 Nelle risorse \textit{applicants}, verrà salvato l'ID dei documenti associati, con un opportuno check in fase di salvataggio dell'entità.
 
-
-
-%\section{Piano di lavoro}
-%Viene riportato in seguito i contenuti di maggior rilievo presenti nel piano di stage che ha pianificato
-%le attività dello stesso.
-
 \subsection{Obiettivi}
+
+\subsubsection*{Notazione}
+Si farà riferimento ai requisiti secondo le seguenti notazioni:
+\begin{itemize}
+	\item \textit{O} per i requisiti obbligatori, vincolanti in quanto obiettivo primario richiesto dal committente;
+	\item \textit{D} per i requisiti desiderabili, non vincolanti o strettamente necessari,
+	ma dal riconoscibile valore aggiunto;
+	\item \textit{F} per i requisiti facoltativi, rappresentanti valore aggiunto non strettamente 
+	competitivo.
+\end{itemize}
+
+Le sigle precedentemente indicate saranno seguite da una coppia sequenziale di numeri, identificativo del requisito.
 
 \begin{itemize}[noitemsep]
 	\item Obbligatori
@@ -276,6 +282,8 @@ In questa sezione viene mostrata la pianificazione delle settimane e delle ore p
 \end{itemize}
 
 %**************************************************************
+
+
 \begin{table}
 	\begin{paddedtablex}[1.4]{\textwidth}{cX}
 		\textbf{Durata in ore} & \textbf{Descrizione dell'attività} \\\toprule
