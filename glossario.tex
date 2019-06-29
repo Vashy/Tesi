@@ -4,6 +4,9 @@
 %**************************************************************
 \renewcommand{\acronymname}{Acronimi e abbreviazioni}
 
+\newacronym[description={\glslink{httpg}{HyperText Transfer Protocol}}]
+    {http}{HTTP}{HyperText Transfer Protocol}
+
 \newacronym[description={\glslink{apig}{Application Program Interface}}]
     {api}{API}{Application Program Interface}
 
@@ -27,52 +30,69 @@
 
 \newacronym{it}{IT}{Information Technology}
 
+\newacronym{mit}{MIT}{Massachusetts Institute of Tecnology}
+
 \newacronym[description={\glslink{iotg}{Internet of Things}}]
     {iot}{IoT}{Internet of Things}
+
+\newacronym[description={\glslink{jvmg}{Java Virtual Machine}}]
+    {jvm}{JVM}{Java Virtual Machine}
+
+\newacronym[description={\glslink{dbmsg}{Database Management System}}]
+    {dbms}{DBMS}{Database Management System}
+
+\newacronym[description={\glslink{jsong}{JavaScript Object Notation}}]
+    {json}{JSON}{JavaScript Object Notation}
+
+\newacronym{smtp}{SMTP}{Simple Mail Transfer Protocol}
+
+\newacronym[description={\glslink{restg}{Representational State Transfer}}]
+    {rest}{REST}{Representational State Transfer}
 
 %**************************************************************
 % Glossario
 %**************************************************************
+
 %\renewcommand{\glossaryname}{Glossario}
 
 \newglossaryentry{apig}
 {
-    name=\glslink{api}{API},
+    name=API,
     text=Application Program Interface,
     sort=api,
-    description={in informatica con il termine \emph{Application Programming Interface API} (ing. interfaccia di programmazione di un'applicazione) si indica ogni insieme di procedure disponibili al programmatore, di solito raggruppate a formare un set di strumenti specifici per l'espletamento di un determinato compito all'interno di un certo programma. La finalità è ottenere un'astrazione, di solito tra l'hardware e il programmatore o tra software a basso e quello ad alto livello semplificando così il lavoro di programmazione}
+    description={In informatica con il termine \emph{Application Programming Interface API} (ing. interfaccia di programmazione di un'applicazione) si indica ogni insieme di procedure disponibili al programmatore, di solito raggruppate a formare un set di strumenti specifici per l'espletamento di un determinato compito all'interno di un certo programma. La finalità è ottenere un'astrazione, di solito tra l'hardware e il programmatore o tra software a basso e quello ad alto livello semplificando così il lavoro di programmazione}
 }
 
 \newglossaryentry{umlg}
 {
-    name=\glslink{uml}{UML},
+    name=UML,
     text=UML,
     sort=uml,
-    description={in ingegneria del software \emph{UML, Unified Modeling Language} (ing. linguaggio di modellazione unificato) è un linguaggio di modellazione e specifica basato sul paradigma object-oriented. L'\emph{UML} svolge un'importantissima funzione di ``lingua franca'' nella comunità della progettazione e programmazione a oggetti. Gran parte della letteratura di settore usa tale linguaggio per descrivere soluzioni analitiche e progettuali in modo sintetico e comprensibile a un vasto pubblico}
+    description={In ingegneria del software \emph{UML, Unified Modeling Language} (ing. linguaggio di modellazione unificato) è un linguaggio di modellazione e specifica basato sul paradigma object-oriented. L'\emph{UML} svolge un'importantissima funzione di ``lingua franca'' nella comunità della progettazione e programmazione a oggetti. Gran parte della letteratura di settore usa tale linguaggio per descrivere soluzioni analitiche e progettuali in modo sintetico e comprensibile a un vasto pubblico}
 }
 
 \newglossaryentry{ictg}
 {
-    name=\glslink{ict}{ICT},
+    name=Information and Communications Technology,
     text=ICT,
     sort=ict,
-    description={in informatica, il termine \emph{Information and Communications Technology} sono l'insieme dei metodi e delle tecniche utilizzate nella trasmissione, ricezione ed elaborazione di dati e informazioni.}
+    description={in informatica, il termine \emph{Information and Communications Technology} sono l'insieme dei metodi e delle tecniche utilizzate nella trasmissione, ricezione ed elaborazione di dati e informazioni}
 }
 
 \newglossaryentry{isog}
 {
-    name=\glslink{iso}{ISO},
+    name=ISO,
     text=ISO,
     sort=iso,
-    description={L'\emph{Organizzazione internazionale per la normazione} è l'organizzazione più importante a livello mondiale per la definizione di \textit{standard}.}
+    description={L'\emph{Organizzazione internazionale per la normazione} è l'organizzazione più importante a livello mondiale per la definizione di \textit{standard}}
 }
 
 \newglossaryentry{ohsasg}
 {
-    name=\glslink{ohsas}{OHSAS},
+    name=Occupational Health and Safety Assessment Series,
     text=OHSAS,
     sort=ohsas,
-    description={L'\emph{Occupational Health and Safety Assessment Series} identifica uno standard inglese per un sistema di gestione e sicurezza dei lavoratori.}
+    description={L'\emph{Occupational Health and Safety Assessment Series} identifica uno standard inglese per un sistema di gestione e sicurezza dei lavoratori}
 }
 
 \newglossaryentry{big-data}
@@ -80,13 +100,150 @@
     name=Big Data,
     text=Big Data,
     sort=big data,
-    description={Il termine si riferisce a una raccolta di dati (strutturati e non) talmente estesa in termini di velocità, volume e varietà da richiedere apposite tecnologie e metodi per l'estrazione. Ciò che conta non è la quantità di dati, ma come essi vengono utilizzati.}
+    description={Il termine si riferisce a una raccolta di dati (strutturati e non) talmente estesa in termini di velocità, volume e varietà da richiedere apposite tecnologie e metodi per l'estrazione. Ciò che conta non è la quantità di dati, ma come essi vengono utilizzati}
 }
 
 \newglossaryentry{iotg}
 {
-    name=\glslink{iot}{IOT},
+    name=Internet of Things,
     text=IOT,
     sort=iot,
-    description={Nelle telecomunicazioni, il termine si riferisce all'estensione di internet al mondo delle cose e luoghi concreti.}
+    description={Nelle telecomunicazioni, il termine si riferisce all'estensione di internet al mondo delle cose e luoghi concreti}
+}
+
+\newglossaryentry{webapp}
+{
+    name=Web Application,
+    text=Web Application,
+    sort=web application,
+    description={Un applicazione web è un applicazione distribuita via web, pertanto accessibile per mezzo della rete e di un \emph{browser}}
+}
+
+\newglossaryentry{skill-matrix}
+{
+    name=Skill Matrix,
+    text=Skill Matrix,
+    sort=skill matrix,
+    description={Una matrice (e.g. un foglio di calcolo) usata dall'azienda Sync Lab per documentare le competenze dei candidati interessati all'assunzione, in cui è riportato il nome della competenza, il livello e la categoria. Il documento viene compilato dai candidati prima di un eventuale colloquio}
+}
+
+\newglossaryentry{angular}
+{
+    name=Angular,
+    text=Angular,
+    sort=angular,
+    description={Framework \textit{open source} per lo sviluppo di applicazioni web, rilasciato con licenza \gls{mit}, nato come evoluzione di AngularJS. Il linguaggio di programmazione usato da Angular è TypeScript, a differenza del predecessore che usava \gls{javascript}}
+}
+
+\newglossaryentry{spring}
+{
+    name=Spring,
+    text=Spring,
+    sort=spring,
+    description={Framework \textit{open source} per lo sviluppo di applicazioni con target principale Java, ma supporta ufficialmente anche Kotlin e Groovy. A Spring sono associati molti sotto-progetti, come Spring Boot e Spring Cloud, sviluppati per fornire modularità al framwork}
+}
+
+\newglossaryentry{java}
+{
+    name=Java,
+    text=Java,
+    sort=java,
+    description={Java è un linguaggio di programmazione ad oggetti e a tipizzazione statica \emph{general purpose} nato a metà degli anni 90 che si appoggia alla \gls{jvm}}
+}
+
+\newglossaryentry{jvmg}
+{
+    name=Java Virtual Machine,
+    text=Java Virtual Machine,
+    sort=jvm,
+    description={Componente della piattaforma \gls{java} che esegue programmi tradotti in \emph{bytecode} dopo una fase di compilazione}
+}
+
+\newglossaryentry{dbmsg}
+{
+    name=Database Management System,
+    text=DBMS,
+    sort=dbms,
+    description={In informatica, il termine \gls{dbms} indica un sistema software progettato per consentire la manipolazione, la creazione e l'interrogazione efficiente su un database}
+}
+
+\newglossaryentry{mongodb}
+{
+    name=MongoDB,
+    text=MongoDB,
+    sort=MongoDB,
+    description={È un \gls{dbms} non relazionale (NoSQL) orientato ai documenti: ciò significa che abbandona la struttura tradizionale basata su tabelle dei database relazionali in favore di documenti in stile \gls{json}}
+}
+
+\newglossaryentry{jsong}
+{
+    name=JSON,
+    text=JSON,
+    sort=JSON,
+    description={Acronimo di JavaScript Object Notation, è un formato usato nel web adatto allo scambio dei dati fra applicazioni client-server. Si basa sul linguaggio \gls{javascript} da cui prende spunto per la sintassi}
+}
+
+\newglossaryentry{cloud-computing}
+{
+    name=Cloud Computing,
+    text=Cloud Computing,
+    sort=Cloud Computing,
+    description={È un paradigma di erogazione di servizi \emph{on demand} offerti ad un cliente da un fornitore attraverso il web, a partire da
+    un sistema con risorse configurabili e preesistenti, generalmente disponibili in remoto}
+}
+
+\newglossaryentry{javascript}
+{
+    name=JavaScript,
+    text=JavaScript,
+    sort=JavaScript,
+    description={Linguaggio di scripting orientato agli oggetti ed eventi comunemente utilizzato nella programmazione web lato client, anche se è stato recentemente esteso anche al lato server}
+}
+
+\newglossaryentry{oracle}
+{
+    name=Database Oracle,
+    text=Database Oracle,
+    sort=Database Oracle,
+    description={È uno dei più noti \gls{dbms} relazionali, è scritto in linguaggio C. È prodotto dalla \emph{Oracle Corporation}}
+}
+
+\newglossaryentry{httpg}
+{
+    name=HTTP,
+    text=HTTP,
+    sort=HTTP,
+    description={In telecomunicazioni, l'HyperText Transfer Protocol è un protocollo usato come sistema per la trasmissione di informazioni sul web}
+}
+
+\newglossaryentry{microservizio}
+{
+    name=Microservizio,
+    text=microservizio,
+    sort=Microservizio,
+    description={Componente di un'architetettura a microservizi, variante dell'architettura orientata ai servizi, in cui l'applicazione è strutturata come un insieme di servizi scarsamente accoppiati}
+}
+
+\newglossaryentry{restg}
+{
+    name=REST,
+    text=REST,
+    sort=REST,
+    description={Representational State Transfer è uno stile architetturale usato nei sistemi distribuiti che si riferisce a un sistema di trasmissione dati via \acrshort{http} senza \emph{layer} addizionali. I sistemi REST infatti non prevedono il concetto di sessione, essendo \textit{stateless}}
+}
+
+\newglossaryentry{spring-cloud}
+{
+    name=Spring Cloud,
+    text=Spring Cloud,
+    sort=Spring Cloud,
+    description={\textit{Framework} del team Pivotal, sotto-progetto di \gls{spring}, che offre gli strumenti necessari agli sviluppatori per implementare alcuni dei \textit{pattern} più comuni per i sistemi distribuiti}
+}
+
+\newglossaryentry{typescript}
+{
+    name=TypeScript,
+    text=TypeScript,
+    sort=TypeScript,
+    description={Linguaggio di programmazione \emph{open source} sviluppato da \emph{Microsoft}, super-set di \gls{javascript}, che estende la sintassi rendendolo un linguaggio a tipizzazione forte}
 }

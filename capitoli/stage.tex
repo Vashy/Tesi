@@ -5,33 +5,34 @@
 %**************************************************************
 \chapter{Descrizione dello stage}\label{cap:descrizione-stage}
 
-\intro{In questo capitolo, viene descritto nel dettaglio il progetto di
+\intro{In questo capitolo viene descritto nel dettaglio il progetto di
 stage ed esplicato il piano di lavoro stipulato insieme al relatore aziendale e revisionato del relatore interno.}
 
 %**************************************************************
 
 \section{Lo stage}
 
-Lo stage si è svolto nella sede di Padova dell'azienda ospitante, Sync Lab, nell'arco delle otto settimane previste nel piano di lavoro:
+Lo stage si è svolto nella sede di Padova dell'azienda ospitante, Sync Lab, nell'arco delle otto settimane previste nel piano di lavoro, con le seguenti date di inizio e fine:
 \begin{itemize}
-	\item inizio il 6 maggio 2019;
-	\item fine il 28 giugno 2019.
+	\item Inizio il 6 maggio 2019;
+	\item Fine il 28 giugno 2019.
 \end{itemize}
-Il progetto di stage consiste nell'implementazione di una \textit{web application} a microservizi per il trasferimento in una nuova piattaforma del servizio di \textit{skill matrix} usato da Sync Lab per organizzare le competenze delle persone che vanno in azienda per un colloquio.
+Il progetto di stage consiste nell'implementazione di una \gls{webapp} a microservizi per il trasferimento in una nuova piattaforma del servizio di \gls{skill-matrix} usato da Sync Lab per organizzare le competenze delle persone che vanno in azienda per un colloquio.
 
 Prima di ogni colloquio a Sync Lab, è richiesto al candidato di compilare un foglio di calcolo contenente le competenze di interesse
-per l'azienda e il livello, valore che il candidato dovrà indicare.
+per l'azienda e il relativo livello.
 
-L'idea è quella di un portale web in cui il candidato compilerà i livelli delle competenze, in alternativa al vecchio foglio di calcolo.
+L'idea del progetto è quella di un portale web in cui il candidato inserirà i livelli delle competenze, in alternativa al vecchio foglio di calcolo.
+
 Per fare ciò, è stato scelto un approccio moderno: 
 \begin{itemize}
-	\item il \textit{front-end} utilizzerà \textit{framework} di ultima generazione (nel nostro caso, Angular);
-	\item il \textit{back-end} utilizzerà un'architettura a microservizi, i quali saranno implementati con il framework Spring (Java), per questioni di uniformità e semplicità, con MongoDB come DBMS.
+	\item il \textit{front-end} utilizzerà \textit{framework} di ultima generazione (nel nostro caso, \gls{angular}\gloss);
+	\item il \textit{back-end} utilizzerà un'architettura a microservizi implementati con il \textit{framework} \gls{spring}\gloss (\gls{java}\gloss), per questioni di uniformità e semplicità, con \gls{mongodb}\gloss\ come \gls{dbms}\gloss.
 \end{itemize}
 
 A svolgere tale progetto ci saranno altri stagisti oltre al sottoscritto, a cui a ognuno sarà assegnato un equo carico di lavoro.
 
-Per quanto riguarda il back-end, l'azienda possiede già un portale web usato per caricare i dati dei candidati. Il DBMS utilizzato per i dati di tale portale è Oracle SQL.
+Per quanto riguarda il back-end, l'azienda possiede già un portale web usato per caricare i dati dei candidati. Il \gls{dbms} utilizzato per i dati di tale portale è \gls{oracle}.
 %Parte del lavoro dello stage consisterà nello spostare e riadattare il codice del vecchio portale a quello del nuovo.
 
 Il mio ruolo nel progetto consisterà prettamente nell'implementazione di alcuni microservizi back-end e nel riadattamento del vecchio portale.
@@ -75,20 +76,21 @@ Nello specifico, sarà lo stesso \fabio\ a coprire il ruolo di committente.
 
 \subsection{Servizi  da sviluppare}
 
-I microservizi accordati da implementare sono riportati nel dettaglio in seguito. Ognuno di essi esporrà le API tramite degli specifici \textit{endpoint}
-raggiungibili tramite i vari tipi di richieste HTTP (GET, POST, DELETE, etc\dots).
-Ogni tipo di richiesta ha la sua semantica e un significato ben specifico, che verrà spiegato nei paragrafi dedicati % TODO Specificare quale sezione.
+I microservizi accordati da implementare sono riportati nel dettaglio in seguito. Ognuno di essi esporrà le \gls{api}\gloss\ tramite degli specifici \textit{endpoint}
+raggiungibili tramite i vari tipi di richieste \acrshort{http} (GET, POST, DELETE, etc\dots).
+%Ogni tipo di richiesta ha la sua semantica e un significato ben specifico, che verrà spiegato nei paragrafi dedicati
+% TODO Specificare quale sezione.
 
 % TODO appendice REST?
 
 \subsubsection{Microservizio: Email}
 
-Il microservizio email ha il semplice compito di inviare una email specifica.
-Testo, oggetto e destinatario sono dati definiti nel database MongoDB
-\textit{syncrec-emailSender}, mentre le proprietà del server SMTP sono definite in un file di configurazione.
+Il \gls{microservizio}\gloss\ email ha il semplice compito di inviare una email specifica.
+Testo, oggetto e destinatario sono dati definiti nel database \gls{mongodb}\gloss\
+\textit{syncrec-emailSender}, mentre le proprietà del server \acrshort{smtp} sono definite in un file di configurazione.
 
 L'invio della email avviene in modo sincrono quando viene effettuata una richiesta POST tramite l'endpoint \texttt{/sendEmail}.
-I campi richiesti nel corpo della richiesta sono:
+I campi da immettere nel corpo della richiesta sono:
 \begin{itemize}
 	\item \texttt{receiver}: il destinatario della mail.
 \end{itemize}
@@ -103,21 +105,21 @@ La seguente potrebbe essere un esempio di richiesta al servizio Email:
 
 Come risposta, è possibile ottenere 2 risultati:
 \begin{itemize}
-	\item \textbf{Ok}: 200 e un \textit{payload} contenente i campi usati
+	\item \textbf{Ok} (200) e un \textit{payload} contenente i campi usati
 	per l'invio email;
-	\item \textbf{Unprocessable entity}: 406, se non è stato possibile inviare l'email (per errori di connessioni al database, al server SMTP etc\dots).
+	\item \textbf{Unprocessable entity} (406) se non è stato possibile inviare l'email (per errori di connessioni al database, al server SMTP etc\dots).
 \end{itemize}
 
 \subsubsection{Microservizio: User/Login}
 
 Questo microservizio espone la risorsa \texttt{User} nell'endpoint
-\texttt{syncrec/users}, accessibile e modificabile via API REST. I dati persistenti sono salvati e acceduti tramite il database \textit{syncrec-users} di
-MongoDB.
+\texttt{syncrec/users}, accessibile e modificabile via \gls{api}\gloss\ \acrshort{rest}. I dati persistenti sono salvati e acceduti tramite il database \textit{syncrec-users} di
+\gls{mongodb}\gloss.
 
 Inoltre, tramite l'endpoint \texttt{/users/login} e una richiesta POST,
 è possibile effettuare l'operazione di login.
 
-I parametri richiesti sono:
+I parametri richiesti nell'operazione di login sono:
 \begin{itemize}
 	\item \texttt{username}: campo contenente lo \textit{username} o l'email dell'utente che vuole autenticarsi;
 	\item \texttt{password}: campo contenente la password relativa all'utente da autenticare.
@@ -125,24 +127,24 @@ I parametri richiesti sono:
 
 Le possibili risposte che verranno inoltrate al chiamante possono essere:
 \begin{itemize}
-	\item \textbf{Ok}: 200 (Equivalente all'HTTP status \textit{ok}), e il JSON contenente i campi relativi all'utente autenticato;
-	\item \textbf{Bad request}: 400 (equivalente all'HTTP status \textit{bad request}) se il corpo della richiesta non contiene i campi riportati sopra, con corpo contenente un messaggio d'errore (sempre in formato JSON);
-	\item \textbf{Unauthorized}: 401 (equivalente all'HTTP status \textit{unauthorized}) se l'autenticazione fallisce, con corpo vuoto.
+	\item \textbf{Ok} (200) e il \acrshort{json}\gloss\ contenente i campi relativi all'utente autenticato;
+	\item \textbf{Bad request} (400) se il corpo della richiesta non contiene i campi riportati sopra, con corpo contenente un messaggio d'errore (sempre in formato \acrshort{json}\gloss);
+	\item \textbf{Unauthorized} (401) se l'autenticazione fallisce, con corpo vuoto.
 \end{itemize}
 
 \subsubsection{Microservizio: Catalog}
 
-È stato richiesto di implementare un microservizio con il fine di restituire,
-tramite una chiamata, una lista di \textit{skill} di interesse dell'azienda.
+È stato richiesto di implementare un \gls{microservizio}\gloss\ con il fine di restituire,
+attraverso una richiesta \acrshort{http}\gloss, una lista di \textit{skill} di interesse dell'azienda.
 
-Questo era precedentemente effettuato tramite una tabella di foglio di calcolo mandata ai candidati che dovevano compilare e rimandare indietro nello stesso formato.
+Questo era precedentemente effettuato tramite un foglio di calcolo inviato preventivamente ai candidati, i quali erano tenuti a compilarlo.
 
 \subsubsection{Microservizio: Applicant}
 
-L'ultima maschera da implementare è il microservizio di gestione dei candidati (\textit{applicants}).
+L'ultima maschera da implementare è il \gls{microservizio}\gloss\ di gestione dei candidati (\textit{applicants}).
 
 Sarà possibile aggiungere, rimuovere o modificare i candidati tramite
-le opportune chiamate REST all'endpoint \texttt{syncrec/applicants}:
+le opportune chiamate \acrshort{rest}\gloss\ all'\textit{endpoint} \texttt{syncrec/applicants}:
 \begin{itemize}
 	\item \textbf{GET} per la visualizzazione;
 	\item \textbf{POST} per l'aggiunta;
@@ -150,11 +152,11 @@ le opportune chiamate REST all'endpoint \texttt{syncrec/applicants}:
 	\item \textbf{PUT} e \textbf{PATCH} per la modifica.
 \end{itemize}
 
-Ogni candidato avrà associati dei documenti, i quali non è ragionevole passare tramite \textit{payload} JSON in un servizio REST, con il tipico \textit{header} di REST: \texttt{Content-Type: application/json}.
+Ogni candidato avrà associati dei documenti, i quali non è ragionevole passare tramite \textit{payload} \acrshort{json}\gloss\ in un servizio \acrshort{rest}\gloss, con il tipico \textit{header} di \acrshort{rest}\gloss: \texttt{Content-Type: application/json}.
 
-Per fare ciò, i documenti saranno salvati in un'apposita \textit{collection} (analogo di MongoDB alle tabelle di un database relazionale):
+Per fare ciò, i documenti saranno salvati in un'apposita \textit{collection} (analogo di \gls{mongodb}\gloss\ alle tabelle di un database relazionale):
 \textit{documents}.
-Ogni documento avrà associato ID, il nome del file e il contenuto binario del file.
+Ogni documento avrà associato ID, il nome e il contenuto binario del file.
 L'aggiunta, la rimozione e la modifica di tali documenti avverrà tramite richieste con \textit{header} \texttt{Content-Type: multipart/form-data}
 all'\textit{endpoint} \texttt{syncrec/documents}.
 
@@ -187,79 +189,65 @@ Le sigle precedentemente indicate saranno seguite da una coppia sequenziale di n
 	\end{itemize}
 	\item Facoltativi
 	\begin{itemize}
-		\item \underline{\textit{F01}}: Acquisizione competenze sul framework Spring Cloud.
+		\item \underline{\textit{F01}}: Acquisizione competenze sul \textit{framework} \gls{spring-cloud}\gloss.
 	\end{itemize}
 \end{itemize}
 
 %**************************************************************
 
-%\section{Analisi preventiva dei rischi}
-%
-%Durante la fase di analisi iniziale sono stati individuati alcuni possibili rischi a cui si potrà andare incontro.
-%Si è quindi proceduto a elaborare delle possibili soluzioni per far fronte a tali rischi.
-
-%\begin{risk}{Performance del portatile utilizzato}
-%    \riskdescription{le performance del portatile, essendo ormai datato, potrebbero risultare lente o non abbastanza buone da causare dei rallentamenti sulle
-%        attività lavorative e di studio durante il periodo di stage}
-%    \risksolution{cercare di limitare gli sprechi di memoria utilizzando applicazioni non necessarie, e coinvolgere il tutor aziendale per l'eventuale sostituzione
-%        del PC}
-%    \label{risk:hardware-simulator}
-%\end{risk}
-
-%**************************************************************
 \section{Pianificazione}
 
 In questa sezione viene mostrata la pianificazione delle settimane e delle ore per ogni attività concordata con il relatore aziendale e il relatore interno.
 
-\subsection{Pianificazione settimane}
+\subsection{Pianificazione delle settimane}
 
 \begin{itemize}
 	\item \textbf{Prima Settimana}
 	\begin{itemize}
 		\item Presentazione strumenti di lavoro per la condivisione del materiale di studio e per la gestione
-		dell'avanzamento del percorso (Slack, Trello, Git);
+		dell'avanzamento del percorso (\textit{Slack}, \textit{Trello}, \textit{Git});
 		\item Condivisione scaletta di argomenti;
-		\item Veloce panorama su metodologie Agile/Scrum; % 8
-		\item Java Standard Edition - ripasso generale; % 24
-		\item Introduzione al DBMS noSQL MongoDB. % 8
+		\item Veloce panorama su metodologie \textit{Agile/Scrum}; % 8
+		\item \gls{java}\gloss\ Standard Edition - ripasso generale; % 24
+		\item Introduzione al \gls{dbms}\gloss\ noSQL \gls{mongodb}\gloss. % 8
 	\end{itemize}
 
 	\item \textbf{Seconda Settimana}
 	\begin{itemize}
-		\item Approfondimenti MongoDB; % 8
-		\item Java Enterprise Edition:
+		\item Approfondimenti \gls{mongodb}\gloss; % 8
+		\item \gls{java}\gloss\ Enterprise Edition:
 		\begin{itemize}
-			\item JSP/Servlet; % 8
-			\item Spring Boot; % 8
-			\item Spring Core; % 8
-			\item Spring MVC, introduzione. % 8
+			\item \textit{JSP/Servlet}; % 8
+			\item \textit{Spring Boot}; % 8
+			\item \textit{Spring Core}; % 8
+			\item \textit{Spring MVC}, introduzione. % 8
 		\end{itemize}
 	\end{itemize}
 
 	\item \textbf{Terza Settimana}
 	\begin{itemize}
-		\item Java Enterprise Edition:
+		\item \gls{java}\gloss\ Enterprise Edition:
 		\begin{itemize}
-			\item Spring MVC; % 8
-			\item Spring Data MongoDB; % 16
-			\item Spring Data REST. % 16
+			\item \textit{Spring MVC}; % 8
+			\item \textit{Spring Data MongoDB}; % 16
+			\item \textit{Spring Data REST}. % 16
 		\end{itemize}
 	\end{itemize}
 
 	\item \textbf{Quarta Settimana}
 	\begin{itemize}
-		\item Java Enterprise Edition:
+		\item \gls{java}\gloss\ Enterprise Edition:
 		\begin{itemize}
-			\item Spring Data REST, approfondimento; % 8
+			\item \textit{Spring Data REST}, approfondimento; % 8
 		\end{itemize}
-		\item Studio architettura a micro-servizi. % 32
+		\item Studio architettura a microservizi. % 32
 	\end{itemize}
 
 	\clearpage
 
 	\item \textbf{Quinta Settimana}
 	\begin{itemize}
-		\item Front-end web: Javascript/Typescript e Angular.
+		\item Front-end web: \gls{javascript}\gloss/\gls{typescript}\gloss\ e \gls{angular}\gloss.
 	\end{itemize}
 
 	\item \textbf{Sesta Settimana}
@@ -283,8 +271,11 @@ In questa sezione viene mostrata la pianificazione delle settimane e delle ore p
 
 %**************************************************************
 
+\clearpage
 
-\begin{table}
+\subsection{Pianificazione delle ore}
+
+\begin{table}[H]
 	\begin{paddedtablex}[1.4]{\textwidth}{cX}
 		\textbf{Durata in ore} & \textbf{Descrizione dell'attività} \\\toprule
 		
@@ -319,7 +310,7 @@ In questa sezione viene mostrata la pianificazione delle settimane e delle ore p
 		\textit{16} &
 		\textit{Front-end: Javascirpt/Typescript}\\%
 		\textit{24} &
-		\textit{Front-end: Angular 6}\\%\hline
+		\textit{Front-end: Angular}\\%\hline
 	
 		\midrule
 		\textbf{92} & \textbf{Implementazione progetto di studio}\\\hdashline

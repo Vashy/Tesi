@@ -107,7 +107,7 @@
     %pdfpagelabels,
     %draft,	% = elimina tutti i link (utile per stampe in bianco e nero)
     colorlinks=true,
-    linktocpage=true,
+    % linktocpage=true,
     pdfstartpage=1,
     pdfstartview=FitV,
     % decommenta la riga seguente per avere link in nero (per esempio per la stampa in bianco e nero)
@@ -195,7 +195,9 @@
                        \renewcommand{\tablename}{Tabella}}
 
 % \newcommand{\glsfirstoccur}{\ap{{[g]}}}
-\newcommand{\gloss}[1]{\textit{#1}\ped{\tiny{G}}}
+%\newcommand{\gloss}[1]{\textit{#1}\ped{\tiny{G}}}
+
+\newcommand{\gloss}{\ped{\tiny{G}}}
 
 \newcommand{\intro}[1]{\emph{\textsf{#1}}}
 

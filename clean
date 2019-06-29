@@ -29,7 +29,7 @@ log_msg "Eliminazione file capitoli/*.aux .."
 rm -rf capitoli/*.aux
 log_msg "ok."
 
-log_msg "Eliminazione file .pdf .."
-rm -rf *.pdf
-log_msg "ok."
+# log_msg "Eliminazione file .pdf .."
+# rm -rf *.pdf
+# log_msg "ok."
 

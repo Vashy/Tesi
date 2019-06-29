@@ -2,6 +2,12 @@
 
 NAME="tesi" # modificiare per scegliere il nome del file di origine (.tex)
 
+echo -----------
+echo - Pulizia -
+echo -----------
+
+./clean -s
+
 echo --------------------
 echo - Inizializzazione -
 echo --------------------
@@ -25,9 +31,9 @@ echo -------------------------
 pdflatex $NAME
 # pdflatex $NAME
 
-echo ---------------------------------
-echo - Pulizia... -
-echo ---------------------------------
+echo -----------
+echo - Pulizia -
+echo -----------
 
 rm *.acn *.aux *.bbl *.bcf *.glo
 rm *.ist *.lof *.lot *.run.xml *.toc
