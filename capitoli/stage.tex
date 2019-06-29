@@ -50,6 +50,7 @@ Nello specifico, sarà lo stesso \fabio\ a coprire il ruolo di committente.
 I microservizi accordati da implementare sono riportati nel dettaglio in seguito. Ognuno di essi esporrà le API tramite degli specifici \textit{endpoint}
 raggiungibili tramite i vari tipi di richieste HTTP (GET, POST, DELETE, etc\dots).
 Ogni tipo di richiesta ha la sua semantica e un significato ben specifico, che verrà spiegato nei paragrafi dedicati.
+
 % TODO Verrà spiegato nel dettaglio nel capitolo 3 
 
 \subsubsection{Microservizio: Email}
@@ -64,7 +65,20 @@ I campi richiesti nel corpo della richiesta sono:
 	\item \texttt{receiver}: il destinatario della mail.
 \end{itemize}
 
-%Un esempio di richiesta POST è la seguente:
+La seguente potrebbe essere un esempio di richiesta al servizio Email:
+
+\begin{tcolorbox}
+	\begin{verbatim} curl -X POST http://localhost:8080/syncrec/sendEmail -d \
+'{ "receiver":  "emailReceiver@email.it" }'
+	\end{verbatim}
+\end{tcolorbox}\addcontentsline{codes}{section}{Zuul: GET /routes}
+
+Come risposta, è possibile ottenere 2 risultati:
+\begin{itemize}
+	\item \textbf{Ok}: 200 e un \textit{payload} contenente i campi usati
+	per l'invio email;
+	\item \textbf{Unprocessable entity}: 406, se non è stato possibile inviare l'email (per errori di connessioni al database, al server SMTP etc\dots).
+\end{itemize}
 
 \subsubsection{Microservizio: User e Login}
 
@@ -81,17 +95,48 @@ I parametri richiesti sono:
 	\item \texttt{password}: campo contenente la password relativa all'utente da autenticare.
 \end{itemize}
 
-Le possibili risposte che verranno inoltrate al chiamante sono:
+Le possibili risposte che verranno inoltrate al chiamante possono essere:
 \begin{itemize}
 	\item \textbf{Ok}: 200 (Equivalente all'HTTP status \textit{ok}), e il JSON contenente i campi relativi all'utente autenticato;
 	\item \textbf{Bad request}: 400 (equivalente all'HTTP status \textit{bad request}) se il corpo della richiesta non contiene i campi riportati sopra, con corpo contenente un messaggio d'errore (sempre in formato JSON);
-	\item \textbf{Not found}: 404 (equivalente all'HTTP status \textit{not found}) se l'autenticazione fallisce, con corpo vuoto.
+	\item \textbf{Unauthorized}: 401 (equivalente all'HTTP status \textit{unauthorized}) se l'autenticazione fallisce, con corpo vuoto.
 \end{itemize}
+
+\subsubsection{Microservizio: Catalog}
+
+È stato richiesto di implementare un microservizio con il fine di restituire,
+tramite una chiamata, una lista di \textit{skill} di interesse dell'azienda.
+
+Questo era precedentemente effettuato tramite una tabella di foglio di calcolo mandata ai candidati che dovevano compilare e rimandare indietro nello stesso formato.
+
+\subsubsection{Microservizio: Applicant}
+
+L'ultima maschera da implementare è il microservizio di gestione dei candidati (\textit{applicants}).
+
+Sarà possibile aggiungere, rimuovere o modificare i candidati tramite
+le opportune chiamate REST all'endpoint \texttt{syncrec/applicants}:
+\begin{itemize}
+	\item \textbf{GET} per la visualizzazione;
+	\item \textbf{POST} per l'aggiunta;
+	\item \textbf{DELETE} per la rimozione;
+	\item \textbf{PUT} e \textbf{PATCH} per la modifica.
+\end{itemize}
+
+Ogni candidato avrà associati dei documenti, i quali non è ragionevole passare tramite \textit{payload} JSON in un servizio REST, con il tipico \textit{header} di REST: \texttt{Content-Type: application/json}.
+
+Per fare ciò, i documenti saranno salvati in un'apposita \textit{collection} (analogo di MongoDB alle tabelle di un database relazionale):
+\textit{documents}.
+Ogni documento avrà associato ID, il nome del file e il contenuto binario del file.
+L'aggiunta, la rimozione e la modifica di tali documenti avverrà tramite richieste con \textit{header} \texttt{Content-Type: multipart/form-data}
+all'\textit{endpoint} \texttt{syncrec/documents}.
+
+Nelle risorse \textit{applicants}, verrà salvato l'ID dei documenti associati, con un opportuno check in fase di salvataggio dell'entità.
+
+
 
 %\section{Piano di lavoro}
 %Viene riportato in seguito i contenuti di maggior rilievo presenti nel piano di stage che ha pianificato
 %le attività dello stesso.
-
 
 \subsection{Obiettivi}
 
@@ -126,10 +171,6 @@ Le possibili risposte che verranno inoltrate al chiamante sono:
 %        del PC}
 %    \label{risk:hardware-simulator}
 %\end{risk}
-
-%**************************************************************
-\section{Requisiti e obiettivi}
-
 
 %**************************************************************
 \section{Pianificazione}
