@@ -1,12 +1,6 @@
 #!/bin/bash
 
-#DIR="./output"	# modificare per scegliere il nome della cartella di destinazione
-NAME="tesi"		# modificiare per scegliere il nome del file di origine (.tex)
-
-#if [ ! -d $DIR ];
-#  then
-#    mkdir $DIR;
-#fi
+NAME="tesi" # modificiare per scegliere il nome del file di origine (.tex)
 
 echo --------------------
 echo - Inizializzazione -
@@ -32,14 +26,14 @@ pdflatex $NAME
 # pdflatex $NAME
 
 echo ---------------------------------
-echo - Pulisco e poi apro il file... -
+echo - Pulizia... -
 echo ---------------------------------
 
 rm *.acn *.aux *.bbl *.bcf *.glo
 rm *.ist *.lof *.lot *.run.xml *.toc
+
 # Per mantenere i log commentare la linea seguente
 rm *.blg  *.log
 
-# open $DIR/$NAME.pdf
 
 echo ---------------------------- END -----------------------------
