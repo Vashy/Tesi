@@ -6,7 +6,9 @@ echo -----------
 echo - Pulizia -
 echo -----------
 
-./clean -s
+if [[ $# -gt 1 ]] && [[ $1 == '-c' ]]; then
+    ./clean -s
+fi
 
 echo --------------------
 echo - Inizializzazione -
@@ -35,11 +37,15 @@ echo -----------
 echo - Pulizia -
 echo -----------
 
-rm *.acn *.aux *.bbl *.bcf *.glo
-rm *.ist *.lof *.lot *.run.xml *.toc
+if [[ $# -gt 1 ]] && [[ $1 == '-c' ]]; then
+    ./clean -s
+fi
+
+# rm *.acn *.aux *.bbl *.bcf *.glo
+# rm *.ist *.lof *.lot *.run.xml *.toc
 
 # Per mantenere i log commentare la linea seguente
-rm *.blg  *.log
+# rm *.blg  *.log
 
 
 echo ---------------------------- END -----------------------------
