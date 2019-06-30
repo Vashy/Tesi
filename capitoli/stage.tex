@@ -17,7 +17,7 @@ Lo stage si è svolto nella sede di Padova dell'azienda ospitante, Sync Lab, nel
 	\item Inizio il 6 maggio 2019;
 	\item Fine il 28 giugno 2019.
 \end{itemize}
-Il progetto di stage consiste nell'implementazione di una \gls{webapp} a microservizi per il trasferimento in una nuova piattaforma del servizio di \gls{skill-matrix} usato da Sync Lab per organizzare le competenze delle persone che vanno in azienda per un colloquio.
+Il progetto di stage consiste nell'implementazione di una \gls{webapp} a \glsdisp{microservizio}{microservizi}\gloss\ per il trasferimento in una nuova piattaforma del servizio di \gls{skill-matrix} usato da Sync Lab per organizzare le competenze delle persone che vanno in azienda per un colloquio.
 
 Prima di ogni colloquio a Sync Lab, è richiesto al candidato di compilare un foglio di calcolo contenente le competenze di interesse
 per l'azienda e il relativo livello.
@@ -27,7 +27,7 @@ L'idea del progetto è quella di un portale web in cui il candidato inserirà i 
 Per fare ciò, è stato scelto un approccio moderno: 
 \begin{itemize}
 	\item il \textit{front-end} utilizzerà \textit{framework} di ultima generazione (nel nostro caso, \gls{angular}\gloss);
-	\item il \textit{back-end} utilizzerà un'architettura a microservizi implementati con il \textit{framework} \gls{spring}\gloss (\gls{java}\gloss), per questioni di uniformità e semplicità, con \gls{mongodb}\gloss\ come \gls{dbms}\gloss.
+	\item il \textit{back-end} utilizzerà un'architettura a \glsdisp{microservizio}{microservizi}\gloss\ implementati con il \textit{framework} \gls{spring}\gloss (\gls{java}\gloss), per questioni di uniformità e semplicità, con \gls{mongodb}\gloss\ come \gls{dbms}\gloss.
 \end{itemize}
 
 A svolgere tale progetto ci saranno altri stagisti oltre al sottoscritto, a cui a ognuno sarà assegnato un equo carico di lavoro.
@@ -35,7 +35,7 @@ A svolgere tale progetto ci saranno altri stagisti oltre al sottoscritto, a cui 
 Per quanto riguarda il back-end, l'azienda possiede già un portale web usato per caricare i dati dei candidati. Il \gls{dbms} utilizzato per i dati di tale portale è \gls{oracle}.
 %Parte del lavoro dello stage consisterà nello spostare e riadattare il codice del vecchio portale a quello del nuovo.
 
-Il mio ruolo nel progetto consisterà prettamente nell'implementazione di alcuni microservizi back-end e nel riadattamento del vecchio portale.
+Il mio ruolo nel progetto consisterà prettamente nell'implementazione di alcuni \glsdisp{microservizio}{microservizi}\gloss\ back-end e nel riadattamento del vecchio portale.
 
 %**************************************************************
 
@@ -66,7 +66,7 @@ Le tematiche da apprendere sono le seguenti:
 Lo studio delle tecnologie per il \textit{front-end} è puramente didattico, e non è pertanto prevista una concretizzazione.
 Sviluppare il \textit{front-end} sarà un'attività delegata ad altri stagisti.
 
-La seconda parte dello stage è invece incentrata all'effettiva implementazione dei microservizi del \textit{back-end} per il prodotto \textit{SyncRec}, il nuovo portale aziendale per la gestione delle competenze dei candidati.
+La seconda parte dello stage è invece incentrata all'effettiva implementazione dei \glsdisp{microservizio}{microservizi}\gloss\ del \textit{back-end} per il prodotto \textit{SyncRec}, il nuovo portale aziendale per la gestione delle competenze dei candidati.
  % TODO da dire di REST
 
 Il committente di tale prodotto è l'azienda Sync Lab stessa, in quanto sarà un \textit{software} usato internamente a soli scopi burocratici.
@@ -76,7 +76,7 @@ Nello specifico, sarà lo stesso \fabio\ a coprire il ruolo di committente.
 
 \subsection{Servizi  da sviluppare}
 
-I microservizi accordati da implementare sono riportati nel dettaglio in seguito. Ognuno di essi esporrà le \gls{api}\gloss\ tramite degli specifici \textit{endpoint}
+I \glsdisp{microservizio}{microservizi}\gloss\ accordati da implementare sono riportati nel dettaglio in seguito. Ognuno di essi esporrà le \gls{api}\gloss\ tramite degli specifici \textit{endpoint}
 raggiungibili tramite i vari tipi di richieste \acrshort{http} (GET, POST, DELETE, etc\dots).
 %Ogni tipo di richiesta ha la sua semantica e un significato ben specifico, che verrà spiegato nei paragrafi dedicati
 % TODO Specificare quale sezione.
@@ -112,7 +112,7 @@ Come risposta, è possibile ottenere 2 risultati:
 
 \subsubsection{Microservizio: User/Login}
 
-Questo microservizio espone la risorsa \texttt{User} nell'endpoint
+Questo \gls{microservizio}\gloss\ espone la risorsa \texttt{User} nell'endpoint
 \texttt{syncrec/users}, accessibile e modificabile via \gls{api}\gloss\ \acrshort{rest}. I dati persistenti sono salvati e acceduti tramite il database \textit{syncrec-users} di
 \gls{mongodb}\gloss.
 
