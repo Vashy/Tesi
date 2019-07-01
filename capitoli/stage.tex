@@ -14,10 +14,10 @@ stage ed esplicato il piano di lavoro stipulato insieme al relatore aziendale e 
 
 Lo stage si è svolto nella sede di Padova dell'azienda ospitante, Sync Lab, nell'arco delle otto settimane previste nel piano di lavoro, con le seguenti date di inizio e fine:
 \begin{itemize}
-	\item Inizio il 6 maggio 2019;
-	\item Fine il 28 giugno 2019.
+	\item inizio il 6 maggio 2019;
+	\item fine il 28 giugno 2019.
 \end{itemize}
-Il progetto di stage consiste nell'implementazione di una \gls{webapp} a \glsdisp{microservizio}{microservizi}\gloss\ per il trasferimento in una nuova piattaforma del servizio di \gls{skill-matrix} usato da Sync Lab per organizzare le competenze delle persone che vanno in azienda per un colloquio.
+Il progetto di stage consiste nell'implementazione di una \gls{webapp}\gloss\ a \glsdisp{microservizio}{microservizi}\gloss\ per il trasferimento in una nuova piattaforma del servizio di \gls{skill-matrix}\gloss\ usato da Sync Lab per organizzare le competenze delle persone che vanno in azienda per un colloquio.
 
 Prima di ogni colloquio a Sync Lab, è richiesto al candidato di compilare un foglio di calcolo contenente le competenze di interesse
 per l'azienda e il relativo livello.
@@ -27,15 +27,14 @@ L'idea del progetto è quella di un portale web in cui il candidato inserirà i 
 Per fare ciò, è stato scelto un approccio moderno: 
 \begin{itemize}
 	\item il \textit{front-end} utilizzerà \textit{framework} di ultima generazione (nel nostro caso, \gls{angular}\gloss);
-	\item il \textit{back-end} utilizzerà un'architettura a \glsdisp{microservizio}{microservizi}\gloss\ implementati con il \textit{framework} \gls{spring}\gloss (\gls{java}\gloss), per questioni di uniformità e semplicità, con \gls{mongodb}\gloss\ come \gls{dbms}\gloss.
+	\item il \textit{back-end} utilizzerà un'architettura a \glsdisp{microservizio}{microservizi} implementati con il \textit{framework} \gls{spring}\gloss (\gls{java}\gloss), per questioni di uniformità e semplicità, con \gls{mongodb}\gloss\ come \gls{dbms}\gloss.
 \end{itemize}
 
 A svolgere tale progetto ci saranno altri stagisti oltre al sottoscritto, a cui a ognuno sarà assegnato un equo carico di lavoro.
 
-Per quanto riguarda il back-end, l'azienda possiede già un portale web usato per caricare i dati dei candidati. Il \gls{dbms} utilizzato per i dati di tale portale è \gls{oracle}.
-%Parte del lavoro dello stage consisterà nello spostare e riadattare il codice del vecchio portale a quello del nuovo.
+Per quanto riguarda il \textit{back-end}, l'azienda possiede già un portale web usato per caricare i dati dei candidati. Il \gls{dbms} utilizzato per i dati di tale portale è \gls{oracle}\gloss.
 
-Il mio ruolo nel progetto consisterà prettamente nell'implementazione di alcuni \glsdisp{microservizio}{microservizi}\gloss\ back-end e nel riadattamento del vecchio portale.
+Il mio ruolo nel progetto consisterà prettamente nell'implementazione di alcuni \glsdisp{microservizio}{microservizi} back-end e nel riadattamento del vecchio portale.
 
 %**************************************************************
 
@@ -44,9 +43,9 @@ Il mio ruolo nel progetto consisterà prettamente nell'implementazione di alcuni
 Si richiede al tirocinante, come prima parte dello stage, di apprendere le tecnologie necessarie a poter svolgere le fasi di analisi, progettazione e implementazione del progetto di stage conclusivo.
 Le tematiche da apprendere sono le seguenti:
 \begin{itemize}
-	\item \textit{Java SE} e \textit{Java EE};
-	\item \textit{Database MongoDB};
-	\item \textit{Spring}, nei moduli:
+	\item \gls{java} SE e \gls{java} EE;
+	\item Database \gls{mongodb};
+	\item \gls{spring}\gloss, nei moduli:
 	\begin{itemize}[noitemsep]
 		\item \textit{Spring Core};
 		\item \textit{Spring Boot};
@@ -54,19 +53,19 @@ Le tematiche da apprendere sono le seguenti:
 		\item \textit{Spring Data MongoDB};
 		\item \textit{Spring Data REST}.
 	\end{itemize}
-	\item Architettura a microservizi;
+	\item Architettura a \glsdisp{microservizio}{microservizi};
 	\item Tecnologie per il \textit{frontend}:
 	\begin{itemize}[noitemsep]
-		\item \textit{Javascript};
-		\item \textit{Typescript};
-		\item \textit{Angular}.
+		\item \gls{javascript}\gloss;
+		\item \gls{typescript}\gloss;
+		\item \gls{angular}.
 	\end{itemize}
 \end{itemize}
 
 Lo studio delle tecnologie per il \textit{front-end} è puramente didattico, e non è pertanto prevista una concretizzazione.
 Sviluppare il \textit{front-end} sarà un'attività delegata ad altri stagisti.
 
-La seconda parte dello stage è invece incentrata all'effettiva implementazione dei \glsdisp{microservizio}{microservizi}\gloss\ del \textit{back-end} per il prodotto \textit{SyncRec}, il nuovo portale aziendale per la gestione delle competenze dei candidati.
+La seconda parte dello stage è invece incentrata all'effettiva implementazione dei \glsdisp{microservizio}{microservizi} del \textit{back-end} per il prodotto \textit{SyncRec}, il nuovo portale aziendale per la gestione delle competenze dei candidati.
  % TODO da dire di REST
 
 Il committente di tale prodotto è l'azienda Sync Lab stessa, in quanto sarà un \textit{software} usato internamente a soli scopi burocratici.
@@ -76,8 +75,8 @@ Nello specifico, sarà lo stesso \fabio\ a coprire il ruolo di committente.
 
 \subsection{Servizi  da sviluppare}
 
-I \glsdisp{microservizio}{microservizi}\gloss\ accordati da implementare sono riportati nel dettaglio in seguito. Ognuno di essi esporrà le \gls{api}\gloss\ tramite degli specifici \textit{endpoint}
-raggiungibili tramite i vari tipi di richieste \acrshort{http} (GET, POST, DELETE, etc\dots).
+I \glsdisp{microservizio}{microservizi} accordati da implementare sono riportati nel dettaglio in seguito. Ognuno di essi esporrà le \gls{api}\gloss\ tramite degli specifici \textit{endpoint}
+raggiungibili tramite i vari tipi di richieste \acrshort{http}\gloss\ (GET, POST, DELETE, etc\dots).
 %Ogni tipo di richiesta ha la sua semantica e un significato ben specifico, che verrà spiegato nei paragrafi dedicati
 % TODO Specificare quale sezione.
 
@@ -85,9 +84,9 @@ raggiungibili tramite i vari tipi di richieste \acrshort{http} (GET, POST, DELET
 
 \subsubsection{Microservizio: Email}
 
-Il \gls{microservizio}\gloss\ email ha il semplice compito di inviare una email specifica.
-Testo, oggetto e destinatario sono dati definiti nel database \gls{mongodb}\gloss\
-\textit{syncrec-emailSender}, mentre le proprietà del server \acrshort{smtp} sono definite in un file di configurazione.
+Il \gls{microservizio} email ha il semplice compito di inviare una email specifica.
+Testo, oggetto e destinatario sono dati definiti nel database \gls{mongodb}
+\textit{syncrec-email}, mentre le proprietà del server \acrshort{smtp} sono definite in un file di configurazione.
 
 L'invio della email avviene in modo sincrono quando viene effettuata una richiesta POST tramite l'endpoint \texttt{/sendEmail}.
 I campi da immettere nel corpo della richiesta sono:
@@ -107,14 +106,14 @@ Come risposta, è possibile ottenere 2 risultati:
 \begin{itemize}
 	\item \textbf{Ok} (200) e un \textit{payload} contenente i campi usati
 	per l'invio email;
-	\item \textbf{Unprocessable entity} (406) se non è stato possibile inviare l'email (per errori di connessioni al database, al server SMTP etc\dots).
+	\item \textbf{Unprocessable entity} (406) se non è stato possibile inviare l'email (per errori di connessioni al database, al server \acrshort{smtp} etc\dots).
 \end{itemize}
 
 \subsubsection{Microservizio: User/Login}
 
-Questo \gls{microservizio}\gloss\ espone la risorsa \texttt{User} nell'endpoint
-\texttt{syncrec/users}, accessibile e modificabile via \gls{api}\gloss\ \acrshort{rest}. I dati persistenti sono salvati e acceduti tramite il database \textit{syncrec-users} di
-\gls{mongodb}\gloss.
+Questo \gls{microservizio} espone la risorsa \texttt{User} nell'endpoint
+\texttt{syncrec/users}, accessibile e modificabile via \gls{api} \acrshort{rest}\gloss. I dati persistenti sono salvati e acceduti tramite il database \textit{syncrec-users} di
+\gls{mongodb}.
 
 Inoltre, tramite l'endpoint \texttt{/users/login} e una richiesta POST,
 è possibile effettuare l'operazione di login.
@@ -128,23 +127,23 @@ I parametri richiesti nell'operazione di login sono:
 Le possibili risposte che verranno inoltrate al chiamante possono essere:
 \begin{itemize}
 	\item \textbf{Ok} (200) e il \acrshort{json}\gloss\ contenente i campi relativi all'utente autenticato;
-	\item \textbf{Bad request} (400) se il corpo della richiesta non contiene i campi riportati sopra, con corpo contenente un messaggio d'errore (sempre in formato \acrshort{json}\gloss);
+	\item \textbf{Bad request} (400) se il corpo della richiesta non contiene i campi riportati sopra, con corpo contenente un messaggio d'errore (sempre in formato \acrshort{json});
 	\item \textbf{Unauthorized} (401) se l'autenticazione fallisce, con corpo vuoto.
 \end{itemize}
 
 \subsubsection{Microservizio: Catalog}
 
-È stato richiesto di implementare un \gls{microservizio}\gloss\ con il fine di restituire,
-attraverso una richiesta \acrshort{http}\gloss, una lista di \textit{skill} di interesse dell'azienda.
+È stato richiesto di implementare un \gls{microservizio} con il fine di restituire,
+attraverso una richiesta \acrshort{http}, una lista di \textit{skill} di interesse dell'azienda.
 
 Questo era precedentemente effettuato tramite un foglio di calcolo inviato preventivamente ai candidati, i quali erano tenuti a compilarlo.
 
 \subsubsection{Microservizio: Applicant}
 
-L'ultima maschera da implementare è il \gls{microservizio}\gloss\ di gestione dei candidati (\textit{applicants}).
+L'ultima maschera da implementare è il \gls{microservizio} di gestione dei candidati (\textit{applicants}).
 
 Sarà possibile aggiungere, rimuovere o modificare i candidati tramite
-le opportune chiamate \acrshort{rest}\gloss\ all'\textit{endpoint} \texttt{syncrec/applicants}:
+le opportune chiamate \acrshort{rest} all'\textit{endpoint} \texttt{syncrec/applicants}:
 \begin{itemize}
 	\item \textbf{GET} per la visualizzazione;
 	\item \textbf{POST} per l'aggiunta;
@@ -152,9 +151,9 @@ le opportune chiamate \acrshort{rest}\gloss\ all'\textit{endpoint} \texttt{syncr
 	\item \textbf{PUT} e \textbf{PATCH} per la modifica.
 \end{itemize}
 
-Ogni candidato avrà associati dei documenti, i quali non è ragionevole passare tramite \textit{payload} \acrshort{json}\gloss\ in un servizio \acrshort{rest}\gloss, con il tipico \textit{header} di \acrshort{rest}\gloss: \texttt{Content-Type: application/json}.
+Ogni candidato avrà associati dei documenti, i quali non è ragionevole passare tramite \textit{payload} \acrshort{json} in un servizio \acrshort{rest}, con il tipico \textit{header} di \acrshort{rest}: \texttt{Content-Type: application/json}.
 
-Per fare ciò, i documenti saranno salvati in un'apposita \textit{collection} (analogo di \gls{mongodb}\gloss\ alle tabelle di un database relazionale):
+Per fare ciò, i documenti saranno salvati in un'apposita \textit{collection} (analogo di \gls{mongodb} alle tabelle di un database relazionale):
 \textit{documents}.
 Ogni documento avrà associato ID, il nome e il contenuto binario del file.
 L'aggiunta, la rimozione e la modifica di tali documenti avverrà tramite richieste con \textit{header} \texttt{Content-Type: multipart/form-data}
@@ -205,17 +204,17 @@ In questa sezione viene mostrata la pianificazione delle settimane e delle ore p
 	\item \textbf{Prima Settimana}
 	\begin{itemize}
 		\item Presentazione strumenti di lavoro per la condivisione del materiale di studio e per la gestione
-		dell'avanzamento del percorso (\textit{Slack}, \textit{Trello}, \textit{Git});
+		dell'avanzamento del percorso (\textit{Slack}, \textit{Trello}, \gls{git}\gloss);
 		\item Condivisione scaletta di argomenti;
 		\item Veloce panorama su metodologie \textit{Agile/Scrum}; % 8
-		\item \gls{java}\gloss\ Standard Edition - ripasso generale; % 24
-		\item Introduzione al \gls{dbms}\gloss\ noSQL \gls{mongodb}\gloss. % 8
+		\item \gls{java} Standard Edition - ripasso generale; % 24
+		\item Introduzione al \gls{dbms} noSQL \gls{mongodb}. % 8
 	\end{itemize}
 
 	\item \textbf{Seconda Settimana}
 	\begin{itemize}
-		\item Approfondimenti \gls{mongodb}\gloss; % 8
-		\item \gls{java}\gloss\ Enterprise Edition:
+		\item Approfondimenti \gls{mongodb}; % 8
+		\item \gls{java} Enterprise Edition:
 		\begin{itemize}
 			\item \textit{JSP/Servlet}; % 8
 			\item \textit{Spring Boot}; % 8
@@ -226,7 +225,7 @@ In questa sezione viene mostrata la pianificazione delle settimane e delle ore p
 
 	\item \textbf{Terza Settimana}
 	\begin{itemize}
-		\item \gls{java}\gloss\ Enterprise Edition:
+		\item \gls{java} Enterprise Edition:
 		\begin{itemize}
 			\item \textit{Spring MVC}; % 8
 			\item \textit{Spring Data MongoDB}; % 16
@@ -247,7 +246,7 @@ In questa sezione viene mostrata la pianificazione delle settimane e delle ore p
 
 	\item \textbf{Quinta Settimana}
 	\begin{itemize}
-		\item Front-end web: \gls{javascript}\gloss/\gls{typescript}\gloss\ e \gls{angular}\gloss.
+		\item Front-end web: \gls{javascript}/\gls{typescript} e \gls{angular}.
 	\end{itemize}
 
 	\item \textbf{Sesta Settimana}

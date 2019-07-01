@@ -8,12 +8,12 @@
 
 %\epigraph{Citazione}{Autore della citazione}
 
-\intro{\gls{spring-cloud}\gloss\ è un \textit{framework} del team Pivotal che offre gli strumenti necessari agli sviluppatori per implementare alcuni dei \gls{design-pattern}\gloss\ più comuni per i sistemi distribuiti,
+\intro{\gls{spring-cloud} è un \textit{framework} del team Pivotal che offre gli strumenti necessari agli sviluppatori per implementare alcuni dei \gls{design-pattern} più comuni per i sistemi distribuiti,
 quali ad esempio \textit{Service Discovery}, \textit{Circuit Breaker} e \textit{Intelligent Routing} (\textit{API Gateway}).}
 
 \bigskip
 
-Coordinare sistemi distribuiti basati su \glsdisp{microservizio}{microservizi}\gloss\ porta notoriamente a cosiddetti \textit{boiler plate practices}. \gls{spring-cloud}\gloss\ subentra offrendo dei meccanismi che implementano le pratiche comuni, per fornire robustezza e automazione nella gestione dei sistemi distribuiti.
+Coordinare sistemi distribuiti basati su \glsdisp{microservizio}{microservizi} porta notoriamente a cosiddetti \textit{boiler plate practices}. \gls{spring-cloud} subentra offrendo dei meccanismi che implementano le pratiche comuni, per fornire robustezza e automazione nella gestione dei sistemi distribuiti.
 
 \clearpage
 
@@ -73,7 +73,7 @@ Le risorse \texttt{Environment} sono parametrizzate da tre variabili:
 
 Come default, \texttt{EnvironmentRepository} usa come \textit{backend} il sistema di controllo versione \gls{git}\gloss.
 La proprietà \texttt{spring.cloud.config.server.git.uri} può essere impostata per cambiare l'URL della \gls{repository}\gloss\ di \textit{back-end}.
-Può puntare sia a una \gls{repository}\gloss\ remota (tramite prefissi \texttt{http:}, \texttt{https:}, etc\dots) che una locale (tramite il prefisso \texttt{file:}).
+Può puntare sia a una \gls{repository} remota (tramite prefissi \texttt{http:}, \texttt{https:}, etc\dots) che una locale (tramite il prefisso \texttt{file:}).
 
 Tramite \textit{Cloud Config} è possibile fare una miriade di altre configurazioni, tra cui:
 
@@ -96,13 +96,13 @@ tiene sotto controllo lo stato dell'\texttt{EnvironmentRepository} configurata.
 
 \section{Service Discovery con Netflix Eureka}
 
-Per implementare il pattern \textit{Service Discovery} (discusso in \S\ref{service-discovery}) e molti altri, \gls{spring}\gloss\ si appoggia a \textit{Netflix Open Source Software} (\textit{Netflix OSS}), una raccolta di librerie offerte da Netflix.
-Integra \textit{Netflix Eureka} come servizio con ruolo di \textit{Service Discovery}, lato client e server. \gls{spring-cloud}\gloss\ offre diverse alternative per i vari pattern, tuttavia ne verranno discussi solo alcuni.
+Per implementare il pattern \textit{Service Discovery} (discusso in \S\ref{service-discovery}) e molti altri, \gls{spring} si appoggia a \textit{Netflix Open Source Software} (\textit{Netflix OSS}), una raccolta di librerie offerte da Netflix.
+Integra \textit{Netflix Eureka} come servizio con ruolo di \textit{Service Discovery}, lato client e server. \gls{spring-cloud} offre diverse alternative per i vari pattern, tuttavia ne verranno discussi solo alcuni.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{immagini/netflix-eureka.png}
-	\caption[Spring Cloud Service Discovery con Netflix Eureka]{Spring Cloud Service Discovery con Netflix Eureka\footnotemark}
+	\caption[Spring Cloud Service Discovery con Netflix Eureka]{Spring Cloud Service Discovery con Netflix Eureka}
 	\label{fig:netflix-eureka}
 \end{figure}
 %\footnotetext{Fonte immagine: \href{https://howtodoinjava.com/spring-cloud/spring-cloud-service-discovery-netflix-eureka/}{https://howtodoinjava.com}}
@@ -123,7 +123,7 @@ public String serviceUrl() {
  	\end{lstlisting}
  \end{tcolorbox}\addcontentsline{codes}{section}{Discover dei servizi registrati su EurekaServer}
 
-\texttt{@Autowired} è un'annotazione che permette di iniettare i cosiddetti \textit{bean} di \gls{spring}\gloss\ tramite \gls{dependency-injection}\gloss. Nella variabile \texttt{instance} saranno salvate le informazioni relative al servizio di interesse.
+\texttt{@Autowired} è un'annotazione che permette di iniettare i cosiddetti \textit{bean} di \gls{spring} tramite \gls{dependency-injection}\gloss. Nella variabile \texttt{instance} saranno salvate le informazioni relative al servizio di interesse.
 
 \subsection{EurekaServer} Per utilizzare un applicazione come \texttt{EurekaServer}, è sufficiente utilizzare l'annotazione \texttt{@EnableEurekaServer} nella classe contenente il \textit{main}.
 
@@ -143,11 +143,11 @@ public String serviceUrl() {
 \end{figure}
 %\footnotetext{Fonte immagine: \href{https://cloud.spring.io/spring-cloud-static/Greenwich.SR1/single/spring-cloud.html}{https://cloud.spring.io}}
 
-\gls{spring-cloud}\gloss\ usa \textit{Hystrix} come \textit{Circuit Breaker}:
+\gls{spring-cloud} usa \textit{Hystrix} come \textit{Circuit Breaker}:
 quando una chiamata a un particolare servizio eccede la proprietà \texttt{requestVolumeThreshold} (il valore di default è 20 richieste) e la percentuale di fallimento è maggiore di \texttt{errorThresholdPercentage} (default 50\%) in una finestra di tempo limitato,
 il \textit{Circuit Breaker} si apre e le chiamate vengono prevenute e sostituite da chiamate di \textit{fallback} definite nel circuito.
 
-\subsection{Abilitare Hystrix} Per abilitare \textit{Hystrix} in un'applicazione \gls{spring}\gloss,
+\subsection{Abilitare Hystrix} Per abilitare \textit{Hystrix} in un'applicazione \gls{spring},
 è sufficiente usare l'annotazione \texttt{@EnableCircuitBreaker} nella classe contenente il \textit{main}.
 
 Segue un minimale esempio d'uso di \textit{Hystrix}:
@@ -176,9 +176,9 @@ L'annotazione \texttt{@HystrixCommand} definisce una chiamata di \textit{callbac
 
 \section{API Gateway con Netflix Zuul}
 
-Il \textit{routing} è una parte essenziale di un'architettura a \glsdisp{microservizio}{microservizi}. Come esempio, \texttt{/} potrebbe essere mappato sulla \glsdisp{webapp}{web application}\gloss, \texttt{/api/users} sul servizio utenti e \texttt{/api/shop} sul servizio di \textit{shopping}.
+Il \textit{routing} è una parte essenziale di un'architettura a \glsdisp{microservizio}{microservizi}. Come esempio, \texttt{/} potrebbe essere mappato sulla \glsdisp{webapp}{web application}, \texttt{/api/users} sul servizio utenti e \texttt{/api/shop} sul servizio di \textit{shopping}.
 
-\textit{Zuul} è un \textit{router} e \textit{load balancer} lato server basato su \gls{jvm}\gloss\ rilasciato da \textit{Netflix}. \gls{spring-cloud}\gloss\ lo integra come \textit{router} principale. In quanto gestore del \textit{routing} dei vari \glsdisp{microservizio}{microservizi}\gloss, svolge il ruolo di \textit{API Gateway} (discusso in \S\ref{api-gateway})
+\textit{Zuul} è un \textit{router} e \textit{load balancer} lato server basato su \gls{jvm}\gloss\ rilasciato da \textit{Netflix}. \gls{spring-cloud} lo integra come \textit{router} principale. In quanto gestore del \textit{routing} dei vari \glsdisp{microservizio}{microservizi}, svolge il ruolo di \textit{API Gateway} (discusso in \S\ref{api-gateway})
 
 \begin{figure}[H]
 	\centering
@@ -188,7 +188,7 @@ Il \textit{routing} è una parte essenziale di un'architettura a \glsdisp{micros
 \end{figure}
 \footnotetext{\cite{site:fonte-netflix-zuul}}
 
-\subsection{Abilitare Zuul Reverse Proxy} \gls{spring-cloud}\gloss\ ha creato un \textit{proxy} integrato di \textit{Zuul} per aiutare lo sviluppo in casi d'uso comuni in cui un'applicazione \gls{ui} voglia fare delle chiamate \textit{proxy} a uno o più servizi di \textit{back-end}, chiamato \textit{Zuul Reverse Proxy}.
+\subsection{Abilitare Zuul Reverse Proxy} \gls{spring-cloud} ha creato un \textit{proxy} integrato di \textit{Zuul} per aiutare lo sviluppo in casi d'uso comuni in cui un'applicazione \gls{ui} voglia fare delle chiamate \textit{proxy} a uno o più servizi di \textit{back-end}, chiamato \textit{Zuul Reverse Proxy}.
 
 Per abilitare \textit{Zuul Reverse Proxy}, basta annotare la classe \textit{main} con \texttt{@EnableZuulProxy}.
 
@@ -237,7 +237,7 @@ Attraverso \texttt{/filters} è possibile ottenere una mappa dei filtri di \text
 
 \section{Spring Cloud Stream}
 
-\textit{Spring Cloud Stream} è un modulo di \gls{spring-cloud}\gloss\ che permette di connettere l'applicazione a un \gls{message-broker}\gloss,
+\textit{Spring Cloud Stream} è un modulo di \gls{spring-cloud} che permette di connettere l'applicazione a un \gls{message-broker}\gloss,
 ossia un gestore di code di messaggi (quali \textit{Apache Kafka} o \textit{RabbitMQ}).
 
 Il modulo può essere visto comunemente come la ``fusione'' tra \textit{Spring Boot} e \textit{Spring Integration}.
@@ -250,9 +250,9 @@ Il modulo può essere visto comunemente come la ``fusione'' tra \textit{Spring B
 \end{figure}
 \footnotetext{\cite{site:fonte-message-broker}}
 
-L'uso di un \glsdisp{message-broker}{broker}\gloss\ permette di rendere i \glsdisp{microservizio}{microservizi}\gloss\ tra loro asincroni e trasferire alcune responsabilità di \textit{business logic} alla gestione dei messaggi del \gls{message-broker}\gloss\ stesso.
+L'uso di un \glsdisp{message-broker}{broker} permette di rendere i \glsdisp{microservizio}{microservizi} tra loro asincroni e trasferire alcune responsabilità di \textit{business logic} alla gestione dei messaggi del \gls{message-broker} stesso.
 
-Comunicando esclusivamente via \acrshort{http} non si avrebbe il vantaggio dell'asincronicità dei \glsdisp{microservizio}{microservizi}\gloss: cosa succederebbe se il \textit{client} A notificasse un evento di interesse del \textit{client} B, immaginando che quest'ultimo sia momentaneamente indisponibile?
+Comunicando esclusivamente via \acrshort{http} non si avrebbe il vantaggio dell'asincronicità dei \glsdisp{microservizio}{microservizi}: cosa succederebbe se il \textit{client} A notificasse un evento di interesse del \textit{client} B, immaginando che quest'ultimo sia momentaneamente indisponibile?
 In caso di servizi sincroni, il messaggio verrebbe perso. Avendo invece a disposizione una coda di messaggi, il \textit{client} B potrebbe recuperare il messaggio in qualsiasi momento, una volta tornato disponibile.
 
 Vediamo un esempio d'uso di \textit{Spring Cloud Stream}.
@@ -275,7 +275,7 @@ public class LoggingConsumerApplication {
 \end{tcolorbox}\addcontentsline{codes}{section}{Uso di Spring Cloud Stream}
 
 Abbiamo il metodo \texttt{handle()} che gestisce i messaggi in entrata per il tipo \texttt{Person}.
-Qui entra in gioco il \textit{framework}: cerca di convertire automaticamente il messaggio (in formato \acrshort{json}\gloss) nel tipo \texttt{Person} riconosciuto dall'applicazione, che potrà usarlo per qualsivoglia logica.
+Qui entra in gioco il \textit{framework}: cerca di convertire automaticamente il messaggio (in formato \acrshort{json}) nel tipo \texttt{Person} riconosciuto dall'applicazione, che potrà usarlo per qualsivoglia logica.
 
 In questo caso, stampa semplicemente a video un messaggio che mostra la persona ricevuta e convertita dal messaggio.
 
