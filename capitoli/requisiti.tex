@@ -29,33 +29,545 @@ Ogni codice presenta una forma del tipo:
 	\item \textbf{Servizio}: indica il servizio preso come riferimento per il caso d'uso.
 	\begin{itemize}
 		\item \textbf{ES}: Email Sender.
-		\item \textbf{Login}: User/Login.
-		\item \textbf{Catalog}: Catalog.
-		\item \textbf{Applicant}: Applicant.
+		\item \textbf{L}: User/Login.
+		\item \textbf{C}: Catalog.
+		\item \textbf{A}: Applicant.
 	\end{itemize}
 \end{itemize}
 
+\subsection{Casi d'uso relativi al microservizio Email Sender}
 
-\begin{figure}[!h] 
-    \centering 
-    \includegraphics[width=0.9\columnwidth]{usecase/scenario-principale} 
-    \caption{Use Case - UC0: Scenario principale}
-\end{figure}
+\begin{usecase}{1}{ES}{Aggiunta proprietà per invio mail}
+	\usecaseactors{Sviluppatore SyncRec}
+	
+	\usecasepre{una nuova proprietà va aggiunta al servizio Email Sender}
+	
+	\usecasedesc{lo sviluppatore vuole aggiungere una nuova proprietà nel servizio}
+	
+	\begin{ucscenarioprincipale}
+		\item L'utente inserisce la chiave da inserire;
+		\item L'utente inserisce il valore della proprietà.
+	\end{ucscenarioprincipale}
 
-%\begin{usecasebox}{gray}{UC 0: Scenario principale}
-	\begin{usecase}{1}{ES}{Scenario principale}
-	\usecaseactors{Sviluppatore applicativi}
-	\usecasepre{Lo sviluppatore è entrato nel plug-in di simulazione all'interno dell'IDE}
-	\usecasedesc{La finestra di simulazione mette a disposizione i comandi per configurare, registrare o eseguire un test}
-	\usecasepost{Il sistema è pronto per permettere una nuova interazione}
-	\begin{usecaseest}
-		\item abc
-		\item cde
-	\end{usecaseest}
-	\label{uc:scenario-principale}
-	\end{usecase}
-%\end{usecasebox}
+	\usecasepost{una nuova proprietà è stata aggiunta con successo al servizio}
+	
+	\begin{ucestensioni}
+		\item UC2-ES
+	\end{ucestensioni}
 
+	\begin{ucgeneralizzazioni}
+		\item UC3-ES
+		\item UC4-ES
+		\item UC5-ES
+	\end{ucgeneralizzazioni}
+
+	\label{uc:aggiunta-proprieta-es}
+\end{usecase}
+
+\begin{usecase}{2}{ES}{Visualizzazione errore inserimento proprietà}
+	\usecaseactors{Sviluppatore SyncRec}
+	
+	\usecasepre{c'è un tentativo di aggiunta di una proprietà}
+	
+	\usecasedesc{lo sviluppatore viene avvisato che c'è stato un tentativo di inserimento non valido: chiave non riconosciuta oppure valore non valido}
+	
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore visualizza il messaggio d'errore.
+	\end{ucscenarioprincipale}
+	
+	\usecasepost{il messaggio d'errore è stato visualizzato}
+	
+	\label{uc:vis-errore-ins-proprieta-es}
+\end{usecase}
+
+\begin{usecase}{3}{ES}{Aggiunta proprietà ``sender''}
+	\usecaseactors{Sviluppatore SyncRec}
+	
+	\usecasepre{la proprietà ``sender'' va aggiunta al servizio Email Sender}
+	
+	\usecasedesc{lo sviluppatore vuole aggiungere la proprietà sender nel servizio Email Sender}
+
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore seleziona la chiave ``sender'';
+		\item Lo sviluppatore inserisce il valore della proprietà ``sender''.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la proprietà ``sender'' è stata aggiunta con successo}
+	
+	\label{uc:aggiunta-sender-es}
+\end{usecase}
+
+\begin{usecase}{4}{ES}{Aggiunta proprietà ``password''}
+	\usecaseactors{Sviluppatore SyncRec}
+	
+	\usecasepre{la proprietà ``password'' va aggiunta al servizio Email Sender}
+	
+	\usecasedesc{lo sviluppatore vuole aggiungere la proprietà ``password'' relativa al ``sender'' nel servizio Email Sender. Il servizio salverà la password criptandola con un opportuno algoritmo}
+
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore seleziona la chiave ``password'';
+		\item Lo sviluppatore inserisce il valore della proprietà ``password''.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la proprietà ``password'' è stata aggiunta con successo}
+	\label{uc:aggiunta-password-es}
+\end{usecase}
+
+\begin{usecase}{5}{ES}{Aggiunta proprietà ``subject''}
+	\usecaseactors{Sviluppatore SyncRec}
+	
+	\usecasepre{la proprietà ``subject'' va aggiunta al servizio Email Sender}
+	
+	\usecasedesc{lo sviluppatore vuole aggiungere la proprietà ``subject'', l'oggetto della email da inviare, nel servizio Email Sender}
+	
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore seleziona la chiave ``subject'';
+		\item Lo sviluppatore inserisce il valore della proprietà ``subject''.
+	\end{ucscenarioprincipale}
+	
+	\usecasepost{la proprietà ``subject'' è stata aggiunta con successo}
+	
+	\label{uc:aggiunta-subject-es}
+\end{usecase}
+
+
+\begin{usecase}{6}{ES}{Modifica proprietà per invio mail}
+	\usecaseactors{Sviluppatore SyncRec}
+	
+	\usecasepre{una proprietà necessita di essere modificata}
+	
+	\usecasedesc{lo sviluppatore vuole modificare il valore di una nuova proprietà nel servizio}
+	
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore inserisce la chiave da modificare;
+		\item Lo sviluppatore inserisce il nuovo valore della proprietà.
+	\end{ucscenarioprincipale}
+	
+	\usecasepost{una proprietà è stata modificata con successo}
+	
+	\begin{ucestensioni}
+		\item UC7-ES
+	\end{ucestensioni}
+	
+	\begin{ucgeneralizzazioni}
+		\item UC8-ES
+		\item UC9-ES
+		\item UC10-ES
+	\end{ucgeneralizzazioni}
+	
+	\label{uc:modifica-proprieta-es}
+\end{usecase}
+
+\begin{usecase}{7}{ES}{Visualizzazione errore modifica proprietà}
+	\usecaseactors{Sviluppatore SyncRec}
+
+	\usecasepre{c'è un tentativo di modifica di una proprietà}
+
+	\usecasedesc{lo sviluppatore viene avvisato che c'è stato un tentativo di modifica non valido: chiave non riconosciuta oppure valore non valido}
+
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore visualizza il messaggio d'errore.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{il messaggio d'errore è stato visualizzato}
+	
+	\label{uc:vis-errore--mod-proprieta-es}
+\end{usecase}
+
+\begin{usecase}{8}{ES}{Modifica proprietà ``sender''}
+	\usecaseactors{Sviluppatore SyncRec}
+	
+	\usecasepre{la proprietà ``sender'' necessita di essere modificata}
+	
+	\usecasedesc{lo sviluppatore vuole modificare la proprietà ``sender'' nel servizio Email Sender}
+	
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore seleziona la modifica della chiave ``sender'';
+		\item Lo sviluppatore inserisce il nuovo valore della proprietà ``sender''.
+	\end{ucscenarioprincipale}
+	
+	\usecasepost{la proprietà ``sender'' è stata modificata con successo}
+	
+	\label{uc:modifica-sender-es}
+\end{usecase}
+
+\begin{usecase}{9}{ES}{Modifica proprietà ``password''}
+	\usecaseactors{Sviluppatore SyncRec}
+	
+	\usecasepre{la proprietà ``password'' necessita di essere modificata}
+	
+	\usecasedesc{lo sviluppatore vuole modificare la proprietà ``password'' relativa al ``sender'' nel servizio. Il servizio salverà la nuova password criptandola con un opportuno algoritmo}
+	
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore seleziona la modifica della chiave ``password'';
+		\item Lo sviluppatore inserisce il nuovo valore della proprietà ``password''.
+	\end{ucscenarioprincipale}
+	
+	\usecasepost{la proprietà ``password'' è stata modificata con successo}
+	
+	\label{uc:modifica-password-es}
+\end{usecase}
+
+\begin{usecase}{10}{ES}{Modifica proprietà ``subject''}
+	\usecaseactors{Sviluppatore SyncRec}
+	
+	\usecasepre{la proprietà ``subject'' necessita di essere modificata}
+	
+	\usecasedesc{lo sviluppatore vuole modificare la proprietà ``subject'', ossia l'oggetto della email da inviare, nel servizio Email Sender}
+
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore seleziona la modifica della chiave ``subject'';
+		\item Lo sviluppatore inserisce il nuovo valore della proprietà ``subject''.
+	\end{ucscenarioprincipale}
+	
+	\usecasepost{la proprietà ``subject'' è stata modificata con successo}
+	
+	\label{uc:modifica-subject-es}
+\end{usecase}
+
+\begin{usecase}{11}{ES}{Invio email}
+	\usecaseactors{Front-end}
+	
+	\usecasepre{Il \textit{front-end} deve inviare una email in seguito a determinate azioni dell'utente che usa la piattaforma}
+	
+	\usecasedesc{il \textit{front-end}, sotto determinate condizioni (come ad esempio la fine della compilazione dello \gls{skill-matrix}), ha necessità di inviare un email automatica specifica al candidato, contenente link e informazioni utili}
+	
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} invoca le \acrshort{api} per l'invio dell'email.
+	\end{ucscenarioprincipale}
+	
+	\usecasepost{l'email è stata inviata con successo}
+	
+	\begin{ucestensioni}
+		\item UC12-ES
+	\end{ucestensioni}
+
+	\label{uc:invio-email-es}
+\end{usecase}
+
+\begin{usecase}{12}{ES}{Risposta contenente un errore}
+	\usecaseactors{\textit{front-end}}
+	
+	\usecasepre{Una email tenta di essere inviata tramite il servizio Email Sender}
+	
+	\usecasedesc{Una risposta che spieghi l'errore viene inviata al front-end come risposta se la chiamata dovesse fallire}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} riceve la risposta d'errore.
+	\end{ucscenarioprincipale}
+	
+	\usecasepost{Il messaggio d'errore è stato ricevuto con successo}
+	
+	\label{uc:vis-errore-invio-es}
+\end{usecase}
+
+% ****************************
+
+\subsection{Casi d'uso relativi al microservizio Login}
+
+
+\begin{usecase}{1}{L}{Aggiunta nuovo utente}
+	\usecaseactors{\textit{front-end}}
+	
+	\usecasepre{Un nuovo utente dev'essere inserito nel servizio di Login}
+	
+	\usecasedesc{il \textit{front-end} deve inserire un nuovo utente}
+	
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} inserisce i dati relativi al nuovo utente;
+		\item Il \textit{front-end} chiama la funzionalità di inserimento nuovo utente del servizio di Login.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{Un nuovo utente è stato inserito con successo}
+
+	\begin{ucestensioni}
+		\item UC3-L
+	\end{ucestensioni}
+
+	\begin{ucgeneralizzazioni}
+		\item UC2-L
+	\end{ucgeneralizzazioni}
+
+	\label{uc:aggiunta-utente-l}
+\end{usecase}
+
+\begin{usecase}{2}{L}{Aggiunta nuovo utente con richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{Un nuovo utente dev'essere inserito nel servizio di Login}
+
+	\textbf{\\Descrizione:} il \textit{front-end} deve inserire un nuovo utente. Per fare ciò,
+	chiama le opportune \acrshort{api} esposte dal servizio di Login. La richiesta dovrà contenere i campi:
+	\begin{itemize}[noitemsep]
+		\item username;
+		\item email;
+		\item password.
+	\end{itemize}
+	E potrà contenere i campi opzionali:
+	\begin{itemize}[noitemsep]
+		\item role;
+		\item name;
+		\item surname;
+		\item office.
+	\end{itemize}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} inserisce i dati relativi al nuovo utente;
+		\item Il \textit{front-end} chiama la funzionalità di inserimento nuovo utente del servizio di Login.
+	\end{ucscenarioprincipale}
+	
+	\usecasepost{Un nuovo utente è stato inserito con successo}
+	
+	\begin{ucestensioni}
+		\item UC3-L
+	\end{ucestensioni}
+
+	\label{uc:richiesta-aggiunta-utente-l}
+\end{usecase}
+
+\begin{usecase}{3}{L}{Visualizzazione errore inserimento utente}
+	\usecaseactors{\textit{front-end}}
+	
+	\usecasepre{c'è un tentativo di aggiunta di un nuovo utente}
+	
+	\usecasedesc{viene inviata una risposta al \textit{front-end} contenente un messaggio d'errore per tentativo di inserimento utente non valido}
+
+	\begin{ucscenarioprincipale}
+		\item il \textit{front-end} riceve il messaggio d'errore.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{il messaggio d'errore è stato ricevuto dal \textit{front-end}}
+	
+	\label{uc:vis-errore-ins-utente-l}
+\end{usecase}
+
+\begin{usecase}{4}{L}{Modifica utente}
+	\usecaseactors{\textit{front-end}}
+	
+	\usecasepre{Un utente già presente dev'essere modificato}
+	
+	\usecasedesc{il \textit{front-end} deve modificare un utente}
+	
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} inserisce i dati relativi all'utente da modificare;
+		\item Il \textit{front-end} chiama la funzionalità di modifica dell'utente del servizio di Login.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{Un utente è stato modificato con successo}
+
+	\begin{ucestensioni}
+		\item UC6-L
+	\end{ucestensioni}
+	
+	\begin{ucgeneralizzazioni}
+		\item UC5-L
+	\end{ucgeneralizzazioni}
+	
+	\label{uc:modifica-utente-l}
+\end{usecase}
+
+\begin{usecase}{5}{L}{Modifica utente con richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+	
+	\usecasepre{Un utente già presente nel servizio di Login dev'essere modificato}
+	
+	\textbf{\\Descrizione:} il \textit{front-end} deve modificare un utente. Per fare ciò,
+	chiama le opportune \acrshort{api} esposte dal servizio di Login. La richiesta potrà contenere una qualsiasi combinazione dei campi:
+	\begin{itemize}[noitemsep]
+		\item username;
+		\item email;
+		\item password;
+		\item role;
+		\item name;
+		\item surname;
+		\item office.
+	\end{itemize}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} inserisce i dati relativi all'utente che vuole modificare;
+		\item Il \textit{front-end} chiama le \acrshort{api} di inserimento nuovo utente del servizio di Login.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{Un utente è stato modificato con successo}
+
+	\begin{ucestensioni}
+		\item UC6-L
+	\end{ucestensioni}
+	
+	\label{uc:richiesta-modifica-utente-l}
+\end{usecase}
+
+\begin{usecase}{6}{L}{Visualizzazione errore modifica utente}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{c'è un tentativo di modifica di un utente}
+	
+	\usecasedesc{viene inviata una risposta al \textit{front-end} contenente un messaggio d'errore per tentativo di validazione dei dati relativi all'utente da modificare}
+
+	\begin{ucscenarioprincipale}
+		\item il \textit{front-end} riceve il messaggio d'errore.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{il messaggio d'errore è stato ricevuto dal \textit{front-end}}
+
+	\label{uc:vis-errore-modifica-utente-l}
+\end{usecase}
+
+
+\begin{usecase}{7}{L}{Rimozione utente}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{Un utente già presente dev'essere rimosso dal servizio}
+
+	\usecasedesc{il \textit{front-end} deve rimuovere un utente}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} inserisce l'ID relativo all'utente da modificare;
+		\item Il \textit{front-end} chiama la funzionalità di rimozione utente del servizio di Login.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{Un utente è stato rimosso con successo}
+
+	\begin{ucestensioni}
+		\item UC9-L
+	\end{ucestensioni}
+
+	\begin{ucgeneralizzazioni}
+		\item UC8-L
+	\end{ucgeneralizzazioni}
+
+	\label{uc:rimozione-utente-l}
+\end{usecase}
+
+\begin{usecase}{8}{L}{Rimozione utente con richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{Un utente già presente nel servizio di Login dev'essere rimosso dal servizio}
+
+	\textbf{\\Descrizione:} il \textit{front-end} deve rimuovere un utente. Per fare ciò,
+	chiama le opportune \acrshort{api} esposte dal servizio di Login. La richiesta conterrà l'ID dell'utente da eliminare.
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} inserisce l'ID all'utente che vuole modificare;
+		\item Il \textit{front-end} chiama le \acrshort{api} di rimozione utente del servizio di Login.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{Un utente è stato rimosso dal servizio con successo}
+
+	\begin{ucestensioni}
+		\item UC9-L
+	\end{ucestensioni}
+
+	\label{uc:richiesta-rimozione-utente-l}
+\end{usecase}
+
+\begin{usecase}{9}{L}{Visualizzazione errore rimozione utente}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{c'è un tentativo di rimozione utente}
+
+	\usecasedesc{viene inviata una risposta al \textit{front-end} contenente un messaggio d'errore per ID inserito inesistente}
+
+	\begin{ucscenarioprincipale}
+		\item il \textit{front-end} riceve il messaggio d'errore.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{il messaggio d'errore è stato ricevuto dal \textit{front-end}}
+
+	\label{uc:vis-errore-rimozione-utente-l}
+\end{usecase}
+
+\begin{usecase}{10}{L}{Login}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} deve effettuare l'operazione di autenticazione per un utente non riconosciuto}
+
+	\textbf{\\Descrizione:} il \textit{front-end} effettua l'operazione di login tramite le \acrshort{api} esposte dal servizio.
+	I campi richiesti per l'operazione sono i seguenti:
+	\begin{itemize}[noitemsep]
+		\item \texttt{username}: può contenere sia il campo ``username'' dell'utente da autenticare sia il campo ``email'';
+		\item \texttt{password}.
+	\end{itemize}
+
+	\begin{ucscenarioprincipale}
+		\item il \textit{front-end} prepara la richiesta con i campi necessari;
+		\item il \textit{front-end} effettua l'operazione di login tramite le \acrshort{api} del servizio.
+	\end{ucscenarioprincipale}
+	
+	\usecasepost{l'operazione di login è avvenuta con successo. Vengono restituiti nella risposta i campi dell'utente autenticato}
+
+	\begin{ucestensioni}
+		\item UC11-L
+	\end{ucestensioni}
+
+	\label{uc:login-l}
+\end{usecase}
+
+\begin{usecase}{11}{L}{Restituzione errore di Login}
+	\usecaseactors{\textit{front-end}}
+	
+	\usecasepre{viene effettuato un tentativo di login}
+	
+	\usecasedesc{viene inviata una risposta al \textit{front-end} contenente un messaggio d'errore relativo al login}
+	
+	\begin{ucscenarioprincipale}
+		\item il \textit{front-end} riceve il messaggio d'errore.
+	\end{ucscenarioprincipale}
+	
+	\usecasepost{il messaggio d'errore è stato ricevuto dal \textit{front-end}}
+	
+	\begin{ucgeneralizzazioni}
+		\item UC12-L
+		\item UC13-L
+	\end{ucgeneralizzazioni}
+
+	\label{uc:vis-errore-login-l}
+
+\end{usecase}
+
+\begin{usecase}{12}{L}{Restituzione errore di bad request}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{viene effettuato un tentativo di login}
+
+	\usecasedesc{viene inviata una risposta al \textit{front-end} contenente un messaggio d'errore relativo al pessimo tipo di richiesta (\textit{bad request}). Questo può voler dire un tipo di richiesta \acrshort{http} non valida oppure con campi non riconosciuti (e.g. non viene passato il campo ``password'')}
+
+	\begin{ucscenarioprincipale}
+		\item il \textit{front-end} riceve il messaggio d'errore riguardante la pessima richiesta.
+	\end{ucscenarioprincipale}
+	
+	\usecasepost{il messaggio d'errore è stato ricevuto dal \textit{front-end}}
+
+	\label{uc:vis-errore-badrequest-l}
+
+\end{usecase}
+
+\begin{usecase}{13}{L}{Restituzione errore di autenticazione fallita}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{viene effettuato un tentativo di login}
+
+	\usecasedesc{viene inviata una risposta al \textit{front-end} contenente un messaggio d'errore relativo all'autenticazione fallita. I campi ``email'' e/o ``password'' non corrispondono a nessun utente registrato}
+
+	\begin{ucscenarioprincipale}
+		\item il \textit{front-end} riceve il messaggio d'errore riguardante l'autenticazione fallita.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{il messaggio d'errore è stato ricevuto dal \textit{front-end}}
+
+	\label{uc:vis-errore-auth-l}
+
+\end{usecase}
+
+% ****************************
+
+\subsection{Casi d'uso relativi al microservizio Catalog}
+
+
+
+% ****************************
+% ****************************
+% ****************************
 
 \section{Tracciamento dei requisiti}
 

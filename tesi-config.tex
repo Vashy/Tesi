@@ -226,10 +226,29 @@
 
 \newcommand{\risksolution}[1]{\textbf{\\Soluzione:} #1.}
 
-%**************************************************************
-% Environment per ``use case''
-%**************************************************************
 
+%********************
+% * Indici personalizzati *
+%********************
+
+% Indice per Code Snippets
+\makeatletter
+\newcommand\listcodesname{Elenco degli snippet}
+\newcommand\listofcodes{%
+	\chapter*{\listcodesname}\@starttoc{codes}}
+\makeatother
+
+% Indice per Use cases
+\makeatletter
+\newcommand\listucname{Elenco degli Use Case}
+\newcommand\listofuc{%
+	\chapter*{\listucname}\@starttoc{uc}}
+\makeatother
+
+
+% ****************************
+% * Environment per ``use case''   *
+% ****************************
 
 % new tcolorbox environment for use cases
 % #1: tcolorbox options
@@ -241,7 +260,7 @@
 	colback  = #2!10,
 	coltitle = #2!20!black,
 	title    = {\bfseries #3},
-	#1,
+	parbox=false,
 }
 
 \newcounter{usecasecounter}             % define a counter
@@ -252,37 +271,60 @@
 % #2: Servizio
 % #3: Nome
 \newenvironment{usecase}[3]{
-	\begin{usecasebox}{lightgray}{\large\textbf{\usecasename #1-#2: #3}}
-	
-		\renewcommand{\theusecasecounter}{\usecasename #1}  % this is where the display of
-	                                                        % the counter is overwritten/modified
-	    \refstepcounter{usecasecounter}             % increment counter
-%	    \vspace{10pt}
-%	    \par \noindent                              % start new paragraph
-	%    {\large \textbf{\usecasename #1: #2}}       % display the title before the
-	                                                % content of the environment is displayed
-%	    \medskip
-}{
-%    \medskip
-	\end{usecasebox}
+	\medskip
+
+	\setlength{\parskip}{0pt}
+	\newcommand{\usecasetitle}{\usecasename #1-#2: #3}
+	\usecasebox{lightgray}{\large\textbf{\usecasetitle}}
+	\renewcommand{\theusecasecounter}{\usecasename #1}
+ 	\refstepcounter{usecasecounter}             % increment counter
+	\addcontentsline{uc}{section}{\usecasetitle}
+}{\endusecasebox%
+	\medskip%
 }
 
 \newcommand{\usecasename}{UC}
 
-\newcommand{\usecaseactors}[1]{\textbf{\\Attori Principali:} #1. \vspace{4pt}}
-\newcommand{\usecasepre}[1]{\textbf{\\Precondizioni:} #1. \vspace{4pt}}
-\newcommand{\usecasedesc}[1]{\textbf{\\Descrizione:} #1. \vspace{4pt}}
-\newcommand{\usecasepost}[1]{\textbf{\\Postcondizioni:} #1. \vspace{4pt}}
-\newcommand{\usecasealt}[1]{\textbf{\\Scenario Alternativo:} #1. \vspace{4pt}}
-%\newcommand{\usecaseest}[1]{\textbf{\\Estensioni:} #1. \vspace{4pt}}
+\newcommand{\usecaseactors}[1]{\textbf{\\Attori Principali:} #1.}% \vspace{4pt}}
+\newcommand{\usecasepre}[1]{\textbf{\\Precondizioni:} #1.}% \vspace{4pt}}
+\newcommand{\usecasedesc}[1]{\textbf{\\Descrizione:} #1.}% \vspace{4pt}}
+\newcommand{\usecasepost}[1]{\textbf{\\Postcondizioni:} #1.}% \vspace{4pt}}
+\newcommand{\usecasealt}[1]{\textbf{\\Scenario Alternativo:} #1.}% \vspace{4pt}}
 
-\newenvironment{usecaseest}[0]{
-	\vspace{4pt}
+\newenvironment{ucitemize}%
+{\begin{itemize}[topsep=0pt, partopsep=0pt]%
+		\setlength{\itemsep}{2pt}%
+		\setlength{\parskip}{0pt}}%
+	{\end{itemize}}
+
+\newenvironment{ucenumerate}%
+{\enumerate[topsep=3pt, partopsep=0pt]%
+		\setlength{\itemsep}{2pt}%
+		\setlength{\parskip}{0pt}}%
+	{\endenumerate}
+
+
+\newenvironment{ucestensioni}[0]{%
+	\vspace{4pt}%
 
 	\textbf{Estensioni:}
-	\itemize
+	\ucenumerate%
+}{\enducenumerate}
+
+\newenvironment{ucgeneralizzazioni}{
+	\vspace{4pt}%
+
+	\textbf{Generalizzazioni:}%
+	\ucenumerate%
+}{\enducenumerate}
+
+\newenvironment{ucscenarioprincipale}{
+	\vspace{4pt}
+	
+	\textbf{Scenario principale:}
+	\ucenumerate
 }{
-	\enditemize
+	\enducenumerate
 }
 
 %**************************************************************
@@ -306,14 +348,6 @@
 % ecc..
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
-
-% this sets up \jobname.exs which will store the 
-% contentslines added on each example or examples
-\makeatletter
-\newcommand\listcodesname{Elenco degli snippet}
-\newcommand\listofcodes{%
-	\chapter*{\listcodesname}\@starttoc{codes}}
-\makeatother
 
 
 % Per tabularx con padding, parametro tra [], eg [1.3]
