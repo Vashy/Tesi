@@ -38,53 +38,53 @@ Ogni codice presenta una forma del tipo:
 \subsection{Casi d'uso relativi al microservizio Email Sender}
 
 \begin{usecase}{1}{ES}{Aggiunta proprietà per invio mail}
-	\usecaseactors{Sviluppatore SyncRec}
-	
+	\usecaseactors{sviluppatore SyncRec}
+
 	\usecasepre{una nuova proprietà va aggiunta al servizio Email Sender}
-	
+
 	\usecasedesc{lo sviluppatore vuole aggiungere una nuova proprietà nel servizio}
-	
+
 	\begin{ucscenarioprincipale}
 		\item L'utente inserisce la chiave da inserire;
 		\item L'utente inserisce il valore della proprietà.
 	\end{ucscenarioprincipale}
 
 	\usecasepost{una nuova proprietà è stata aggiunta con successo al servizio}
-	
+
 	\begin{ucestensioni}
-		\item UC2-ES
+		\item \ref{uc:vis-errore-ins-proprieta-es}
 	\end{ucestensioni}
 
 	\begin{ucgeneralizzazioni}
-		\item UC3-ES
-		\item UC4-ES
-		\item UC5-ES
+		\item \ref{uc:aggiunta-sender-es}
+		\item \ref{uc:aggiunta-password-es}
+		\item \ref{uc:aggiunta-subject-es}
 	\end{ucgeneralizzazioni}
 
 	\label{uc:aggiunta-proprieta-es}
 \end{usecase}
 
 \begin{usecase}{2}{ES}{Visualizzazione errore inserimento proprietà}
-	\usecaseactors{Sviluppatore SyncRec}
-	
+	\usecaseactors{sviluppatore SyncRec}
+
 	\usecasepre{c'è un tentativo di aggiunta di una proprietà}
-	
+
 	\usecasedesc{lo sviluppatore viene avvisato che c'è stato un tentativo di inserimento non valido: chiave non riconosciuta oppure valore non valido}
-	
+
 	\begin{ucscenarioprincipale}
 		\item Lo sviluppatore visualizza il messaggio d'errore.
 	\end{ucscenarioprincipale}
-	
+
 	\usecasepost{il messaggio d'errore è stato visualizzato}
-	
+
 	\label{uc:vis-errore-ins-proprieta-es}
 \end{usecase}
 
 \begin{usecase}{3}{ES}{Aggiunta proprietà ``sender''}
-	\usecaseactors{Sviluppatore SyncRec}
-	
+	\usecaseactors{sviluppatore SyncRec}
+
 	\usecasepre{la proprietà ``sender'' va aggiunta al servizio Email Sender}
-	
+
 	\usecasedesc{lo sviluppatore vuole aggiungere la proprietà sender nel servizio Email Sender}
 
 	\begin{ucscenarioprincipale}
@@ -93,15 +93,15 @@ Ogni codice presenta una forma del tipo:
 	\end{ucscenarioprincipale}
 
 	\usecasepost{la proprietà ``sender'' è stata aggiunta con successo}
-	
+
 	\label{uc:aggiunta-sender-es}
 \end{usecase}
 
 \begin{usecase}{4}{ES}{Aggiunta proprietà ``password''}
-	\usecaseactors{Sviluppatore SyncRec}
-	
+	\usecaseactors{sviluppatore SyncRec}
+
 	\usecasepre{la proprietà ``password'' va aggiunta al servizio Email Sender}
-	
+
 	\usecasedesc{lo sviluppatore vuole aggiungere la proprietà ``password'' relativa al ``sender'' nel servizio Email Sender. Il servizio salverà la password criptandola con un opportuno algoritmo}
 
 	\begin{ucscenarioprincipale}
@@ -114,52 +114,52 @@ Ogni codice presenta una forma del tipo:
 \end{usecase}
 
 \begin{usecase}{5}{ES}{Aggiunta proprietà ``subject''}
-	\usecaseactors{Sviluppatore SyncRec}
-	
+	\usecaseactors{sviluppatore SyncRec}
+
 	\usecasepre{la proprietà ``subject'' va aggiunta al servizio Email Sender}
-	
+
 	\usecasedesc{lo sviluppatore vuole aggiungere la proprietà ``subject'', l'oggetto della email da inviare, nel servizio Email Sender}
-	
+
 	\begin{ucscenarioprincipale}
 		\item Lo sviluppatore seleziona la chiave ``subject'';
 		\item Lo sviluppatore inserisce il valore della proprietà ``subject''.
 	\end{ucscenarioprincipale}
-	
+
 	\usecasepost{la proprietà ``subject'' è stata aggiunta con successo}
-	
+
 	\label{uc:aggiunta-subject-es}
 \end{usecase}
 
 
 \begin{usecase}{6}{ES}{Modifica proprietà per invio mail}
-	\usecaseactors{Sviluppatore SyncRec}
-	
+	\usecaseactors{sviluppatore SyncRec}
+
 	\usecasepre{una proprietà necessita di essere modificata}
-	
+
 	\usecasedesc{lo sviluppatore vuole modificare il valore di una nuova proprietà nel servizio}
-	
+
 	\begin{ucscenarioprincipale}
 		\item Lo sviluppatore inserisce la chiave da modificare;
 		\item Lo sviluppatore inserisce il nuovo valore della proprietà.
 	\end{ucscenarioprincipale}
-	
+
 	\usecasepost{una proprietà è stata modificata con successo}
-	
+
 	\begin{ucestensioni}
-		\item UC7-ES
+		\item \ref{uc:vis-errore-mod-proprieta-es}
 	\end{ucestensioni}
-	
+
 	\begin{ucgeneralizzazioni}
-		\item UC8-ES
-		\item UC9-ES
-		\item UC10-ES
+		\item \ref{uc:modifica-sender-es}
+		\item \ref{uc:modifica-password-es}
+		\item \ref{uc:modifica-subject-es}
 	\end{ucgeneralizzazioni}
-	
+
 	\label{uc:modifica-proprieta-es}
 \end{usecase}
 
 \begin{usecase}{7}{ES}{Visualizzazione errore modifica proprietà}
-	\usecaseactors{Sviluppatore SyncRec}
+	\usecaseactors{sviluppatore SyncRec}
 
 	\usecasepre{c'è un tentativo di modifica di una proprietà}
 
@@ -170,76 +170,76 @@ Ogni codice presenta una forma del tipo:
 	\end{ucscenarioprincipale}
 
 	\usecasepost{il messaggio d'errore è stato visualizzato}
-	
-	\label{uc:vis-errore--mod-proprieta-es}
+
+	\label{uc:vis-errore-mod-proprieta-es}
 \end{usecase}
 
 \begin{usecase}{8}{ES}{Modifica proprietà ``sender''}
-	\usecaseactors{Sviluppatore SyncRec}
-	
+	\usecaseactors{sviluppatore SyncRec}
+
 	\usecasepre{la proprietà ``sender'' necessita di essere modificata}
-	
+
 	\usecasedesc{lo sviluppatore vuole modificare la proprietà ``sender'' nel servizio Email Sender}
-	
+
 	\begin{ucscenarioprincipale}
 		\item Lo sviluppatore seleziona la modifica della chiave ``sender'';
 		\item Lo sviluppatore inserisce il nuovo valore della proprietà ``sender''.
 	\end{ucscenarioprincipale}
-	
+
 	\usecasepost{la proprietà ``sender'' è stata modificata con successo}
-	
+
 	\label{uc:modifica-sender-es}
 \end{usecase}
 
 \begin{usecase}{9}{ES}{Modifica proprietà ``password''}
-	\usecaseactors{Sviluppatore SyncRec}
-	
+	\usecaseactors{sviluppatore SyncRec}
+
 	\usecasepre{la proprietà ``password'' necessita di essere modificata}
-	
+
 	\usecasedesc{lo sviluppatore vuole modificare la proprietà ``password'' relativa al ``sender'' nel servizio. Il servizio salverà la nuova password criptandola con un opportuno algoritmo}
-	
+
 	\begin{ucscenarioprincipale}
 		\item Lo sviluppatore seleziona la modifica della chiave ``password'';
 		\item Lo sviluppatore inserisce il nuovo valore della proprietà ``password''.
 	\end{ucscenarioprincipale}
-	
+
 	\usecasepost{la proprietà ``password'' è stata modificata con successo}
-	
+
 	\label{uc:modifica-password-es}
 \end{usecase}
 
 \begin{usecase}{10}{ES}{Modifica proprietà ``subject''}
-	\usecaseactors{Sviluppatore SyncRec}
-	
+	\usecaseactors{sviluppatore SyncRec}
+
 	\usecasepre{la proprietà ``subject'' necessita di essere modificata}
-	
+
 	\usecasedesc{lo sviluppatore vuole modificare la proprietà ``subject'', ossia l'oggetto della email da inviare, nel servizio Email Sender}
 
 	\begin{ucscenarioprincipale}
 		\item Lo sviluppatore seleziona la modifica della chiave ``subject'';
 		\item Lo sviluppatore inserisce il nuovo valore della proprietà ``subject''.
 	\end{ucscenarioprincipale}
-	
+
 	\usecasepost{la proprietà ``subject'' è stata modificata con successo}
-	
+
 	\label{uc:modifica-subject-es}
 \end{usecase}
 
 \begin{usecase}{11}{ES}{Invio email}
-	\usecaseactors{Front-end}
-	
-	\usecasepre{Il \textit{front-end} deve inviare una email in seguito a determinate azioni dell'utente che usa la piattaforma}
-	
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} deve inviare una email in seguito a determinate azioni dell'utente che usa la piattaforma}
+
 	\usecasedesc{il \textit{front-end}, sotto determinate condizioni (come ad esempio la fine della compilazione dello \gls{skill-matrix}), ha necessità di inviare un email automatica specifica al candidato, contenente link e informazioni utili}
-	
+
 	\begin{ucscenarioprincipale}
 		\item Il \textit{front-end} invoca le \acrshort{api} per l'invio dell'email.
 	\end{ucscenarioprincipale}
-	
+
 	\usecasepost{l'email è stata inviata con successo}
-	
+
 	\begin{ucestensioni}
-		\item UC12-ES
+		\item \ref{uc:vis-errore-invio-es}
 	\end{ucestensioni}
 
 	\label{uc:invio-email-es}
@@ -247,17 +247,17 @@ Ogni codice presenta una forma del tipo:
 
 \begin{usecase}{12}{ES}{Risposta contenente un errore}
 	\usecaseactors{\textit{front-end}}
-	
-	\usecasepre{Una email tenta di essere inviata tramite il servizio Email Sender}
-	
-	\usecasedesc{Una risposta che spieghi l'errore viene inviata al front-end come risposta se la chiamata dovesse fallire}
+
+	\usecasepre{una email tenta di essere inviata tramite il servizio Email Sender}
+
+	\usecasedesc{una risposta che spieghi l'errore viene inviata al front-end come risposta se la chiamata dovesse fallire}
 
 	\begin{ucscenarioprincipale}
 		\item Il \textit{front-end} riceve la risposta d'errore.
 	\end{ucscenarioprincipale}
-	
+
 	\usecasepost{Il messaggio d'errore è stato ricevuto con successo}
-	
+
 	\label{uc:vis-errore-invio-es}
 \end{usecase}
 
@@ -265,27 +265,26 @@ Ogni codice presenta una forma del tipo:
 
 \subsection{Casi d'uso relativi al microservizio Login}
 
-
 \begin{usecase}{1}{L}{Aggiunta nuovo utente}
 	\usecaseactors{\textit{front-end}}
-	
+
 	\usecasepre{Un nuovo utente dev'essere inserito nel servizio di Login}
-	
+
 	\usecasedesc{il \textit{front-end} deve inserire un nuovo utente}
-	
+
 	\begin{ucscenarioprincipale}
 		\item Il \textit{front-end} inserisce i dati relativi al nuovo utente;
 		\item Il \textit{front-end} chiama la funzionalità di inserimento nuovo utente del servizio di Login.
 	\end{ucscenarioprincipale}
 
-	\usecasepost{Un nuovo utente è stato inserito con successo}
+	\usecasepost{un nuovo utente è stato inserito con successo}
 
 	\begin{ucestensioni}
-		\item UC3-L
+		\item \ref{uc:vis-errore-ins-utente-l}
 	\end{ucestensioni}
 
 	\begin{ucgeneralizzazioni}
-		\item UC2-L
+		\item \ref{uc:richiesta-aggiunta-utente-l}
 	\end{ucgeneralizzazioni}
 
 	\label{uc:aggiunta-utente-l}
@@ -315,11 +314,11 @@ Ogni codice presenta una forma del tipo:
 		\item Il \textit{front-end} inserisce i dati relativi al nuovo utente;
 		\item Il \textit{front-end} chiama la funzionalità di inserimento nuovo utente del servizio di Login.
 	\end{ucscenarioprincipale}
-	
-	\usecasepost{Un nuovo utente è stato inserito con successo}
-	
+
+	\usecasepost{un nuovo utente è stato inserito con successo}
+
 	\begin{ucestensioni}
-		\item UC3-L
+		\item \ref{uc:vis-errore-ins-utente-l}
 	\end{ucestensioni}
 
 	\label{uc:richiesta-aggiunta-utente-l}
@@ -327,9 +326,9 @@ Ogni codice presenta una forma del tipo:
 
 \begin{usecase}{3}{L}{Visualizzazione errore inserimento utente}
 	\usecaseactors{\textit{front-end}}
-	
+
 	\usecasepre{c'è un tentativo di aggiunta di un nuovo utente}
-	
+
 	\usecasedesc{viene inviata una risposta al \textit{front-end} contenente un messaggio d'errore per tentativo di inserimento utente non valido}
 
 	\begin{ucscenarioprincipale}
@@ -337,40 +336,40 @@ Ogni codice presenta una forma del tipo:
 	\end{ucscenarioprincipale}
 
 	\usecasepost{il messaggio d'errore è stato ricevuto dal \textit{front-end}}
-	
+
 	\label{uc:vis-errore-ins-utente-l}
 \end{usecase}
 
 \begin{usecase}{4}{L}{Modifica utente}
 	\usecaseactors{\textit{front-end}}
-	
+
 	\usecasepre{Un utente già presente dev'essere modificato}
-	
+
 	\usecasedesc{il \textit{front-end} deve modificare un utente}
-	
+
 	\begin{ucscenarioprincipale}
 		\item Il \textit{front-end} inserisce i dati relativi all'utente da modificare;
 		\item Il \textit{front-end} chiama la funzionalità di modifica dell'utente del servizio di Login.
 	\end{ucscenarioprincipale}
 
-	\usecasepost{Un utente è stato modificato con successo}
+	\usecasepost{un utente è stato modificato con successo}
 
 	\begin{ucestensioni}
-		\item UC6-L
+		\item \ref{uc:vis-errore-modifica-utente-l}
 	\end{ucestensioni}
-	
+
 	\begin{ucgeneralizzazioni}
-		\item UC5-L
+		\item \ref{uc:richiesta-modifica-utente-l}
 	\end{ucgeneralizzazioni}
-	
+
 	\label{uc:modifica-utente-l}
 \end{usecase}
 
 \begin{usecase}{5}{L}{Modifica utente con richiesta HTTP}
 	\usecaseactors{\textit{front-end}}
-	
+
 	\usecasepre{Un utente già presente nel servizio di Login dev'essere modificato}
-	
+
 	\textbf{\\Descrizione:} il \textit{front-end} deve modificare un utente. Per fare ciò,
 	chiama le opportune \acrshort{api} esposte dal servizio di Login. La richiesta potrà contenere una qualsiasi combinazione dei campi:
 	\begin{itemize}[noitemsep]
@@ -388,12 +387,12 @@ Ogni codice presenta una forma del tipo:
 		\item Il \textit{front-end} chiama le \acrshort{api} di inserimento nuovo utente del servizio di Login.
 	\end{ucscenarioprincipale}
 
-	\usecasepost{Un utente è stato modificato con successo}
+	\usecasepost{un utente è stato modificato con successo}
 
 	\begin{ucestensioni}
-		\item UC6-L
+		\item \ref{uc:vis-errore-modifica-utente-l}
 	\end{ucestensioni}
-	
+
 	\label{uc:richiesta-modifica-utente-l}
 \end{usecase}
 
@@ -401,7 +400,7 @@ Ogni codice presenta una forma del tipo:
 	\usecaseactors{\textit{front-end}}
 
 	\usecasepre{c'è un tentativo di modifica di un utente}
-	
+
 	\usecasedesc{viene inviata una risposta al \textit{front-end} contenente un messaggio d'errore per tentativo di validazione dei dati relativi all'utente da modificare}
 
 	\begin{ucscenarioprincipale}
@@ -426,14 +425,14 @@ Ogni codice presenta una forma del tipo:
 		\item Il \textit{front-end} chiama la funzionalità di rimozione utente del servizio di Login.
 	\end{ucscenarioprincipale}
 
-	\usecasepost{Un utente è stato rimosso con successo}
+	\usecasepost{un utente è stato rimosso con successo}
 
 	\begin{ucestensioni}
-		\item UC9-L
+		\item \ref{uc:vis-errore-rimozione-utente-l}
 	\end{ucestensioni}
 
 	\begin{ucgeneralizzazioni}
-		\item UC8-L
+		\item \ref{uc:richiesta-rimozione-utente-l}
 	\end{ucgeneralizzazioni}
 
 	\label{uc:rimozione-utente-l}
@@ -452,10 +451,10 @@ Ogni codice presenta una forma del tipo:
 		\item Il \textit{front-end} chiama le \acrshort{api} di rimozione utente del servizio di Login.
 	\end{ucscenarioprincipale}
 
-	\usecasepost{Un utente è stato rimosso dal servizio con successo}
+	\usecasepost{un utente è stato rimosso dal servizio con successo}
 
 	\begin{ucestensioni}
-		\item UC9-L
+		\item \ref{uc:vis-errore-rimozione-utente-l}
 	\end{ucestensioni}
 
 	\label{uc:richiesta-rimozione-utente-l}
@@ -493,11 +492,11 @@ Ogni codice presenta una forma del tipo:
 		\item il \textit{front-end} prepara la richiesta con i campi necessari;
 		\item il \textit{front-end} effettua l'operazione di login tramite le \acrshort{api} del servizio.
 	\end{ucscenarioprincipale}
-	
+
 	\usecasepost{l'operazione di login è avvenuta con successo. Vengono restituiti nella risposta i campi dell'utente autenticato}
 
 	\begin{ucestensioni}
-		\item UC11-L
+		\item \ref{uc:vis-errore-login-l}
 	\end{ucestensioni}
 
 	\label{uc:login-l}
@@ -505,20 +504,20 @@ Ogni codice presenta una forma del tipo:
 
 \begin{usecase}{11}{L}{Restituzione errore di Login}
 	\usecaseactors{\textit{front-end}}
-	
+
 	\usecasepre{viene effettuato un tentativo di login}
-	
+
 	\usecasedesc{viene inviata una risposta al \textit{front-end} contenente un messaggio d'errore relativo al login}
-	
+
 	\begin{ucscenarioprincipale}
 		\item il \textit{front-end} riceve il messaggio d'errore.
 	\end{ucscenarioprincipale}
-	
+
 	\usecasepost{il messaggio d'errore è stato ricevuto dal \textit{front-end}}
-	
+
 	\begin{ucgeneralizzazioni}
-		\item UC12-L
-		\item UC13-L
+		\item \ref{uc:vis-errore-badrequest-l}
+		\item \ref{uc:vis-errore-auth-l}
 	\end{ucgeneralizzazioni}
 
 	\label{uc:vis-errore-login-l}
@@ -535,7 +534,7 @@ Ogni codice presenta una forma del tipo:
 	\begin{ucscenarioprincipale}
 		\item il \textit{front-end} riceve il messaggio d'errore riguardante la pessima richiesta.
 	\end{ucscenarioprincipale}
-	
+
 	\usecasepost{il messaggio d'errore è stato ricevuto dal \textit{front-end}}
 
 	\label{uc:vis-errore-badrequest-l}
@@ -563,6 +562,720 @@ Ogni codice presenta una forma del tipo:
 
 \subsection{Casi d'uso relativi al microservizio Catalog}
 
+\begin{usecase}{1}{C}{Visualizzazione lista skill}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare la lista utenti}
+
+	\usecasedesc{il \textit{front-end} visualizza la lista utenti}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama le funzionalità del servizio di Catalog per visualizzare le \textit{skill}.
+		\item Il \textit{front-end} visualizza la lista di \textit{skill}.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la lista di \textit{skill} viene visualizzata correttamente}
+
+	\begin{ucgeneralizzazioni}
+		\item \ref{uc:vis-skill-http-c}
+	\end{ucgeneralizzazioni}
+
+	\label{uc:vis-skill-c}
+\end{usecase}
+
+\begin{usecase}{2}{C}{Visualizzazione lista skill tramite richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare la lista delle \textit{skill}}
+
+	\usecasedesc{il \textit{front-end} visualizza la lista delle \textit{skill}. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Catalog}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama le \acrshort{api} del servizio di Catalog per la visualizzazione delle \textit{skill}.
+		\item Il \textit{front-end} visualizza la lista di \textit{skill}.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la lista di \textit{skill} viene visualizzata correttamente}
+
+	\label{uc:vis-skill-http-c}
+\end{usecase}
+
+\begin{usecase}{2.1}{C}{Visualizzazione lista skill per categoria tramite richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare la lista delle \textit{skill} appartenenti a una categoria specifica}
+
+	\usecasedesc{il \textit{front-end} visualizza la lista delle \textit{skill} relative a una categoria specificata. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Catalog}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama le \acrshort{api} del servizio di Catalog per la visualizzazione delle \textit{skill} appartenenti a una categoria.
+		\item Il \textit{front-end} visualizza la lista di \textit{skill} appartenenti alla categoria di interesse.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la lista di \textit{skill} di una categoria viene visualizzata correttamente}
+
+	\label{uc:vis-skill-category-http-c}
+\end{usecase}
+
+\begin{usecase}{3}{C}{Inserimento nuova skill}
+	\usecaseactors{Sviluppatore SyncRec}
+
+	\usecasepre{lo sviluppatore deve inserire una nuova \textit{skill} nel servizio Catalog}
+
+	\usecasedesc{lo sviluppatore inserisce una nuova skill nel servizio} %Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Catalog. I campi richiesti per l'aggiunta di una nuova }
+
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore SyncRec chiama le funzionalità del servizio di Catalog per l'aggiunta di una nuova \textit{skill}.
+		\item Lo sviluppatore riceve la risposta di conferma di inserimento.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la \textit{skill} è stata aggiunta correttamente}
+
+	\begin{ucgeneralizzazioni}
+		\item \ref{uc:ins-skill-http-c}
+	\end{ucgeneralizzazioni}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-ins-skill-c}
+	\end{ucestensioni}
+
+	\label{uc:ins-skill-c}
+\end{usecase}
+
+\begin{usecase}{4}{C}{Inserimento nuova skill tramite richiesta HTTP}
+	\usecaseactors{Sviluppatore SyncRec}
+
+	\usecasepre{lo sviluppatore deve inserire una nuova \textit{skill} nel servizio Catalog}
+
+	\textbf{\\Descrizione:} lo sviluppatore inserisce una nuova skill nel servizio. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Catalog. I campi richiesti per l'aggiunta di una nuova skill sono i seguenti:
+	\begin{itemize}
+		\item \texttt{name}: il nome della \textit{skill};
+		\item \texttt{category}: la categoria a cui la \textit{skill} da aggiungere appartiene.
+	\end{itemize}
+
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore SyncRec chiama le funzionalità del servizio di Catalog per l'aggiunta di una nuova \textit{skill}.
+		\item Lo sviluppatore riceve la risposta di conferma di inserimento.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la \textit{skill} è stata aggiunta correttamente}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-ins-skill-c}
+	\end{ucestensioni}
+
+	\label{uc:ins-skill-http-c}
+\end{usecase}
+
+\begin{usecase}{5}{C}{Visualizzazione errore inserimento skill fallito}
+	\usecaseactors{Sviluppatore SyncRec}
+
+	\usecasepre{viene effettuato un tentativo di inserimento \textit{skill}}
+
+	\usecasedesc{viene visualizzato un messaggio d'errore a seguito di un inserimento di una \textit{skill} nel servizio Catalog fallita, dovuto all'assenza di una delle due chiavi richieste (\texttt{name}, \texttt{category})}
+
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore SyncRec visualizza il messaggio d'errore.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{il messaggio d'errore è stato visualizzato dallo sviluppatore}
+
+	\label{uc:vis-errore-ins-skill-c}
+
+\end{usecase}
+
+\begin{usecase}{6}{C}{Modifica skill}
+	\usecaseactors{Sviluppatore SyncRec}
+
+	\usecasepre{lo sviluppatore necessita di modificare una \textit{skill} nel servizio Catalog}
+
+	\usecasedesc{lo sviluppatore modifica una \textit{skill} nel servizio Catalog}
+
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore SyncRec chiama le funzionalità del servizio di Catalog per la modifica di una \textit{skill}.
+		\item Lo sviluppatore riceve la risposta di conferma di modifica.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la \textit{skill} è stata modificata correttamente}
+
+	\begin{ucgeneralizzazioni}
+		\item \ref{uc:mod-skill-http-c}
+	\end{ucgeneralizzazioni}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-mod-skill-c}
+	\end{ucestensioni}
+
+	\label{uc:mod-skill-c}
+\end{usecase}
+
+\begin{usecase}{7}{C}{Modifica skill tramite richiesta HTTP}
+	\usecaseactors{Sviluppatore SyncRec}
+
+	\usecasepre{lo sviluppatore deve modificare una \textit{skill} presente nel servizio Catalog}
+
+	\textbf{\\Descrizione:} lo sviluppatore modifica una skill del servizio. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Catalog. I campi richiesti per la modifica di una \textit{skill} possono includere una qualsiasi combinazione tra i seguenti:
+	\begin{itemize}
+		\item \texttt{name}: il nome della \textit{skill};
+		\item \texttt{category}: la categoria a cui la \textit{skill} da aggiungere appartiene.
+	\end{itemize}
+
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore SyncRec chiama le \acrshort{api} del servizio di Catalog per la modifica di una \textit{skill}.
+		\item Lo sviluppatore riceve la risposta di conferma di modifica.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la \textit{skill} è stata modificata correttamente}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-mod-skill-c}
+	\end{ucestensioni}
+
+	\label{uc:mod-skill-http-c}
+\end{usecase}
+
+\begin{usecase}{8}{C}{Visualizzazione errore modifica skill fallita}
+	\usecaseactors{Sviluppatore SyncRec}
+
+	\usecasepre{viene effettuato un tentativo di modifica di una \textit{skill} del servizio}
+
+	\usecasedesc{viene visualizzato un messaggio d'errore a seguito di un tentativo di modifica di una \textit{skill} del servizio Catalog fallito}
+
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore SyncRec visualizza il messaggio d'errore.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{il messaggio d'errore di modifica è stato visualizzato dallo sviluppatore}
+
+	\label{uc:vis-errore-mod-skill-c}
+
+\end{usecase}
+
+\begin{usecase}{9}{C}{Rimozione skill}
+	\usecaseactors{Sviluppatore SyncRec}
+
+	\usecasepre{lo sviluppatore necessita di eliminare una \textit{skill} dal servizio Catalog}
+
+	\usecasedesc{lo sviluppatore elimina una \textit{skill} dal servizio Catalog}
+
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore SyncRec chiama le funzionalità del servizio di Catalog per la rimozione di una \textit{skill}.
+		\item Lo sviluppatore riceve la risposta di conferma rimozione.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la \textit{skill} è stata eliminata correttamente}
+
+	\begin{ucgeneralizzazioni}
+		\item \ref{uc:rimozione-skill-http-c}
+	\end{ucgeneralizzazioni}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-rimozione-skill-c}
+	\end{ucestensioni}
+
+	\label{uc:rimozione-skill-c}
+\end{usecase}
+
+\begin{usecase}{10}{C}{Rimozione skill tramite richiesta HTTP}
+	\usecaseactors{Sviluppatore SyncRec}
+
+	\usecasepre{lo sviluppatore deve rimuovere una \textit{skill} presente nel servizio Catalog}
+
+	\textbf{\\Descrizione:} lo sviluppatore rimuove una \textit{skill} del servizio. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Catalog. Per eliminare una \textit{skill}, lo sviluppatore dovrà fornire l'ID relativo a tale \textit{skill}.
+
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore SyncRec chiama le \acrshort{api} del servizio di Catalog per la rimozione di una \textit{skill}.
+		\item Lo sviluppatore riceve la risposta di conferma rimozione.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la \textit{skill} è stata rimossa correttamente}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-rimozione-skill-c}
+	\end{ucestensioni}
+
+	\label{uc:rimozione-skill-http-c}
+\end{usecase}
+
+\begin{usecase}{11}{C}{Visualizzazione errore rimozione skill fallita}
+	\usecaseactors{Sviluppatore SyncRec}
+
+	\usecasepre{viene effettuato un tentativo di modifica di una \textit{skill} del servizio}
+
+	\usecasedesc{viene visualizzato un messaggio d'errore a seguito di un tentativo di eliminazione di una \textit{skill} del servizio Catalog fallito, dovuto a un ID non riconosciuto}
+
+	\begin{ucscenarioprincipale}
+		\item Lo sviluppatore SyncRec visualizza il messaggio d'errore.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{il messaggio d'errore di rimozione è stato visualizzato dallo sviluppatore}
+
+	\label{uc:vis-errore-rimozione-skill-c}
+
+\end{usecase}
+
+% ***********************************
+
+\subsection{Casi d'uso relativi al microservizio Applicant}
+
+\begin{usecase}{1}{A}{Visualizzazione lista applicant}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare la lista degli \textit{applicant}}
+
+	\usecasedesc{il \textit{front-end} visualizza la lista \textit{applicant}}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama le funzionalità del servizio di Applicant per visualizzare la lista di tutti i candidati.
+		\item Il \textit{front-end} visualizza la lista degli \textit{applicant}.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la lista degli \textit{applicant} viene visualizzata correttamente}
+
+	%	\begin{ucestensioni}
+	%		\item UC3-L
+	%	\end{ucestensioni}
+
+	\begin{ucgeneralizzazioni}
+		\item \ref{uc:vis-lista-applicant-http-a}
+	\end{ucgeneralizzazioni}
+
+	\label{uc:vis-lista-applicant-a}
+\end{usecase}
+
+\begin{usecase}{2}{A}{Visualizzazione lista applicant tramite richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare la lista degli \textit{applicant}}
+
+	\usecasedesc{il \textit{front-end} visualizza la lista degli \textit{applicant}. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Applicant}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama le \acrshort{api} del servizio di Applicant per la visualizzazione dei candidati.
+		\item Il \textit{front-end} visualizza la lista dei candidati.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la lista degli \textit{applicant} viene visualizzata correttamente}
+
+	\label{uc:vis-lista-applicant-http-a}
+\end{usecase}
+
+\begin{usecase}{2.1}{A}{Visualizzazione lista applicant considerabili tramite richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare la lista degli \textit{applicant} considerabili}
+
+	\usecasedesc{il \textit{front-end} visualizza la lista degli \textit{applicant} marcati come considerabili. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Applicant. Un \textit{applicant} è considerato considerabile se il suo campo \texttt{considerable} è \texttt{true}}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama le \acrshort{api} del servizio Applicant per la visualizzazione degli \textit{applicant} considerabili.
+		\item Il \textit{front-end} visualizza la lista degli \textit{applicant} considerabili.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la lista degli \textit{applicant} considerabili viene visualizzata correttamente}
+
+	\label{uc:vis-lista-applicant-considerable-http-a}
+\end{usecase}
+
+\begin{usecase}{2.2}{A}{Visualizzazione lista applicant per seniority tramite richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare la lista degli \textit{applicant} appartenenti a una \textit{seniority}}
+
+	\textbf{\\Descrizione:} il \textit{front-end} visualizza la lista degli \textit{applicant} appartenenti a una \textit{seniority} specifica. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Applicant. La \textit{seniority} di interesse verrà passata come parametro insieme alla richiesta.
+	I tipi di \textit{seniority} sono:
+	\begin{ucitemize}
+		\item Junior;
+		\item Intermediate;
+		\item Senior.
+	\end{ucitemize}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama le \acrshort{api} del servizio Applicant per la visualizzazione degli \textit{applicant}.
+		\item Il \textit{front-end} visualizza la lista degli \textit{applicant} con la \textit{seniority} specificata.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la lista degli \textit{applicant} con la \textit{seniority} di interesse viene visualizzata correttamente}
+
+	\label{uc:vis-lista-applicant-seniority-http-a}
+\end{usecase}
+
+\begin{usecase}{2.3}{A}{Visualizzazione lista applicant per scope tramite richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare la lista degli \textit{applicant} appartenenti a uno \textit{scope} specifico}
+
+	\textbf{\\Descrizione:} il \textit{front-end} visualizza la lista degli \textit{applicant} appartenenti a uno \textit{scope} specifico. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Applicant. Lo \textit{scope} di interesse verrà passato come parametro insieme alla richiesta.
+	I tipi di \textit{scope} sono:
+	\begin{ucitemize}
+		\item Developer;
+		\item System Engineer;
+		\item Office Worker.
+	\end{ucitemize}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama le \acrshort{api} del servizio Applicant per la visualizzazione degli \textit{applicant}.
+		\item Il \textit{front-end} visualizza la lista degli \textit{applicant} con lo \textit{scope} specificato.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{la lista degli \textit{applicant} con la \textit{seniority} di interesse viene visualizzata correttamente}
+
+	\label{uc:vis-lista-applicant-scope-http-a}
+\end{usecase}
+
+\begin{usecase}{3}{A}{Visualizzazione applicant}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare un \textit{applicant} specifico}
+
+	\usecasedesc{il \textit{front-end} visualizza l'\textit{applicant}}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama le funzionalità del servizio di Applicant per la visualizzazione.
+		\item Il \textit{front-end} visualizza l'\textit{applicant} di interesse.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{l'\textit{applicant} viene visualizzato correttamente}
+
+	\begin{ucgeneralizzazioni}
+		\item \ref{uc:vis-applicant-http-a}
+	\end{ucgeneralizzazioni}
+
+	\label{uc:vis-applicant-a}
+\end{usecase}
+
+\begin{usecase}{4}{A}{Visualizzazione applicant tramite richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare un \textit{applicant}}
+
+	\usecasedesc{il \textit{front-end} visualizza l'\textit{applicant}. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Applicant}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama le \acrshort{api} del servizio di Applicant per la visualizzazione.
+		\item Il \textit{front-end} visualizza il candidato di interesse.
+	\end{ucscenarioprincipale}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-applicant-a}
+	\end{ucestensioni}
+
+	\usecasepost{l'\textit{applicant} viene visualizzato correttamente}
+
+	\label{uc:vis-applicant-http-a}
+\end{usecase}
+
+\begin{usecase}{4.1}{A}{Visualizzazione applicant per ID tramite richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare un \textit{applicant}}
+
+	\usecasedesc{il \textit{front-end} visualizza l'\textit{applicant} con un ID specifico. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Applicant, passando nella richiesta il parametro relativo all'ID}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama le \acrshort{api} del servizio di Applicant per la visualizzazione.
+		\item Il \textit{front-end} visualizza il candidato con l'ID specificato.
+	\end{ucscenarioprincipale}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-applicant-a}
+	\end{ucestensioni}
+
+	\usecasepost{l'\textit{applicant} con l'ID specificato viene visualizzato correttamente}
+
+	\label{uc:vis-applicant-id-http-a}
+\end{usecase}
+
+\begin{usecase}{4.2}{A}{Visualizzazione applicant per email tramite richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare un \textit{applicant}}
+
+	\usecasedesc{il \textit{front-end} visualizza l'\textit{applicant} per email. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Applicant, passando nella richiesta il parametro relativo all'email}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama le \acrshort{api} del servizio di Applicant per la visualizzazione.
+		\item Il \textit{front-end} visualizza il candidato con l'email specificato.
+	\end{ucscenarioprincipale}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-applicant-a}
+	\end{ucestensioni}
+
+	\usecasepost{l'\textit{applicant} con l'email specificata viene visualizzato correttamente}
+
+	\label{uc:vis-applicant-email-http-a}
+\end{usecase}
+
+\begin{usecase}{4.3}{A}{Visualizzazione applicant per numero di telefono tramite richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare un \textit{applicant}}
+
+	\usecasedesc{il \textit{front-end} visualizza l'\textit{applicant} con un numero di telefono specifico. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Applicant, passando nella richiesta il parametro \texttt{phone}, relativo al numero di telefono}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama le \acrshort{api} del servizio di Applicant per la visualizzazione.
+		\item Il \textit{front-end} visualizza il candidato con il numero di telefono specificato.
+	\end{ucscenarioprincipale}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-applicant-a}
+	\end{ucestensioni}
+
+	\usecasepost{l'\textit{applicant} con il numero di telefono specificato viene visualizzato correttamente}
+
+	\label{uc:vis-applicant-phone-http-a}
+\end{usecase}
+
+
+\begin{usecase}{5}{A}{Visualizzazione errore applicant non trovato}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{viene effettuato una ricerca di un applicant specifico}
+
+	\usecasedesc{viene restituito un messaggio d'errore dal servizio a seguito del tentativo di visualizzazione di un \textit{applicant} specifico}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} riceve il messaggio d'errore.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{il messaggio d'errore è stato restituito e visualizzato dal \textit{front-end}}
+
+	\label{uc:vis-errore-applicant-a}
+
+\end{usecase}
+
+\begin{usecase}{6}{A}{Aggiunta nuovo applicant}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{un nuovo \textit{applicant} dev'essere inserito nel servizio Applicant}
+
+	\usecasedesc{il \textit{front-end} deve inserire un nuovo \textit{applicant}}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} inserisce i dati relativi al nuovo \textit{applicant};
+		\item Il \textit{front-end} chiama la funzionalità di inserimento nuovo \textit{applicant}.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{un nuovo \textit{applicant} è stato inserito con successo}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-ins-applicant-a}
+	\end{ucestensioni}
+
+	\begin{ucgeneralizzazioni}
+		\item \ref{uc:richiesta-aggiunta-applicant-a}
+	\end{ucgeneralizzazioni}
+
+	\label{uc:aggiunta-applicant-a}
+\end{usecase}
+
+\begin{usecase}{7}{A}{Aggiunta nuovo applicant con richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{Un nuovo \textit{applicant} dev'essere inserito nel servizio Applicant}
+
+	\textbf{\\Descrizione:} il \textit{front-end} deve inserire un nuovo \textit{applicant}. Per fare ciò,
+	chiama le opportune \acrshort{api} esposte dal servizio Applicant. La richiesta dovrà contenere i campi:
+	\begin{itemize}[noitemsep]
+		\item \texttt{name};
+		\item \texttt{surname};
+		\item \texttt{email};
+		\item \texttt{phone}.
+	\end{itemize}
+	E potrà contenere i campi opzionali:
+	\begin{ucitemize}
+		\item \texttt{country};
+		\item \texttt{address};
+		\item \texttt{birthday};
+		\item \texttt{notes};
+		\item \texttt{jobStatus};
+		\item \texttt{interviews};
+		\item \texttt{considerable};
+		\item \texttt{curriculumId};
+		\item \texttt{ratingId};
+		\item \texttt{scope};
+		\item \texttt{seniority};
+		\item \texttt{genre};
+		\item \texttt{skills}.
+	\end{ucitemize}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} inserisce i dati relativi al nuovo \textit{applicant};
+		\item Il \textit{front-end} chiama la funzionalità di inserimento nuovo \textit{applicant} del servizio.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{un nuovo \textit{applicant} è stato inserito con successo}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-ins-applicant-a}
+	\end{ucestensioni}
+
+	\label{uc:richiesta-aggiunta-applicant-a}
+\end{usecase}
+
+\begin{usecase}{8}{A}{Visualizzazione errore inserimento applicant}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{c'è un tentativo di aggiunta di un nuovo \textit{applicant}}
+
+	\usecasedesc{viene inviata una risposta al \textit{front-end} contenente un messaggio d'errore per tentativo di inserimento \textit{applicant} non valido}
+
+	\begin{ucscenarioprincipale}
+		\item il \textit{front-end} riceve il messaggio d'errore.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{il messaggio d'errore è stato ricevuto dal \textit{front-end}}
+
+	\label{uc:vis-errore-ins-applicant-a}
+\end{usecase}
+
+\begin{usecase}{9}{A}{Modifica applicant}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{un \textit{applicant} già presente dev'essere modificato}
+
+	\usecasedesc{il \textit{front-end} modifica un \textit{applicant} presente nel servizio Applicant}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} inserisce i dati modificati dell'\textit{applicant} presente;
+		\item Il \textit{front-end} chiama la funzionalità di modifica \textit{applicant}.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{un \textit{applicant} è stato modificato con successo}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-mod-applicant-a}
+	\end{ucestensioni}
+
+	\begin{ucgeneralizzazioni}
+		\item \ref{uc:richiesta-mod-applicant-a}
+	\end{ucgeneralizzazioni}
+
+	\label{uc:mod-applicant-a}
+\end{usecase}
+
+\begin{usecase}{10}{A}{Modifica applicant con richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{un \textit{applicant} già presente dev'essere modificato}
+
+	\textbf{\\Descrizione:} il \textit{front-end} modifica un \textit{applicant} presente nel servizio. Per fare ciò,
+	chiama le opportune \acrshort{api} esposte dal servizio Applicant. La richiesta potrà contenere una qualsiasi combinazione dei campi:
+	\begin{ucitemize}
+		\item \texttt{name};
+		\item \texttt{surname};
+		\item \texttt{email};
+		\item \texttt{phone}.
+		\item \texttt{country};
+		\item \texttt{address};
+		\item \texttt{birthday};
+		\item \texttt{notes};
+		\item \texttt{jobStatus};
+		\item \texttt{interviews};
+		\item \texttt{considerable};
+		\item \texttt{curriculumId};
+		\item \texttt{ratingId};
+		\item \texttt{scope};
+		\item \texttt{seniority};
+		\item \texttt{genre};
+		\item \texttt{skills}.
+	\end{ucitemize}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} inserisce i dati relativi all'\textit{applicant} da modificare;
+		\item Il \textit{front-end} chiama la funzionalità di modifica \textit{applicant} del servizio.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{un \textit{applicant} è stato modificato con successo}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-mod-applicant-a}
+	\end{ucestensioni}
+
+	\label{uc:richiesta-mod-applicant-a}
+\end{usecase}
+
+\begin{usecase}{11}{A}{Visualizzazione errore modifica applicant}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{c'è un tentativo di modifica di un \textit{applicant}}
+
+	\usecasedesc{viene inviata una risposta al \textit{front-end} contenente un messaggio d'errore per tentativo di modifica \textit{applicant} non valido}
+
+	\begin{ucscenarioprincipale}
+		\item il \textit{front-end} riceve il messaggio d'errore.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{il messaggio d'errore è stato ricevuto dal \textit{front-end}}
+
+	\label{uc:vis-errore-mod-applicant-a}
+\end{usecase}
+
+
+\begin{usecase}{12}{A}{Rimozione applicant}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{un \textit{applicant} già presente dev'essere rimosso dal servizio}
+
+	\usecasedesc{il \textit{front-end} rimuove un \textit{applicant} presente nel servizio Applicant}
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama la funzionalità di rimozione \textit{applicant}.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{un \textit{applicant} è stato rimosso con successo}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-rimozione-applicant-a}
+	\end{ucestensioni}
+
+	\begin{ucgeneralizzazioni}
+		\item \ref{uc:richiesta-rimozione-applicant-a}
+	\end{ucgeneralizzazioni}
+
+	\label{uc:rimozione-applicant-a}
+\end{usecase}
+
+\begin{usecase}{13}{A}{Rimozione applicant con richiesta HTTP}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{un \textit{applicant} già presente dev'essere modificato}
+
+	\textbf{\\Descrizione:} il \textit{front-end} rimuove un \textit{applicant} presente nel servizio. Per fare ciò,
+	chiama le opportune \acrshort{api} esposte dal servizio Applicant. La richiesta dovrà contenere l'ID dell'\textit{applicant} da rimuovere.
+
+	\begin{ucscenarioprincipale}
+		\item Il \textit{front-end} chiama la funzionalità di rimozione di un \textit{applicant} del servizio.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{un \textit{applicant} è stato rimosso con successo}
+
+	\begin{ucestensioni}
+		\item \ref{uc:vis-errore-rimozione-applicant-a}
+	\end{ucestensioni}
+
+	\label{uc:richiesta-rimozione-applicant-a}
+\end{usecase}
+
+\begin{usecase}{14}{A}{Visualizzazione errore rimozione applicant}
+	\usecaseactors{\textit{front-end}}
+
+	\usecasepre{c'è un tentativo di rimozione di un \textit{applicant}}
+
+	\usecasedesc{viene inviata una risposta al \textit{front-end} contenente un messaggio d'errore per tentativo di rimozione \textit{applicant} non valido (e.g. l'ID non esiste)}
+
+	\begin{ucscenarioprincipale}
+		\item il \textit{front-end} riceve il messaggio d'errore.
+	\end{ucscenarioprincipale}
+
+	\usecasepost{il messaggio d'errore è stato ricevuto dal \textit{front-end}}
+
+	\label{uc:vis-errore-rimozione-applicant-a}
+\end{usecase}
+
+% ****************************
 
 
 % ****************************
@@ -571,35 +1284,175 @@ Ogni codice presenta una forma del tipo:
 
 \section{Tracciamento dei requisiti}
 
-Da un'attenta analisi dei requisiti e degli use case effettuata sul progetto è stata stilata la tabella che traccia i requisiti in rapporto agli use case.\\
-Sono stati individuati diversi tipi di requisiti e si è quindi fatto utilizzo di un codice identificativo per distinguerli.\\
-Il codice dei requisiti è così strutturato R(F/Q/V)(N/D/O) dove:
-\begin{enumerate}
-	\item[R =] requisito
-    \item[F =] funzionale
-    \item[Q =] qualitativo
-    \item[V =] di vincolo
-    \item[N =] obbligatorio (necessario)
-    \item[D =] desiderabile
-    \item[Z =] opzionale
-\end{enumerate}
-Nelle tabelle \ref{tab:requisiti-funzionali}, \ref{tab:requisiti-qualitativi} e \ref{tab:requisiti-vincolo} sono riassunti i requisiti e il loro tracciamento con gli use case delineati in fase di analisi.
+Da un'attenta analisi dei requisiti e degli use case effettuata sul progetto SyncRec è stata stilata la tabella che traccia i requisiti in rapporto agli \textit{use case}.
 
-\newpage
+Sono stati individuati diversi tipi di requisiti e si è quindi fatto utilizzo di un codice identificativo per distinguerli.
 
-\begin{table}%
-\caption{Tabella del tracciamento dei requisti funzionali}
-\label{tab:requisiti-funzionali}
-\begin{tabularx}{\textwidth}{lXl}
-\hline\hline
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
-\hline
-RFN-1     & L'interfaccia permette di configurare il tipo di sonde del test & UC1 \\
-\hline
-\end{tabularx}
+%Il codice dei requisiti è così strutturato R(F/Q/V)(N/D/O) dove:
+%\begin{enumerate}
+%	\item[R =] requisito
+%    \item[F =] funzionale
+%    \item[Q =] qualitativo
+%    \item[V =] di vincolo
+%    \item[N =] obbligatorio (necessario)
+%    \item[D =] desiderabile
+%    \item[Z =] opzionale
+%\end{enumerate}
+%Nelle tabelle \ref{tab:requisiti-funzionali}, \ref{tab:requisiti-qualitativi} e \ref{tab:requisiti-vincolo} sono riassunti i requisiti e il loro tracciamento con gli use case delineati in fase di analisi.
+
+%Ad ogni requisito viene assegnato il codice identificativo univoco:
+\begin{center}
+	\texttt{R[Tipo][Priorità]-[Numero]}
+\end{center}
+in cui ogni parte ha un significato preciso:
+\begin{itemize}
+	\item \textbf{R}: requisito;
+	\item \textbf{Tipo}: la la tipologia di requisito che può essere di:
+	\begin{itemize}
+		\item \textbf{F}: funzionalità;
+		\item \textbf{Q}: qualità;
+		\item \textbf{V}: vincolo.
+	\end{itemize}
+	\item \textbf{Priorità}: indica il grado di urgenza di un requisito di essere soddisfatto, come:
+	\begin{itemize}
+		\item \textbf{O}: obbligatorio;
+		\item \textbf{D}: desiderabile;
+		\item \textbf{F}: facoltativo.
+	\end{itemize}
+	\item \textbf{Numero}: numero progressivo che segue la struttura dei documenti;
+\end{itemize}
+
+Esempio: \texttt{RFD-3} indica il terzo requisito di funzionalità ed è desiderabile.
+
+Nelle tabelle \ref{tab:requisiti-funzionali-es}, \ref{tab:requisiti-qualitativi} e \ref{tab:requisiti-vincolo} sono riassunti i requisiti e il loro tracciamento con gli use case delineati in fase di analisi.
+
+\begin{table}[H]%
+	\begin{paddedtablex}[1.4]{\textwidth}{cXc}
+
+		\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
+		\toprule
+
+		\reqrow{RFO}{Il servizio Email Sender permette di aggiungere una nuova proprietà}{\ref{uc:aggiunta-proprieta-es}}
+		\reqrow{RFD}{Il servizio Email Sender deve restituire un messaggio d'errore in caso un inserimento di proprietà non vada a buon fine}{\ref{uc:vis-errore-ins-proprieta-es}}
+		\reqrow{RFO}{Il servizio Email Sender permette di aggiungere la proprietà ``sender''}{\ref{uc:aggiunta-sender-es}}
+		\reqrow{RFO}{Il servizio Email Sender permette di aggiungere la proprietà ``password''}{\ref{uc:aggiunta-password-es}}
+		\reqrow{RFO}{Il servizio Email Sender permette di aggiungere la proprietà ``subject''}{\ref{uc:aggiunta-subject-es}}
+		\reqrow{RFO}{Il servizio Email Sender permette di modificare una proprietà già presente}{\ref{uc:modifica-proprieta-es}}
+		\reqrow{RFD}{Il servizio Email Sender deve restituire un messaggio d'errore in caso la modifica di proprietà fallisca}{\ref{uc:vis-errore-mod-proprieta-es}}
+		\reqrow{RFO}{Il servizio Email Sender permette di modificare la proprietà ``sender''}{\ref{uc:modifica-sender-es}}
+		\reqrow{RFO}{Il servizio Email Sender permette di modificare la proprietà ``password''}{\ref{uc:modifica-password-es}}
+		\reqrow{RFO}{Il servizio Email Sender permette di modificare la proprietà ``subject''}{\ref{uc:modifica-subject-es}}
+		\reqrow{RFO}{Il servizio Email Sender permette di inviare un'email usando le proprietà ``sender'', ``password'', ``subject''}{\ref{uc:invio-email-es}}
+		\reqrow{RFD}{Il servizio Email Sender deve restituire un messaggio d'errore in caso l'invio email fallisca}{\ref{uc:vis-errore-invio-es}}
+
+		\bottomrule
+	\end{paddedtablex}
+	\vspace{4pt}
+	\caption{Tabella del tracciamento dei requisti funzionali (Email Sender service)}
+	\label{tab:requisiti-funzionali-es}
 \end{table}%
 
-\begin{table}%
+\begin{table}[H]%
+	\begin{paddedtablex}[1.4]{\textwidth}{cXc}
+
+		\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
+		\toprule
+
+		\reqrow{RFO}{Il servizio Login permette di inserire un nuovo utente}{\ref{uc:aggiunta-utente-l}}
+		\reqrow{RFO}{Il servizio Login permette di inserire un nuovo utente tramite richiesta HTTP}{\ref{uc:richiesta-aggiunta-utente-l}}
+		\reqrow{RFD}{Il servizio Login restituisce un errore in caso l'aggiunta utente fallisca}{\ref{uc:vis-errore-ins-utente-l}}
+
+		\reqrow{RFO}{Il servizio Login permette di modificare un utente già presente}{\ref{uc:modifica-utente-l}}
+		\reqrow{RFO}{Il servizio Login permette di modificare un utente tramite richiesta HTTP}{\ref{uc:richiesta-modifica-utente-l}}
+		\reqrow{RFD}{Il servizio Login restituisce un errore in caso la modifica utente fallisca}{\ref{uc:vis-errore-modifica-utente-l}}
+
+		\reqrow{RFO}{Il servizio Login permette di rimuovere un utente già presente con ID specificato}{\ref{uc:rimozione-utente-l}}
+		\reqrow{RFO}{Il servizio Login permette di rimuovere un utente con ID specificato tramite richiesta HTTP}{\ref{uc:richiesta-rimozione-utente-l}}
+		\reqrow{RFD}{Il servizio Login restituisce un errore in caso la rimozione utente fallisca}{\ref{uc:vis-errore-rimozione-utente-l}}
+
+		\reqrow{RFO}{Il servizio Login permette di effettuare l'operazione di login}{\ref{uc:login-l}}
+		\reqrow{RFO}{Il servizio Login restituisce un errore specifico in caso l'operazione di login fallisca}{\ref{uc:vis-errore-login-l}}
+		\reqrow{RFO}{Il servizio Login restituisce un errore specifico in caso l'operazione di login fallisca per una richiesta malformata}{\ref{uc:vis-errore-badrequest-l}}
+		\reqrow{RFO}{Il servizio Login restituisce un errore specifico in caso l'operazione di login fallisca per un utenza non riconosciuta}{\ref{uc:vis-errore-auth-l}}
+
+		\bottomrule
+	\end{paddedtablex}
+	\vspace{4pt}
+	\caption{Tabella del tracciamento dei requisti funzionali (Login service)}
+	\label{tab:requisiti-funzionali-l}
+\end{table}%
+
+\begin{table}[H]%
+	\begin{paddedtablex}[1.4]{\textwidth}{cXc}
+
+		\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
+		\toprule
+
+		\reqrow{RFO}{Il servizio Catalog permette di visualizzare la lista delle skill}{\ref{uc:vis-skill-c}}
+		\reqrow{RFO}{Il servizio Catalog permette di visualizzare la lista delle skill tramite richiesta HTTP}{\ref{uc:vis-skill-http-c}}
+		\reqrow{RFD}{Il servizio Catalog permette di visualizzare la lista delle skill appartenenti a una specifica categoria tramite richiesta HTTP}{\ref{uc:vis-skill-category-http-c}}
+
+		\reqrow{RFO}{Il servizio Catalog permette di inserire una nuova skill}{\ref{uc:ins-skill-c}}
+		\reqrow{RFO}{Il servizio Catalog permette di inserire una nuova skill tramite richiesta HTTP}{\ref{uc:ins-skill-http-c}}
+		\reqrow{RFD}{Il servizio Catalog restituisce un errore in caso l'aggiunta della skill fallisca}{\ref{uc:vis-errore-ins-skill-c}}
+
+		\reqrow{RFO}{Il servizio Catalog permette di modificare una skill già presente}{\ref{uc:mod-skill-c}}
+		\reqrow{RFO}{Il servizio Catalog permette di modificare una skill tramite richiesta HTTP}{\ref{uc:mod-skill-http-c}}
+		\reqrow{RFD}{Il servizio Catalog restituisce un errore in caso la modifica di una skill fallisca}{\ref{uc:vis-errore-mod-skill-c}}
+
+		\reqrow{RFO}{Il servizio Catalog permette di rimuovere una skill con ID specifico già presente}{\ref{uc:rimozione-skill-c}}
+		\reqrow{RFO}{Il servizio Catalog permette di rimuovere una skill con ID specifico tramite richiesta HTTP}{\ref{uc:rimozione-skill-http-c}}
+		\reqrow{RFD}{Il servizio Catalog restituisce un errore in caso la rimozione di una skill fallisca}{\ref{uc:vis-errore-rimozione-skill-c}}
+
+		\bottomrule
+	\end{paddedtablex}
+	\vspace{4pt}
+	\caption{Tabella del tracciamento dei requisti funzionali (Catalog service)}
+	\label{tab:requisiti-funzionali-c}
+\end{table}%
+
+
+\begin{table}[H]%
+	\begin{paddedtablex}[1.4]{\textwidth}{cXc}
+
+		\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
+		\toprule
+
+		\reqrow{RFO}{Il servizio Applicant permette di visualizzare la lista degli applicant}{\ref{uc:vis-lista-applicant-a}}
+		\reqrow{RFO}{Il servizio Applicant permette di visualizzare la lista degli applicant tramite richiesta HTTP}{\ref{uc:vis-lista-applicant-http-a}}
+		\reqrow{RFD}{Il servizio Applicant permette di visualizzare la lista degli applicant marcati come considerabili tramite richiesta HTTP}{\ref{uc:vis-lista-applicant-considerable-http-a}}
+		\reqrow{RFD}{Il servizio Applicant permette di visualizzare la lista degli applicant con una specifica ``seniority'' tramite richiesta HTTP}{\ref{uc:vis-lista-applicant-seniority-http-a}}
+		\reqrow{RFD}{Il servizio Applicant permette di visualizzare la lista degli applicant con uno specifico ``scope'' tramite richiesta HTTP}{\ref{uc:vis-lista-applicant-scope-http-a}}
+
+		\reqrow{RFO}{Il servizio Applicant permette di visualizzare un applicant specifico}{\ref{uc:vis-applicant-a}}
+		\reqrow{RFO}{Il servizio Applicant permette di visualizzare un applicant specifico tramite richiesta HTTP}{\ref{uc:vis-applicant-http-a}}
+		\reqrow{RFO}{Il servizio Applicant permette di visualizzare un applicant con un ID specifico tramite richiesta HTTP}{\ref{uc:vis-applicant-id-http-a}}
+		\reqrow{RFD}{Il servizio Applicant permette di visualizzare un applicant con un email specifica tramite richiesta HTTP}{\ref{uc:vis-applicant-email-http-a}}
+		\reqrow{RFD}{Il servizio Applicant permette di visualizzare un applicant con un numero di telefono specificato tramite richiesta HTTP}{\ref{uc:vis-applicant-phone-http-a}}
+		\reqrow{RFF}{Il servizio Applicant mostra un opportuno errore nel caso un applicant ricercato non sia presente}{\ref{uc:vis-errore-applicant-a}}
+
+		\reqrow{RFO}{Il servizio Applicant permette di inserire un nuovo applicant}{\ref{uc:aggiunta-applicant-a}}
+		\reqrow{RFO}{Il servizio Applicant permette di inserire un nuovo applicant tramite richiesta HTTP}{\ref{uc:richiesta-aggiunta-applicant-a}}
+		\reqrow{RFD}{Il servizio Applicant restituisce un errore in caso l'aggiunta dell'applicant fallisca}{\ref{uc:vis-errore-ins-applicant-a}}
+
+		\reqrow{RFO}{Il servizio Applicant permette di modificare  un applicant già presente}{\ref{uc:mod-applicant-a}}
+		\reqrow{RFO}{Il servizio Applicant permette di modifica un applicant tramite richiesta HTTP}{\ref{uc:richiesta-mod-applicant-a}}
+		\reqrow{RFD}{Il servizio Applicant restituisce un errore in caso la modifica di un applicant fallisca}{\ref{uc:vis-errore-mod-applicant-a}}
+
+		\reqrow{RFO}{Il servizio Applicant permette di rimuovere un applicant già presente}{\ref{uc:rimozione-applicant-a}}
+		\reqrow{RFO}{Il servizio Applicant permette di rimuovere un applicant tramite richiesta HTTP}{\ref{uc:richiesta-rimozione-applicant-a}}
+		\reqrow{RFD}{Il servizio Applicant restituisce un errore in caso la rimozione dell'applicant fallisca}{\ref{uc:vis-errore-rimozione-applicant-a}}
+
+		\bottomrule
+	\end{paddedtablex}
+	\vspace{4pt}
+	\caption{Tabella del tracciamento dei requisti funzionali (Applicant service)}
+	\label{tab:requisiti-funzionali-a}
+\end{table}%
+
+%\vspace{5cm}
+
+\begin{table}[H]%
 \caption{Tabella del tracciamento dei requisiti qualitativi}
 \label{tab:requisiti-qualitativi}
 \begin{tabularx}{\textwidth}{lXl}
@@ -611,7 +1464,7 @@ RQD-1    & Le prestazioni del simulatore hardware deve garantire la giusta esecu
 \end{tabularx}
 \end{table}%
 
-\begin{table}%
+\begin{table}[H]%
 \caption{Tabella del tracciamento dei requisiti di vincolo}
 \label{tab:requisiti-vincolo}
 \begin{tabularx}{\textwidth}{lXl}

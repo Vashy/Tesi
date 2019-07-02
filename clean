@@ -9,7 +9,7 @@ else
 fi
 
 name=tesi
-extensions=(acr alg codes glg gls glsdefs aux acn bcf glo glsdefs ist lof log lot run.xml synctex.gz toc)
+extensions=(acr alg codes glg gls glsdefs aux acn bcf glo glsdefs ist lof log lot run.xml synctex.gz toc bbl blg xdy)
 
 log_msg() {
 	if [[ $silent -eq 0 ]] ; then
@@ -19,9 +19,12 @@ log_msg() {
 
 log_msg "Eliminazione files ausiliari in root .."
 
+todelete=
 for i in "${extensions[@]}"; do 
-	rm -rf *.$i 
+	todelete = "$todelete *.$i"
 done
+
+rm -rf $todelete 
 
 log_msg ok.
 

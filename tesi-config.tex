@@ -276,7 +276,7 @@
 	\setlength{\parskip}{0pt}
 	\newcommand{\usecasetitle}{\usecasename #1-#2: #3}
 	\usecasebox{lightgray}{\large\textbf{\usecasetitle}}
-	\renewcommand{\theusecasecounter}{\usecasename #1}
+	\renewcommand{\theusecasecounter}{\usecasename #1-#2}
  	\refstepcounter{usecasecounter}             % increment counter
 	\addcontentsline{uc}{section}{\usecasetitle}
 }{\endusecasebox%
@@ -314,7 +314,7 @@
 \newenvironment{ucgeneralizzazioni}{
 	\vspace{4pt}%
 
-	\textbf{Generalizzazioni:}%
+	\textbf{Specializzazioni:}%
 	\ucenumerate%
 }{\enducenumerate}
 
@@ -326,6 +326,19 @@
 }{
 	\enducenumerate
 }
+
+%**************************************************************
+% Requisiti
+%**************************************************************
+
+\newcounter{reqcounter}
+\setcounter{reqcounter}{1}
+
+\newcommand{\reqrow}[3]{%
+	#1-\thereqcounter & #2 & #3%
+	\stepcounter{reqcounter}\\%
+}
+
 
 %**************************************************************
 % Environment per ``namespace description''
