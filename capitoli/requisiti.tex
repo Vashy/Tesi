@@ -7,12 +7,13 @@
 \label{cap:analisi-requisiti}
 %**************************************************************
 
-\intro{Breve introduzione al capitolo}\\ % TODO
+\intro{In questo capitolo vengono elencati e descritti i casi d'uso emersi durante la fase di analisi e mostrato, tramite opportune tabelle, il tracciamento dei requisiti che sono conseguiti alla scrittura dei casi d'uso e ai colloqui con il relatore aziendale.}
 
 \section{Casi d'uso}
 
-Per lo studio dei casi di utilizzo del prodotto sono stati creati dei diagrammi.
-I diagrammi dei casi d'uso (in inglese \emph{Use Case Diagram}) sono diagrammi di tipo \gls{uml} dedicati alla descrizione delle funzioni o servizi offerti da un sistema, così come sono percepiti e utilizzati dagli attori che interagiscono col sistema stesso.
+I casi d'uso (in inglese \emph{Use Case}) sono diagrammi di tipo \gls{uml} dedicati alla descrizione delle funzioni o servizi offerti da un sistema, così come sono percepiti e utilizzati dagli attori che interagiscono col sistema stesso.
+
+I casi d'uso sono per definizione puro testo, pertanto è stato concordato di non accompagnarli con dei diagrammi visuali.
 
 \subsection{Nomenclatura del codice identificativo}
 
@@ -1281,10 +1282,11 @@ Ogni codice presenta una forma del tipo:
 % ****************************
 % ****************************
 % ****************************
+\clearpage
 
 \section{Tracciamento dei requisiti}
 
-Da un'attenta analisi dei requisiti e degli use case effettuata sul progetto SyncRec è stata stilata la tabella che traccia i requisiti in rapporto agli \textit{use case}.
+Da un'attenta analisi dei requisiti e degli use case effettuata sul progetto SyncRec insieme al relatore aziendale è stata stilata la tabella che traccia i requisiti.
 
 Sono stati individuati diversi tipi di requisiti e si è quindi fatto utilizzo di un codice identificativo per distinguerli.
 
@@ -1324,7 +1326,9 @@ in cui ogni parte ha un significato preciso:
 
 Esempio: \texttt{RFD-3} indica il terzo requisito di funzionalità ed è desiderabile.
 
-Nelle tabelle \ref{tab:requisiti-funzionali-es}, \ref{tab:requisiti-qualitativi} e \ref{tab:requisiti-vincolo} sono riassunti i requisiti e il loro tracciamento con gli use case delineati in fase di analisi.
+Nelle tabelle \ref{tab:requisiti-funzionali-es}, \ref{tab:requisiti-funzionali-l}, \ref{tab:requisiti-funzionali-c} e \ref{tab:requisiti-funzionali-a} sono raccolti i requisiti funzionali delineati in fase di analisi con il loro tracciamento in rapporto ai casi d'uso.
+
+Nella tabella \ref{tab:requisiti-vincolo} sono riassunti i requisiti di vincolo.
 
 \begin{table}[H]%
 	\begin{paddedtablex}[1.4]{\textwidth}{cXc}
@@ -1348,7 +1352,7 @@ Nelle tabelle \ref{tab:requisiti-funzionali-es}, \ref{tab:requisiti-qualitativi}
 		\bottomrule
 	\end{paddedtablex}
 	\vspace{4pt}
-	\caption{Tabella del tracciamento dei requisti funzionali (Email Sender service)}
+	\caption{Tracciamento dei requisti funzionali (Email Sender service)}
 	\label{tab:requisiti-funzionali-es}
 \end{table}%
 
@@ -1378,7 +1382,7 @@ Nelle tabelle \ref{tab:requisiti-funzionali-es}, \ref{tab:requisiti-qualitativi}
 		\bottomrule
 	\end{paddedtablex}
 	\vspace{4pt}
-	\caption{Tabella del tracciamento dei requisti funzionali (Login service)}
+	\caption{Tracciamento dei requisti funzionali (Login service)}
 	\label{tab:requisiti-funzionali-l}
 \end{table}%
 
@@ -1407,7 +1411,7 @@ Nelle tabelle \ref{tab:requisiti-funzionali-es}, \ref{tab:requisiti-qualitativi}
 		\bottomrule
 	\end{paddedtablex}
 	\vspace{4pt}
-	\caption{Tabella del tracciamento dei requisti funzionali (Catalog service)}
+	\caption{Tracciamento dei requisti funzionali (Catalog service)}
 	\label{tab:requisiti-funzionali-c}
 \end{table}%
 
@@ -1442,36 +1446,33 @@ Nelle tabelle \ref{tab:requisiti-funzionali-es}, \ref{tab:requisiti-qualitativi}
 		\reqrow{RFO}{Il servizio Applicant permette di rimuovere un applicant già presente}{\ref{uc:rimozione-applicant-a}}
 		\reqrow{RFO}{Il servizio Applicant permette di rimuovere un applicant tramite richiesta HTTP}{\ref{uc:richiesta-rimozione-applicant-a}}
 		\reqrow{RFD}{Il servizio Applicant restituisce un errore in caso la rimozione dell'applicant fallisca}{\ref{uc:vis-errore-rimozione-applicant-a}}
+%
+		\bottomrule
+	\end{paddedtablex}
+	\vspace{4pt}
+	\caption{Tracciamento dei requisti funzionali (Applicant service)}
+	\label{tab:requisiti-funzionali-a}
+\end{table}%
+
+
+\setcounter{reqcounter}{0}
+\begin{table}[H]%
+	\begin{paddedtablex}[1.4]{\textwidth}{cX}
+
+		\textbf{Requisito} & \textbf{Descrizione}\\
+		\toprule
+
+		\reqtwocol{RVO}{I microservizi implementati vanno sviluppati utilizzando il framwork Spring}
+		\subreqtwocol{RVD}{I microservizi vanno sviluppati utilizzando il modulo Spring Boot}
+		\subreqtwocol{RVD}{I microservizi vanno sviluppati utilizzando il modulo Spring Data REST}\midrule
+		\reqtwocol{RVO}{La gestione delle risorse nei microservizi va effettuata seguendo il paradigma RESTful}\midrule
+		\reqtwocol{RVO}{I microservizi vanno sviluppati usando un tool di dependency management a scelta tra Gradle e Maven}\midrule
+		\reqtwocol{RVF}{I microservizi possiedono un ambiente di sviluppo e produzione configurabili}		
 
 		\bottomrule
 	\end{paddedtablex}
 	\vspace{4pt}
-	\caption{Tabella del tracciamento dei requisti funzionali (Applicant service)}
-	\label{tab:requisiti-funzionali-a}
+	\caption{Tracciamento dei requisti di vincolo}
+	\label{tab:requisiti-vincolo}
 \end{table}%
 
-%\vspace{5cm}
-
-\begin{table}[H]%
-\caption{Tabella del tracciamento dei requisiti qualitativi}
-\label{tab:requisiti-qualitativi}
-\begin{tabularx}{\textwidth}{lXl}
-\hline\hline
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
-\hline
-RQD-1    & Le prestazioni del simulatore hardware deve garantire la giusta esecuzione dei test e non la generazione di falsi negativi & - \\
-\hline
-\end{tabularx}
-\end{table}%
-
-\begin{table}[H]%
-\caption{Tabella del tracciamento dei requisiti di vincolo}
-\label{tab:requisiti-vincolo}
-\begin{tabularx}{\textwidth}{lXl}
-\hline\hline
-\textbf{Requisito} & \textbf{Descrizione} & \textbf{Use Case}\\
-\hline
-RVO-1    & La libreria per l'esecuzione dei test automatici deve essere riutilizzabile & - \\
-\hline
-\end{tabularx}
-\end{table}%

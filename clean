@@ -21,7 +21,7 @@ log_msg "Eliminazione files ausiliari in root .."
 
 todelete=
 for i in "${extensions[@]}"; do 
-	todelete = "$todelete *.$i"
+	todelete="$todelete *.$i"
 done
 
 rm -rf $todelete 

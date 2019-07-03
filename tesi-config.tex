@@ -332,11 +332,22 @@
 %**************************************************************
 
 \newcounter{reqcounter}
-\setcounter{reqcounter}{1}
+%\setcounter{reqcounter}{0}
+\newcounter{subreqcounter}[reqcounter]
 
 \newcommand{\reqrow}[3]{%
-	#1-\thereqcounter & #2 & #3%
-	\stepcounter{reqcounter}\\%
+	\stepcounter{reqcounter}%
+	#1-\thereqcounter & #2 & #3\\%
+}
+
+\newcommand{\reqtwocol}[2]{%
+	\stepcounter{reqcounter}%
+	#1-\thereqcounter & #2\\%
+}
+
+\newcommand{\subreqtwocol}[2]{%
+	\stepcounter{subreqcounter}%
+	#1-\thereqcounter.\thesubreqcounter & #2\\%
 }
 
 

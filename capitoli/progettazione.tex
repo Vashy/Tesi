@@ -7,19 +7,57 @@
 \label{cap:progettazione-codifica}
 %**************************************************************
 
-\intro{Breve introduzione al capitolo}\\
+\intro{Breve introduzione al capitolo}\\ %TODO
 
 %**************************************************************
 \section{Tecnologie e strumenti}
 \label{sec:tecnologie-strumenti}
 
-Di seguito viene data una panoramica delle tecnologie e strumenti utilizzati.
+Di seguito viene fornita una panoramica delle tecnologie e strumenti utilizzati durante il periodo di stage.
 
-\subsection*{Tecnologia 1}
-Descrizione Tecnologia 1.
+%\subsection*{Spring}
+%Descrizione Tecnologia 1.
 
-\subsection*{Tecnologia 2}
-Descrizione Tecnologia 2
+\subsection{Ambiente di sviluppo}
+Il percorso di stage è stato effettuato in due sistemi operativi differenti:
+\begin{itemize}
+	\item nella prima metà, ho utilizzato \textit{Linux Mint 19};
+	\item nella seconda metà, ho fatto un passaggio a \textit{Ubuntu KDE 19}
+\end{itemize}
+
+Come \acrshort{ide}, ho variato provando un paio di alternative:
+\begin{itemize}
+	\item \textit{Spring Tool Suite 4}, un \textit{fork} di \textit{Eclipse} mantenuto da Pivotal, il team a cui appartiene \gls{spring};
+	\item \textit{IntelliJ IDEA Ultimate Edition}, fornito gratuitamente grazie allo status di studente universitario.
+\end{itemize} 
+
+Entrambi gli \acrshort{ide} offrono un'ottima esperienza d'uso per linguaggio \gls{java}, con \gls{spring}.
+Come personale preferenza, ho gradito molto di più \textit{IntelliJ IDEA}, strumento che ritengo superiore sia sotto il punto dell'interfaccia, molto più accattivante, che delle funzionalità, che potenzialmente incremento la produttività. Ciò è dovuto ai tool e vantaggi offerti da IntelliJ rispetto al concorrente, che ho trovato molto più carente sotto questo punto di vista.
+
+\subsection{Strumenti di versionamento}
+
+Per il versionamento del codice del progetto SyncRec, mi è stato fornito dal tutor aziendale \fabio\ accesso a una \gls{repository} privata, versionata tramite il \gls{vcs} \gls{git}.
+
+\subsection{Linguaggi e framework}
+
+\subsubsection{Java} Il principale linguaggio utilizzato per lo stage è stato \gls{java}. Questa scelta è stata dettata dall'azienda, poiché è il linguaggio che più utilizza per quanto riguarda il \textit{back-end}.
+
+Viene ampiamente utilizzato dalle aziende italiane da molti anni, ed è per questo che tutt'ora è uno tra i linguaggi più richiesti, almeno nel panorama italiano.
+
+Per le attività di stage ho cercato di utilizzare quanto più possibile le novità delle ultime versioni del \gls{jdk}, in particolare Java 8, quali ad esempio \texttt{Optional<T>}, le \textit{lamdba expressions}, \texttt{var}, gli \texttt{stream}, etc\dots
+
+\subsubsection{Spring}
+
+\gls{spring} è un \textit{framework} basato su linguaggio \gls{java} che permette lo sviluppo di applicazione \textit{enterprise} praticamente per qualsiasi ambito.
+È un \textit{framework} modulare, questo significa che non viene incluso \gls{spring} nella sua interezza: vanno inclusi solo i moduli che servono per le attività.
+
+\paragraph*{Spring Boot} Modulo di \gls{spring} che permette l'avvio di applicazioni in modo molto più automatico rispetto ad applicazioni non \textit{Boot}. Parte con molte configurazioni di default che altrimenti necessiterebbero di configurazioni manuali.
+
+\paragraph*{Spring Data MongoDB} Modulo che permette una gestione ad alto livello del \acrshort{dbms} \gls{mongodb}.
+Per effettuare operazioni sul database è sufficiente dichiarare un'interfaccia che estenda \texttt{MongoRepository}, senza il bisogno di conoscere il relativo \gls{dql}.
+
+\paragraph*{Spring Data REST} Permette di sviluppare servizi RESTful semplicemente dichiarando la classe di modello.
+Gli \textit{endpoint} di visualizzazione, aggiunta, modifica e rimozione sono definiti automaticamente dal \textit{framework}.
 
 %**************************************************************
 \section{Ciclo di vita del software}
