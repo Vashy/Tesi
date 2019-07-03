@@ -64,8 +64,108 @@ Gli \textit{endpoint} di visualizzazione, aggiunta, modifica e rimozione sono de
 \label{sec:ciclo-vita-software}
 
 %**************************************************************
-\section{Progettazione}
-\label{sec:progettazione}
+\section{Progettazione}\label{sec:progettazione}
+
+Sono spiegati nella presente sezione i dettagli fondamentali riguardanti l'architettura dei microservizi e gli \textit{endpoint} usati per il progetto SyncRec.
+
+\subsection{Architettura}
+Ogni \gls{microservizio} conterrà i \textit{package} che seguono:
+
+\begin{itemize}
+	\item \texttt{controller}: contiene tutti i \textit{controller} personalizzati;
+	\item \texttt{model}: contiene le classi modello che saranno usate per interagire con il \textit{database};
+	\item \texttt{repository}: contiene le dichiarazioni delle \textit{repository} di \gls{spring};
+	\item \texttt{service}: contiene i \textit{service} di \gls{spring};
+	\item \texttt{config}: contiene le configurazioni del servizio;
+	\item \texttt{validation}: contiene le classi usate per validare i dati prima di essere inseriti tramite le \textit{repository} nel \textit{database};
+	\item \texttt{converter}: package contenente i convertitori definiti dallo sviluppatore.
+\end{itemize}
+
+Inoltre, allo stesso livello di questi \textit{package} sarà presente la classe \texttt{Application.java}, contenente il \textit{main}
+che avvia la \texttt{SpringApplication}.
+
+Ogni servizio potrà definire \textit{package} personalizzati per gestire logiche e modelli non riconducibili a \gls{spring}.
+
+\subsection{Endpoint}
+
+\subsubsection{EmailService}
+Con ``proprietà'' ci si riferirà ai campi usati per l'invio email, ossia ``sender'', ``password'' o ``subject''.
+
+\begin{table}[H]
+	\begin{paddedtablex}[1.7]{\textwidth}{cX}
+		\textbf{Richiesta} & \textbf{Azione} \\\toprule
+		\texttt{GET /props} & Visualizzazione delle proprietà salvate nel servizio\\
+		\texttt{GET /props/\{id\}} & Visualizzazione della proprietà corrispondente a \texttt{id}\\
+		\texttt{POST /props} & Aggiunta di una nuova proprietà al servizio\\
+		\texttt{PUT /props/\{id\}} & Sostituzione della proprietà corrispondente a \texttt{id}\\
+		\texttt{PATCH /props/\{id\}} & Modifica della proprietà corrispondente a \texttt{id}\\
+		\texttt{DELETE /props/\{id\}} & Rimozione della proprietà corrispondente a \texttt{id}\\
+		\texttt{POST /sendEmail} & Invio dell'email\\
+		\bottomrule
+	\end{paddedtablex}
+	\caption{Endpoint del servizio Email Sender}
+	\label{tab:endpoint-es}
+\end{table}
+
+
+\subsubsection{Login}
+
+\begin{table}[H]
+	\begin{paddedtablex}[1.7]{\textwidth}{cX}
+		\textbf{Richiesta} & \textbf{Azione} \\\toprule
+		\texttt{GET /users} & Visualizzazione degli utenti salvati nel servizio\\
+		\texttt{GET /users/\{id\}} & Visualizzazione dell'utente corrispondente a \texttt{id}\\
+		\texttt{POST /users} & Aggiunta di un nuovo utente al servizio\\
+		\texttt{PUT /users/\{id\}} & Sostituzione dell'utente corrispondente a \texttt{id}\\
+		\texttt{PATCH /users/\{id\}} & Modifica dell'utente corrispondente a \texttt{id}\\
+		\texttt{DELETE /users/\{id\}} & Rimozione dell'utente corrispondente a \texttt{id}\\
+		\texttt{POST /login} & Utility di login del servizio\\
+		\bottomrule
+	\end{paddedtablex}
+	\caption{Endpoint del servizio Login}
+	\label{tab:endpoint-l}
+\end{table}
+
+
+\subsubsection{Catalog}
+
+\begin{table}[H]
+	\begin{paddedtablex}[1.7]{\textwidth}{cX}
+		\textbf{Richiesta} & \textbf{Azione} \\\toprule
+		\texttt{GET /skills} & Visualizzazione delle \textit{skill} salvate nel servizio\\
+		\texttt{GET /skills/\{id\}} & Visualizzazione della \textit{skill} corrispondente a \texttt{id}\\
+		\texttt{POST /skills} & Aggiunta di una nuova \textit{skill} al servizio\\
+		\texttt{PUT /skills/\{id\}} & Sostituzione della \textit{skill} corrispondente a \texttt{id}\\
+		\texttt{PATCH /skills/\{id\}} & Modifica della \textit{skill} corrispondente a \texttt{id}\\
+		\texttt{DELETE /skills/\{id\}} & Rimozione della \textit{skill} corrispondente a \texttt{id}\\
+		\bottomrule
+	\end{paddedtablex}
+	\caption{Endpoint del servizio Login}
+	\label{tab:endpoint-c}
+\end{table}
+
+
+\subsubsection{Applicant}
+
+\begin{table}[H]
+	\begin{paddedtablex}[1.7]{\textwidth}{XX}
+		\textbf{Richiesta} & \textbf{Azione} \\\toprule
+		\texttt{GET /applicants} & Visualizzazione degli \textit{applicant} salvati nel servizio\\
+		\texttt{GET /applicants/\{id\}} & Visualizzazione dell'\textit{applicant} corrispondente a \texttt{id}\\
+		\texttt{GET /applicants/search/byEmail} & Visualizzazione degli \textit{applicant} che hanno l'email specificata\\
+		\texttt{GET /applicants/search/bySeniority} & Visualizzazione degli \textit{applicant} che hanno la \textit{seniority} specificata\\
+		\texttt{GET /applicants/search/byPhone} & Visualizzazione degli \textit{applicant} che hanno il numero di telefono specificato\\
+		\texttt{GET /applicants/search/considerable} & Visualizzazione degli \textit{applicant} marcati come considerabili\\
+		\texttt{POST /applicants} & Aggiunta di un nuovo \textit{applicant} al servizio\\
+		\texttt{PUT /applicants/\{id\}} & Sostituzione dell'\textit{applicant} corrispondente a \texttt{id}\\
+		\texttt{PATCH /applicants/\{id\}} & Modifica dell'\textit{applicant} corrispondente a \texttt{id}\\
+		\texttt{DELETE /applicants/\{id\}} & Rimozione dell'\textit{applicant} corrispondente a \texttt{id}\\
+		\bottomrule
+	\end{paddedtablex}
+	\caption{Endpoint del servizio Login}
+	\label{tab:endpoint-a}
+\end{table}
+
 
 \subsubsection{Namespace 1} %**************************
 Descrizione namespace 1.
