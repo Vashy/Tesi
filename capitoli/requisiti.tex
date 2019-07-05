@@ -43,11 +43,11 @@ Ogni codice presenta una forma del tipo:
 
 	\usecasepre{una nuova proprietà va aggiunta al servizio Email Sender}
 
-	\usecasedesc{lo sviluppatore vuole aggiungere una nuova proprietà nel servizio}
+	\usecasedesc{lo sviluppatore vuole aggiungere una nuova proprietà al servizio}
 
 	\begin{ucscenarioprincipale}
-		\item L'utente inserisce la chiave da inserire;
-		\item L'utente inserisce il valore della proprietà.
+		\item L'utente inserisce la chiave da aggiungere;
+		\item L'utente inserisce il valore della nuova proprietà.
 	\end{ucscenarioprincipale}
 
 	\usecasepost{una nuova proprietà è stata aggiunta con successo al servizio}
@@ -86,7 +86,7 @@ Ogni codice presenta una forma del tipo:
 
 	\usecasepre{la proprietà ``sender'' va aggiunta al servizio Email Sender}
 
-	\usecasedesc{lo sviluppatore vuole aggiungere la proprietà sender nel servizio Email Sender}
+	\usecasedesc{lo sviluppatore vuole aggiungere la proprietà sender al servizio Email Sender}
 
 	\begin{ucscenarioprincipale}
 		\item Lo sviluppatore seleziona la chiave ``sender'';
@@ -137,7 +137,7 @@ Ogni codice presenta una forma del tipo:
 
 	\usecasepre{una proprietà necessita di essere modificata}
 
-	\usecasedesc{lo sviluppatore vuole modificare il valore di una nuova proprietà nel servizio}
+	\usecasedesc{lo sviluppatore vuole modificare il valore di una proprietà del servizio}
 
 	\begin{ucscenarioprincipale}
 		\item Lo sviluppatore inserisce la chiave da modificare;
@@ -269,7 +269,7 @@ Ogni codice presenta una forma del tipo:
 \begin{usecase}{1}{L}{Aggiunta nuovo utente}
 	\usecaseactors{\textit{front-end}}
 
-	\usecasepre{Un nuovo utente dev'essere inserito nel servizio di Login}
+	\usecasepre{un nuovo utente dev'essere inserito nel servizio di Login}
 
 	\usecasedesc{il \textit{front-end} deve inserire un nuovo utente}
 
@@ -311,6 +311,8 @@ Ogni codice presenta una forma del tipo:
 		\item office.
 	\end{itemize}
 
+	Il valore del campo ``password'' sarà criptato con un opportuno algoritmo.
+
 	\begin{ucscenarioprincipale}
 		\item Il \textit{front-end} inserisce i dati relativi al nuovo utente;
 		\item Il \textit{front-end} chiama la funzionalità di inserimento nuovo utente del servizio di Login.
@@ -344,7 +346,7 @@ Ogni codice presenta una forma del tipo:
 \begin{usecase}{4}{L}{Modifica utente}
 	\usecaseactors{\textit{front-end}}
 
-	\usecasepre{Un utente già presente dev'essere modificato}
+	\usecasepre{un utente già presente dev'essere modificato}
 
 	\usecasedesc{il \textit{front-end} deve modificare un utente}
 
@@ -369,7 +371,7 @@ Ogni codice presenta una forma del tipo:
 \begin{usecase}{5}{L}{Modifica utente con richiesta HTTP}
 	\usecaseactors{\textit{front-end}}
 
-	\usecasepre{Un utente già presente nel servizio di Login dev'essere modificato}
+	\usecasepre{un utente già presente nel servizio di Login dev'essere modificato}
 
 	\textbf{\\Descrizione:} il \textit{front-end} deve modificare un utente. Per fare ciò,
 	chiama le opportune \acrshort{api} esposte dal servizio di Login. La richiesta potrà contenere una qualsiasi combinazione dei campi:
@@ -383,9 +385,11 @@ Ogni codice presenta una forma del tipo:
 		\item office.
 	\end{itemize}
 
+	Il valore del campo ``password'' sarà criptato con un opportuno algoritmo.
+
 	\begin{ucscenarioprincipale}
 		\item Il \textit{front-end} inserisce i dati relativi all'utente che vuole modificare;
-		\item Il \textit{front-end} chiama le \acrshort{api} di inserimento nuovo utente del servizio di Login.
+		\item Il \textit{front-end} chiama le \acrshort{api} di modifica utente del servizio di Login.
 	\end{ucscenarioprincipale}
 
 	\usecasepost{un utente è stato modificato con successo}
@@ -417,7 +421,7 @@ Ogni codice presenta una forma del tipo:
 \begin{usecase}{7}{L}{Rimozione utente}
 	\usecaseactors{\textit{front-end}}
 
-	\usecasepre{Un utente già presente dev'essere rimosso dal servizio}
+	\usecasepre{un utente già presente dev'essere rimosso dal servizio}
 
 	\usecasedesc{il \textit{front-end} deve rimuovere un utente}
 
@@ -442,7 +446,7 @@ Ogni codice presenta una forma del tipo:
 \begin{usecase}{8}{L}{Rimozione utente con richiesta HTTP}
 	\usecaseactors{\textit{front-end}}
 
-	\usecasepre{Un utente già presente nel servizio di Login dev'essere rimosso dal servizio}
+	\usecasepre{un utente già presente nel servizio di Login dev'essere rimosso dal servizio}
 
 	\textbf{\\Descrizione:} il \textit{front-end} deve rimuovere un utente. Per fare ciò,
 	chiama le opportune \acrshort{api} esposte dal servizio di Login. La richiesta conterrà l'ID dell'utente da eliminare.
@@ -619,7 +623,7 @@ Ogni codice presenta una forma del tipo:
 \end{usecase}
 
 \begin{usecase}{3}{C}{Inserimento nuova skill}
-	\usecaseactors{Sviluppatore SyncRec}
+	\usecaseactors{sviluppatore SyncRec}
 
 	\usecasepre{lo sviluppatore deve inserire una nuova \textit{skill} nel servizio Catalog}
 
@@ -644,7 +648,7 @@ Ogni codice presenta una forma del tipo:
 \end{usecase}
 
 \begin{usecase}{4}{C}{Inserimento nuova skill tramite richiesta HTTP}
-	\usecaseactors{Sviluppatore SyncRec}
+	\usecaseactors{sviluppatore SyncRec}
 
 	\usecasepre{lo sviluppatore deve inserire una nuova \textit{skill} nel servizio Catalog}
 
@@ -669,7 +673,7 @@ Ogni codice presenta una forma del tipo:
 \end{usecase}
 
 \begin{usecase}{5}{C}{Visualizzazione errore inserimento skill fallito}
-	\usecaseactors{Sviluppatore SyncRec}
+	\usecaseactors{sviluppatore SyncRec}
 
 	\usecasepre{viene effettuato un tentativo di inserimento \textit{skill}}
 
@@ -686,7 +690,7 @@ Ogni codice presenta una forma del tipo:
 \end{usecase}
 
 \begin{usecase}{6}{C}{Modifica skill}
-	\usecaseactors{Sviluppatore SyncRec}
+	\usecaseactors{sviluppatore SyncRec}
 
 	\usecasepre{lo sviluppatore necessita di modificare una \textit{skill} nel servizio Catalog}
 
@@ -711,7 +715,7 @@ Ogni codice presenta una forma del tipo:
 \end{usecase}
 
 \begin{usecase}{7}{C}{Modifica skill tramite richiesta HTTP}
-	\usecaseactors{Sviluppatore SyncRec}
+	\usecaseactors{sviluppatore SyncRec}
 
 	\usecasepre{lo sviluppatore deve modificare una \textit{skill} presente nel servizio Catalog}
 
@@ -736,7 +740,7 @@ Ogni codice presenta una forma del tipo:
 \end{usecase}
 
 \begin{usecase}{8}{C}{Visualizzazione errore modifica skill fallita}
-	\usecaseactors{Sviluppatore SyncRec}
+	\usecaseactors{sviluppatore SyncRec}
 
 	\usecasepre{viene effettuato un tentativo di modifica di una \textit{skill} del servizio}
 
@@ -753,7 +757,7 @@ Ogni codice presenta una forma del tipo:
 \end{usecase}
 
 \begin{usecase}{9}{C}{Rimozione skill}
-	\usecaseactors{Sviluppatore SyncRec}
+	\usecaseactors{sviluppatore SyncRec}
 
 	\usecasepre{lo sviluppatore necessita di eliminare una \textit{skill} dal servizio Catalog}
 
@@ -778,7 +782,7 @@ Ogni codice presenta una forma del tipo:
 \end{usecase}
 
 \begin{usecase}{10}{C}{Rimozione skill tramite richiesta HTTP}
-	\usecaseactors{Sviluppatore SyncRec}
+	\usecaseactors{sviluppatore SyncRec}
 
 	\usecasepre{lo sviluppatore deve rimuovere una \textit{skill} presente nel servizio Catalog}
 
@@ -799,7 +803,7 @@ Ogni codice presenta una forma del tipo:
 \end{usecase}
 
 \begin{usecase}{11}{C}{Visualizzazione errore rimozione skill fallita}
-	\usecaseactors{Sviluppatore SyncRec}
+	\usecaseactors{sviluppatore SyncRec}
 
 	\usecasepre{viene effettuato un tentativo di modifica di una \textit{skill} del servizio}
 
@@ -866,7 +870,7 @@ Ogni codice presenta una forma del tipo:
 
 	\usecasepre{il \textit{front-end} riconosciuto deve visualizzare la lista degli \textit{applicant} considerabili}
 
-	\usecasedesc{il \textit{front-end} visualizza la lista degli \textit{applicant} marcati come considerabili. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Applicant. Un \textit{applicant} è considerato considerabile se il suo campo \texttt{considerable} è \texttt{true}}
+	\usecasedesc{il \textit{front-end} visualizza la lista degli \textit{applicant} marcati come considerabili. Per fare ciò, chiama le opportune \acrshort{http} \acrshort{api} del servizio Applicant. Un \textit{applicant} è considerabile se il suo campo \texttt{considerable} è \texttt{true}}
 
 	\begin{ucscenarioprincipale}
 		\item Il \textit{front-end} chiama le \acrshort{api} del servizio Applicant per la visualizzazione degli \textit{applicant} considerabili.
@@ -1098,7 +1102,7 @@ Ogni codice presenta una forma del tipo:
 		\item \texttt{ratingId};
 		\item \texttt{scope};
 		\item \texttt{seniority};
-		\item \texttt{genre};
+		\item \texttt{gender};
 		\item \texttt{skills}.
 	\end{ucitemize}
 
@@ -1180,7 +1184,7 @@ Ogni codice presenta una forma del tipo:
 		\item \texttt{ratingId};
 		\item \texttt{scope};
 		\item \texttt{seniority};
-		\item \texttt{genre};
+		\item \texttt{gender};
 		\item \texttt{skills}.
 	\end{ucitemize}
 
@@ -1242,7 +1246,7 @@ Ogni codice presenta una forma del tipo:
 \begin{usecase}{13}{A}{Rimozione applicant con richiesta HTTP}
 	\usecaseactors{\textit{front-end}}
 
-	\usecasepre{un \textit{applicant} già presente dev'essere modificato}
+	\usecasepre{un \textit{applicant} già presente dev'essere rimosso}
 
 	\textbf{\\Descrizione:} il \textit{front-end} rimuove un \textit{applicant} presente nel servizio. Per fare ciò,
 	chiama le opportune \acrshort{api} esposte dal servizio Applicant. La richiesta dovrà contenere l'ID dell'\textit{applicant} da rimuovere.
@@ -1342,7 +1346,7 @@ Nella tabella \ref{tab:requisiti-vincolo} sono riassunti i requisiti di vincolo.
 		\reqrow{RFO}{Il servizio Email Sender permette di aggiungere la proprietà ``password''}{\ref{uc:aggiunta-password-es}}
 		\reqrow{RFO}{Il servizio Email Sender permette di aggiungere la proprietà ``subject''}{\ref{uc:aggiunta-subject-es}}
 		\reqrow{RFO}{Il servizio Email Sender permette di modificare una proprietà già presente}{\ref{uc:modifica-proprieta-es}}
-		\reqrow{RFD}{Il servizio Email Sender deve restituire un messaggio d'errore in caso la modifica di proprietà fallisca}{\ref{uc:vis-errore-mod-proprieta-es}}
+		\reqrow{RFD}{Il servizio Email Sender deve restituire un messaggio d'errore in caso la modifica di una proprietà fallisca}{\ref{uc:vis-errore-mod-proprieta-es}}
 		\reqrow{RFO}{Il servizio Email Sender permette di modificare la proprietà ``sender''}{\ref{uc:modifica-sender-es}}
 		\reqrow{RFO}{Il servizio Email Sender permette di modificare la proprietà ``password''}{\ref{uc:modifica-password-es}}
 		\reqrow{RFO}{Il servizio Email Sender permette di modificare la proprietà ``subject''}{\ref{uc:modifica-subject-es}}
@@ -1376,7 +1380,7 @@ Nella tabella \ref{tab:requisiti-vincolo} sono riassunti i requisiti di vincolo.
 
 		\reqrow{RFO}{Il servizio Login permette di effettuare l'operazione di login}{\ref{uc:login-l}}
 		\reqrow{RFO}{Il servizio Login restituisce un errore specifico in caso l'operazione di login fallisca}{\ref{uc:vis-errore-login-l}}
-		\reqrow{RFO}{Il servizio Login restituisce un errore specifico in caso l'operazione di login fallisca per una richiesta malformata}{\ref{uc:vis-errore-badrequest-l}}
+		\reqrow{RFD}{Il servizio Login restituisce un errore specifico in caso l'operazione di login fallisca per una richiesta malformata}{\ref{uc:vis-errore-badrequest-l}}
 		\reqrow{RFO}{Il servizio Login restituisce un errore specifico in caso l'operazione di login fallisca per un utenza non riconosciuta}{\ref{uc:vis-errore-auth-l}}
 
 		\bottomrule
@@ -1425,8 +1429,8 @@ Nella tabella \ref{tab:requisiti-vincolo} sono riassunti i requisiti di vincolo.
 		\reqrow{RFO}{Il servizio Applicant permette di visualizzare la lista degli applicant}{\ref{uc:vis-lista-applicant-a}}
 		\reqrow{RFO}{Il servizio Applicant permette di visualizzare la lista degli applicant tramite richiesta HTTP}{\ref{uc:vis-lista-applicant-http-a}}
 		\reqrow{RFD}{Il servizio Applicant permette di visualizzare la lista degli applicant marcati come considerabili tramite richiesta HTTP}{\ref{uc:vis-lista-applicant-considerable-http-a}}
-		\reqrow{RFD}{Il servizio Applicant permette di visualizzare la lista degli applicant con una specifica ``seniority'' tramite richiesta HTTP}{\ref{uc:vis-lista-applicant-seniority-http-a}}
-		\reqrow{RFD}{Il servizio Applicant permette di visualizzare la lista degli applicant con uno specifico ``scope'' tramite richiesta HTTP}{\ref{uc:vis-lista-applicant-scope-http-a}}
+		\reqrow{RFF}{Il servizio Applicant permette di visualizzare la lista degli applicant con una specifica ``seniority'' tramite richiesta HTTP}{\ref{uc:vis-lista-applicant-seniority-http-a}}
+		\reqrow{RFF}{Il servizio Applicant permette di visualizzare la lista degli applicant con uno specifico ``scope'' tramite richiesta HTTP}{\ref{uc:vis-lista-applicant-scope-http-a}}
 
 		\reqrow{RFO}{Il servizio Applicant permette di visualizzare un applicant specifico}{\ref{uc:vis-applicant-a}}
 		\reqrow{RFO}{Il servizio Applicant permette di visualizzare un applicant specifico tramite richiesta HTTP}{\ref{uc:vis-applicant-http-a}}
@@ -1464,9 +1468,9 @@ Nella tabella \ref{tab:requisiti-vincolo} sono riassunti i requisiti di vincolo.
 
 		\reqtwocol{RVO}{I microservizi implementati vanno sviluppati utilizzando il framwork Spring}
 		\subreqtwocol{RVD}{I microservizi vanno sviluppati utilizzando il modulo Spring Boot}
-		\subreqtwocol{RVD}{I microservizi vanno sviluppati utilizzando il modulo Spring Data REST}\midrule
-		\reqtwocol{RVO}{La gestione delle risorse nei microservizi va effettuata seguendo il paradigma RESTful}\midrule
-		\reqtwocol{RVO}{I microservizi vanno sviluppati usando un tool di dependency management a scelta tra Gradle e Maven}\midrule
+		\subreqtwocol{RVD}{I microservizi vanno sviluppati utilizzando il modulo Spring Data REST}
+		\reqtwocol{RVO}{La gestione delle risorse nei microservizi va effettuata seguendo il paradigma RESTful}
+		\reqtwocol{RVO}{I microservizi vanno sviluppati usando un tool di dependency management a scelta tra Gradle e Maven}
 		\reqtwocol{RVF}{I microservizi possiedono un ambiente di sviluppo e produzione configurabili}		
 
 		\bottomrule

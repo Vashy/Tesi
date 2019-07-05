@@ -32,7 +32,7 @@ Come \acrshort{ide}, ho variato provando un paio di alternative:
 \end{itemize} 
 
 Entrambi gli \acrshort{ide} offrono un'ottima esperienza d'uso per linguaggio \gls{java}, con \gls{spring}.
-Come personale preferenza, ho gradito molto di più \textit{IntelliJ IDEA}, strumento che ritengo superiore sia sotto il punto dell'interfaccia, molto più accattivante, che delle funzionalità, che potenzialmente incremento la produttività. Ciò è dovuto ai tool e vantaggi offerti da IntelliJ rispetto al concorrente, che ho trovato molto più carente sotto questo punto di vista.
+Come personale preferenza, ho gradito molto di più \textit{IntelliJ IDEA}, strumento che ritengo superiore sia sotto il punto dell'interfaccia, molto più accattivante, che delle funzionalità, visto il potenziale incremento della produttività. Ciò è dovuto ai tool e vantaggi offerti da IntelliJ rispetto al concorrente, che ho trovato molto più carente sotto questo punto di vista.
 
 \subsection{Strumenti di versionamento}
 
@@ -51,7 +51,7 @@ Per le attività di stage ho cercato di utilizzare quanto più possibile le novi
 \gls{spring} è un \textit{framework} basato su linguaggio \gls{java} che permette lo sviluppo di applicazioni \textit{enterprise} praticamente per qualsiasi ambito.
 È un \textit{framework} modulare, questo significa che non viene incluso \gls{spring} nella sua interezza: vanno inclusi solo i moduli di cui si necessita.
 
-\paragraph*{Spring Boot} Modulo di \gls{spring} che permette l'avvio di applicazioni in modo molto più automatico rispetto ad applicazioni non \textit{Boot}. Parte con molte configurazioni di default che altrimenti necessiterebbero di configurazioni manuali.
+\paragraph*{Spring Boot} Modulo di \gls{spring} che permette l'avvio di applicazioni in modo molto più automatico rispetto ad applicazioni non \textit{Boot}. Parte con molte configurazioni di default che altrimenti necessiterebbero di configurazione manuali.
 
 \paragraph*{Spring Data MongoDB} Modulo che permette una gestione ad alto livello del \acrshort{dbms} \gls{mongodb}.
 Per effettuare operazioni sul database è sufficiente dichiarare un'interfaccia che estenda \texttt{MongoRepository}, senza il bisogno di conoscere il relativo \gls{dql}.
@@ -202,13 +202,7 @@ Questo era precedentemente effettuato tramite un foglio di calcolo inviato preve
 L'ultima maschera da implementare è il \gls{microservizio} di gestione dei candidati (\textit{applicants}).
 
 Sarà possibile aggiungere, rimuovere o modificare i candidati tramite
-le opportune chiamate \acrshort{rest} all'\textit{endpoint} \texttt{syncrec/applicants}:
-\begin{itemize}
-	\item \textbf{GET} per la visualizzazione;
-	\item \textbf{POST} per l'aggiunta;
-	\item \textbf{DELETE} per la rimozione;
-	\item \textbf{PUT} e \textbf{PATCH} per la modifica.
-\end{itemize}
+le opportune chiamate \acrshort{rest} all'\textit{endpoint} \texttt{syncrec/applicants}, riportate nella tabella che segue.
 
 % TODO Scommentare se c'è tempo per aggiungere i relativi casi d'uso
 %Ogni candidato avrà associati dei documenti, i quali non è ragionevole passare tramite \textit{payload} \acrshort{json} in un servizio \acrshort{rest}, con il tipico \textit{header} di \acrshort{rest}: \texttt{Content-Type: application/json}.
