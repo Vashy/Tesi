@@ -9,6 +9,10 @@ pulizia() {
 }
 
 # Flag options
+<<<<<<< HEAD
+=======
+# clean=0
+>>>>>>> 6ff2de9e6ac59f42c6a886ccf21b5d73899a72ba
 while [[ $# -gt 0 ]]; do
     case "$1" in
         -c|--clean) 
