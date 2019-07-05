@@ -6,7 +6,7 @@ echo -----------
 echo - Pulizia -
 echo -----------
 
-if [[ $# -gt 1 ]] && [[ $1 == '-c' ]]; then
+if [[ $# -ge 1 ]] && [[ $1 == '-c' ]]; then
     ./clean -s
 fi
 
@@ -37,15 +37,8 @@ echo -----------
 echo - Pulizia -
 echo -----------
 
-if [[ $# -gt 1 ]] && [[ $1 == '-c' ]]; then
+if [[ $# -ge 1 ]] && [[ $1 == '-c' ]]; then
     ./clean -s
 fi
-
-# rm *.acn *.aux *.bbl *.bcf *.glo
-# rm *.ist *.lof *.lot *.run.xml *.toc
-
-# Per mantenere i log commentare la linea seguente
-# rm *.blg  *.log
-
 
 echo ---------------------------- END -----------------------------

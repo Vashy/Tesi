@@ -7,7 +7,7 @@
 \label{cap:progettazione-codifica}
 %**************************************************************
 
-\intro{Breve introduzione al capitolo}\\ %TODO
+\intro{Nel presente capitolo vengono presentate gli strumenti utilizzati e la progettazione di base dei microservizi e degli endpoint.}
 
 %**************************************************************
 \section{Tecnologie e strumenti}
@@ -48,8 +48,8 @@ Per le attività di stage ho cercato di utilizzare quanto più possibile le novi
 
 \subsubsection{Spring}
 
-\gls{spring} è un \textit{framework} basato su linguaggio \gls{java} che permette lo sviluppo di applicazione \textit{enterprise} praticamente per qualsiasi ambito.
-È un \textit{framework} modulare, questo significa che non viene incluso \gls{spring} nella sua interezza: vanno inclusi solo i moduli che servono per le attività.
+\gls{spring} è un \textit{framework} basato su linguaggio \gls{java} che permette lo sviluppo di applicazioni \textit{enterprise} praticamente per qualsiasi ambito.
+È un \textit{framework} modulare, questo significa che non viene incluso \gls{spring} nella sua interezza: vanno inclusi solo i moduli di cui si necessita.
 
 \paragraph*{Spring Boot} Modulo di \gls{spring} che permette l'avvio di applicazioni in modo molto più automatico rispetto ad applicazioni non \textit{Boot}. Parte con molte configurazioni di default che altrimenti necessiterebbero di configurazioni manuali.
 
@@ -86,9 +86,36 @@ che avvia la \texttt{SpringApplication}.
 
 Ogni servizio potrà definire \textit{package} personalizzati per gestire logiche e modelli non riconducibili a \gls{spring}.
 
-\subsection{Endpoint}
+\subsection{Progettazione dei microservizi}\label{prog-microservizi}
 
-\subsubsection{EmailService}
+\subsubsection{Microservizio: Email Service}
+
+Il \gls{microservizio} email ha il semplice compito di inviare una email specifica.
+Testo, oggetto e destinatario sono dati definiti nel database \gls{mongodb}
+\textit{syncrec-email}, mentre le proprietà del server \acrshort{smtp} sono definite in un file di configurazione.
+
+L'invio della email avviene in modo sincrono quando viene effettuata una richiesta POST tramite l'endpoint \texttt{/sendEmail}.
+I campi da immettere nel corpo della richiesta sono:
+\begin{itemize}
+	\item \texttt{receiver}: il destinatario della mail.
+\end{itemize}
+
+La seguente potrebbe essere un esempio di richiesta al servizio Email:
+
+\begin{tcolorbox}
+	\begin{verbatim} curl -X POST http://localhost:8080/syncrec/sendEmail -d \
+	'{ "receiver":  "emailReceiver@email.it" }'
+	\end{verbatim}
+\end{tcolorbox}\addcontentsline{codes}{section}{Esempio richiesta POST per microservizio email}
+
+Come risposta, è possibile ottenere 2 risultati:
+\begin{itemize}
+	\item \textbf{Ok} (200) e un \textit{payload} contenente i campi usati
+	per l'invio email;
+	\item \textbf{Unprocessable entity} (406) se non è stato possibile inviare l'email (per errori di connessioni al database, al server \acrshort{smtp} etc\dots).
+\end{itemize}
+
+\clearpage
 Con ``proprietà'' ci si riferirà ai campi usati per l'invio email, ossia ``sender'', ``password'' o ``subject''.
 
 \begin{table}[H]
@@ -108,7 +135,27 @@ Con ``proprietà'' ci si riferirà ai campi usati per l'invio email, ossia ``sen
 \end{table}
 
 
-\subsubsection{Login}
+\subsubsection{Microservizio: Login}
+
+Questo \gls{microservizio} espone la risorsa \texttt{User} all'endpoint
+\texttt{syncrec/users}, accessibile e modificabile via \acrshort{api} \acrshort{rest}\gloss. I dati persistenti sono salvati e acceduti tramite il database \textit{syncrec-users} di
+\gls{mongodb}.
+
+Inoltre, tramite l'endpoint \texttt{/login} e una richiesta POST,
+è possibile effettuare l'operazione di login.
+
+I parametri richiesti nella richiesta di login sono:
+\begin{itemize}
+	\item \texttt{username}: campo contenente lo \textit{username} o l'email dell'utente che vuole autenticarsi;
+	\item \texttt{password}: campo contenente la password relativa all'utente da autenticare.
+\end{itemize}
+
+Le possibili risposte che verranno inoltrate al chiamante possono essere:
+\begin{itemize}
+	\item \textbf{Ok} (200) e il \acrshort{json}\gloss\ contenente i campi relativi all'utente autenticato;
+	\item \textbf{Bad request} (400) se il corpo della richiesta non contiene i campi riportati sopra, con corpo contenente un messaggio d'errore (sempre in formato \acrshort{json});
+	\item \textbf{Unauthorized} (401) se l'autenticazione fallisce, con corpo vuoto.
+\end{itemize}
 
 \begin{table}[H]
 	\begin{paddedtablex}[1.7]{\textwidth}{cX}
@@ -126,13 +173,18 @@ Con ``proprietà'' ci si riferirà ai campi usati per l'invio email, ossia ``sen
 	\label{tab:endpoint-l}
 \end{table}
 
+\subsubsection{Microservizio: Catalog}
 
-\subsubsection{Catalog}
+È stato richiesto di implementare un \gls{microservizio} con il fine di restituire,
+attraverso una richiesta \acrshort{http}, una lista di \textit{skill} di interesse dell'azienda.
+
+Questo era precedentemente effettuato tramite un foglio di calcolo inviato preventivamente ai candidati, i quali erano tenuti a compilarlo.
 
 \begin{table}[H]
 	\begin{paddedtablex}[1.7]{\textwidth}{cX}
 		\textbf{Richiesta} & \textbf{Azione} \\\toprule
 		\texttt{GET /skills} & Visualizzazione delle \textit{skill} salvate nel servizio\\
+		\texttt{GET /skills/search/byCategory} & Visualizzazione delle \textit{skill} appartenenti alla categoria specificata\\
 		\texttt{GET /skills/\{id\}} & Visualizzazione della \textit{skill} corrispondente a \texttt{id}\\
 		\texttt{POST /skills} & Aggiunta di una nuova \textit{skill} al servizio\\
 		\texttt{PUT /skills/\{id\}} & Sostituzione della \textit{skill} corrispondente a \texttt{id}\\
@@ -140,12 +192,34 @@ Con ``proprietà'' ci si riferirà ai campi usati per l'invio email, ossia ``sen
 		\texttt{DELETE /skills/\{id\}} & Rimozione della \textit{skill} corrispondente a \texttt{id}\\
 		\bottomrule
 	\end{paddedtablex}
-	\caption{Endpoint del servizio Login}
+	\caption{Endpoint del servizio Catalog}
 	\label{tab:endpoint-c}
 \end{table}
 
 
-\subsubsection{Applicant}
+\subsubsection{Microservizio: Applicant}
+
+L'ultima maschera da implementare è il \gls{microservizio} di gestione dei candidati (\textit{applicants}).
+
+Sarà possibile aggiungere, rimuovere o modificare i candidati tramite
+le opportune chiamate \acrshort{rest} all'\textit{endpoint} \texttt{syncrec/applicants}:
+\begin{itemize}
+	\item \textbf{GET} per la visualizzazione;
+	\item \textbf{POST} per l'aggiunta;
+	\item \textbf{DELETE} per la rimozione;
+	\item \textbf{PUT} e \textbf{PATCH} per la modifica.
+\end{itemize}
+
+% TODO Scommentare se c'è tempo per aggiungere i relativi casi d'uso
+%Ogni candidato avrà associati dei documenti, i quali non è ragionevole passare tramite \textit{payload} \acrshort{json} in un servizio \acrshort{rest}, con il tipico \textit{header} di \acrshort{rest}: \texttt{Content-Type: application/json}.
+%
+%Per fare ciò, i documenti saranno salvati in un'apposita \textit{collection} (analogo di \gls{mongodb} alle tabelle di un database relazionale):
+%\textit{documents}.
+%Ogni documento avrà associato ID, il nome e il contenuto binario del file.
+%L'aggiunta, la rimozione e la modifica di tali documenti avverrà tramite richieste con \textit{header} \texttt{Content-Type: multipart/form-data}
+%all'\textit{endpoint} \texttt{syncrec/documents}.
+%
+%Nelle risorse \textit{applicants}, verrà salvato l'ID dei documenti associati, con un opportuno check in fase di salvataggio dell'entità.
 
 \begin{table}[H]
 	\begin{paddedtablex}[1.7]{\textwidth}{XX}
@@ -162,22 +236,21 @@ Con ``proprietà'' ci si riferirà ai campi usati per l'invio email, ossia ``sen
 		\texttt{DELETE /applicants/\{id\}} & Rimozione dell'\textit{applicant} corrispondente a \texttt{id}\\
 		\bottomrule
 	\end{paddedtablex}
-	\caption{Endpoint del servizio Login}
+	\caption{Endpoint del servizio Applicant}
 	\label{tab:endpoint-a}
 \end{table}
-
-
-\subsubsection{Namespace 1} %**************************
-Descrizione namespace 1.
-
-\begin{namespacedesc}
-    \classdesc{Classe 1}{Descrizione classe 1}
-    \classdesc{Classe 2}{Descrizione classe 2}
-\end{namespacedesc}
-
-
-%**************************************************************
-\section{Design Pattern utilizzati}
-
-%**************************************************************
-\section{Codifica}
+%
+%\subsubsection{Namespace 1} %**************************
+%Descrizione namespace 1.
+%
+%\begin{namespacedesc}
+%    \classdesc{Classe 1}{Descrizione classe 1}
+%    \classdesc{Classe 2}{Descrizione classe 2}
+%\end{namespacedesc}
+%
+%
+%%**************************************************************
+%\section{Design Pattern utilizzati}
+%
+%%**************************************************************
+%\section{Codifica}

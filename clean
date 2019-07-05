@@ -9,7 +9,7 @@ else
 fi
 
 name=tesi
-extensions=(acr alg codes glg gls glsdefs aux acn bcf glo glsdefs ist lof log lot run.xml synctex.gz toc bbl blg xdy)
+extensions=(acr alg codes glg gls glsdefs acn bcf glo glsdefs ist lof log lot run.xml synctex.gz toc bbl blg xdy uc)
 
 log_msg() {
 	if [[ $silent -eq 0 ]] ; then
@@ -30,7 +30,8 @@ log_msg ok.
 
 log_msg "Eliminazione file capitoli/*.aux .."
 rm -rf capitoli/*.aux
-log_msg "ok."
+rm -rf *.aux
+log_msg ok.
 
 # log_msg "Eliminazione file .pdf .."
 # rm -rf *.pdf
