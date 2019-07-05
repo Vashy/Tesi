@@ -2,13 +2,27 @@
 
 NAME="tesi" # modificiare per scegliere il nome del file di origine (.tex)
 
-echo -----------
-echo - Pulizia -
-echo -----------
+pulizia() {
+    echo -----------
+    echo - Pulizia -
+    echo -----------
+}
 
-if [[ $# -ge 1 ]] && [[ $1 == '-c' ]]; then
-    ./clean -s
-fi
+# Flag options
+# clean=0
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -c|--clean) 
+            pulizia
+            ./clean
+            clean=1
+            ;;
+        *) echo "bad option $1"
+            exit 1
+            ;;
+    esac
+    shift
+done
 
 echo --------------------
 echo - Inizializzazione -
@@ -33,12 +47,9 @@ echo -------------------------
 pdflatex $NAME
 # pdflatex $NAME
 
-echo -----------
-echo - Pulizia -
-echo -----------
-
-if [[ $# -ge 1 ]] && [[ $1 == '-c' ]]; then
-    ./clean -s
+if [[ clean -eq 1 ]]; then
+    pulizia
+    ./clean
 fi
 
 echo ---------------------------- END -----------------------------

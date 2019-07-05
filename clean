@@ -1,39 +1,49 @@
 #!/bin/bash
 
-# lanciare con flag -s per silenziare l'output
+# lanciare con flag:
+#   -s o --silent per silenziare l'output
+#   --pdf per cancellare anche il pdf
 
-if [[ $# -eq 1 ]] && [[ $1 == '-s' ]] ; then
-	silent=1
-else
-	silent=0
-fi
+# Flag options
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -s|--silent)
+            silent=1
+            ;;
+        --pdf)
+            pdf=1
+            ;;
+        *) echo "bad option $1"
+            exit 1
+            ;;
+        # *) echo "argument $1"
+        #     ;;
+    esac
+    shift
+done
 
 name=tesi
 extensions=(acr alg codes glg gls glsdefs acn bcf glo glsdefs ist lof log lot run.xml synctex.gz toc bbl blg xdy uc)
 
 log_msg() {
-	if [[ $silent -eq 0 ]] ; then
-		echo $1
-	fi
+    if [[ $silent -eq 0 ]] ; then
+        echo $1
+    fi
 }
 
 log_msg "Eliminazione files ausiliari in root .."
 
 todelete=
-for i in "${extensions[@]}"; do 
-	todelete="$todelete *.$i"
+for i in "${extensions[@]}"; do
+    todelete="$todelete *.$i"
 done
-
-rm -rf $todelete 
-
-log_msg ok.
+rm -rf $todelete
 
 log_msg "Eliminazione file capitoli/*.aux .."
 rm -rf capitoli/*.aux
 rm -rf *.aux
-log_msg ok.
 
-# log_msg "Eliminazione file .pdf .."
-# rm -rf *.pdf
-# log_msg "ok."
-
+if [[ pdf -eq 1 ]]; then
+    log_msg "Eliminazione file .pdf .."
+    rm -rf *.pdf
+fi
