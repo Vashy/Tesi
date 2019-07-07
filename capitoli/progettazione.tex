@@ -3,7 +3,7 @@
 % !TEX root = ../tesi.tex
 
 %**************************************************************
-\chapter{Progettazione e codifica}
+\chapter{Tecnologie e progettazione}
 \label{cap:progettazione-codifica}
 %**************************************************************
 
@@ -38,18 +38,82 @@ Come personale preferenza, ho gradito molto di più \textit{IntelliJ IDEA}, stru
 
 Per il versionamento del codice del progetto SyncRec, mi è stato fornito dal tutor aziendale \fabio\ accesso a una \gls{repository} privata, versionata tramite il \gls{vcs} \gls{git}.
 
-\subsection{Linguaggi e framework}
+\section{Linguaggi e framework}
 
-\subsubsection{Java} Il principale linguaggio utilizzato per lo stage è stato \gls{java}. Questa scelta è stata dettata dall'azienda, poiché è il linguaggio che più utilizza per quanto riguarda il \textit{back-end}.
+Seguono la descrizione generale di alcuni linguaggi e \textit{framework} appresi durante il periodo di tirocinio.
+La parte relativa a \glsdisp{microservizio}{microservizi} e \gls{spring-cloud}\gloss\ sono rispettivamente nelle appendici \S\ref{cap:microservizi} e \S\ref{cap:spring-cloud}, poiché è stato svolto un lavoro di analisi più approfondito.
+
+\subsection{Java} Il principale linguaggio utilizzato per lo stage è stato \gls{java}. Questa scelta è stata dettata dall'azienda, poiché è il linguaggio che più utilizza per quanto riguarda il \textit{back-end}.
 
 Viene ampiamente utilizzato dalle aziende italiane da molti anni, ed è per questo che tutt'ora è uno tra i linguaggi più richiesti, almeno nel panorama italiano.
 
 Per le attività di stage ho cercato di utilizzare quanto più possibile le novità delle ultime versioni del \gls{jdk}, in particolare Java 8, quali ad esempio \texttt{Optional<T>}, le \textit{lamdba expressions}, \texttt{var}, gli \texttt{stream}, etc\dots
 
-\subsubsection{Spring}
+\subsection{Spring}
 
 \gls{spring} è un \textit{framework} basato su linguaggio \gls{java} che permette lo sviluppo di applicazioni \textit{enterprise} praticamente per qualsiasi ambito.
 È un \textit{framework} modulare, questo significa che non viene incluso \gls{spring} nella sua interezza: vanno inclusi solo i moduli di cui si necessita.
+
+\subsubsection{Spring Core}
+
+\textit{Core} è il modulo cuore di \gls{spring}, il fondamento del \textit{framework} stesso.
+
+Il componente più importante di \textit{Spring Core} è l'\gls{ioc} container. Il ruolo principe di tale componente è quello di \gls{dependency-injection}\gloss.
+Ogni classe gestita dal \gls{ioc} container dichiara le proprie dipendenze esplicitamente tramite costruttore (\textit{constructor injection}), tramite i \textit{setter} o tramite un \textit{factory method}.
+In questo modo, il container si occupa di iniettare tali dipendenze quando crea il \textit{bean} (\S\ref{section:spring-beans})
+
+\paragraph*{Spring Beans}\label{section:spring-beans} I \textit{bean} sono oggetti gestiti dall'\gls{ioc} container, il quale si occupa di costruirli e fornirli come dipendenze. Per la costruzione, il container utilizza i seguenti metadati legati al \textit{bean}:
+\begin{itemize}
+	\item \textit{class};
+	\item \textit{name};
+	\item \textit{scope};
+	\item \textit{constructor arguments};
+	\item \textit{properties};
+	\item \textit{autowiring mode};
+	\item \textit{lazy initialization mode};
+	\item \textit{initialization method};
+	\item \textit{destruction method};
+\end{itemize}
+
+Vediamo un esempio di \textit{constructor injection}:
+
+\begin{tcolorbox}
+	\begin{lstlisting}
+@Component
+public class SimpleClass {
+
+  // the SimpleClass has a dependency on a
+  // OtherClass
+  private OtherClass otherObject;
+	
+  // a constructor so that the Spring container can
+  // inject a OtherClass object
+  public SimpleClass(OtherClass otherObject) {
+    this.otherObject = otherObject;
+  }
+
+  // business logic that actually uses the
+  // injected OtherClass is omitted...
+}
+	\end{lstlisting}
+\end{tcolorbox}\addcontentsline{codes}{section}{Esempio di Constructor Injection}
+
+La dipendenza \texttt{OtherClass} viene iniettata dall'\gls{ioc} container in fase di inizializzazione del componente, se è presente un \textit{bean} di tipo \texttt{OtherClass}.
+Nell'eventualità in cui siano presenti più di un costruttore, è necessario annotare con \texttt{@Autowired} il costruttore che dev'essere preso in considerazione dal container.
+
+Ci sono sei tipi di \textit{scoping} dei \textit{bean}:
+\begin{itemize}
+	\item \textit{singleton}: è presente singola istanza per ogni \gls{ioc} container;
+	\item \textit{prototype}: possono essere presenti più istanze per ogni container;
+	\item \textit{request}: ogni istanza è mappata sul ciclo di vita di una singola richiesta \acrshort{http};
+	\item \textit{session}: ogni istanza è mappata sul ciclo di vita di una sessione \acrshort{http};
+	\item \textit{application}: ogni istanza è mappata sul ciclo di vita di un oggetto \texttt{ServletContext};
+	\item \textit{websocket}: ogni istanza è mappata sul ciclo di vita di un oggetto \texttt{WebSocket}.
+\end{itemize}
+
+Lo \textit{scope} di default dei \textit{bean} è \textit{singleton}. Ogni \textit{bean} viene istanziato una sola volta e viene pertanto fornita sempre la stessa istanza agli oggetti che richiedono tale dipendenza.
+
+\subsubsection{Altri moduli di Spring}
 
 \paragraph*{Spring Boot} Modulo di \gls{spring} che permette l'avvio di applicazioni in modo molto più automatico rispetto ad applicazioni non \textit{Boot}. Parte con molte configurazioni di default che altrimenti necessiterebbero di configurazione manuali.
 
@@ -59,9 +123,50 @@ Per effettuare operazioni sul database è sufficiente dichiarare un'interfaccia 
 \paragraph*{Spring Data REST} Permette di sviluppare servizi RESTful semplicemente dichiarando la classe di modello.
 Gli \textit{endpoint} di visualizzazione, aggiunta, modifica e rimozione sono definiti automaticamente dal \textit{framework}.
 
+\subsection{Angular}
+
+\gls{angular} è un \textit{framework} scritto in \gls{typescript} per lo sviluppo di applicazioni web.
+Permette di estendere \acrshort{html} con attributi chiamati direttive.
+
+\begin{tcolorbox}
+	\begin{lstlisting}[language=html]
+<h2>Products</h2>
+<div *ngFor="let product of products">
+    <h3>{{ product.name }}</h3>
+</div>
+	\end{lstlisting}
+\end{tcolorbox}\addcontentsline{codes}{section}{Esempio della parte HTML di un component Angular}
+
+In questo esempio, è possibile vedere la direttiva \texttt{ngFor}. Per ogni \texttt{product} nella lista \texttt{products}, produce un elemento \texttt{h3} contenente il nome del prodotto, sostituendo il \texttt{div}. Tale lista è definita nel file contenente il codice \gls{typescript} relativo al \textit{component}.
+
+\paragraph*{Modules}
+Le applicazioni \gls{angular} sono modulari e per tale fine ci sono gli \texttt{NgModules}: sono \textit{container} per un blocco di codice coeso dedicato a un dominio.
+
+I moduli possono contenere più \textit{component}, \textit{service provider} e altri file di codice generici. Ogni \texttt{NgModule} è definito da una classe con il \textit{decorator} \texttt{@NgModule()}. Essa prende come argomento un oggetto che può definire molte proprietà, tra cui:
+\begin{itemize}
+	\item \textit{declarations};
+	\item \textit{exports};
+	\item \textit{imports};
+	\item \textit{providers};
+	\item \textit{bootstrap}.
+\end{itemize}
+
+\paragraph*{Components}
+Definiscono le viste. Sono un insieme di elementi a schermo tra cui \gls{angular} può scegliere e modificare in base alla logica dell'applicazione.
+Ogni componente viene inizializzato con una classe, un template \acrshort{html} e uno stile specifico (\acrshort{css}).
+Per marcare una classe come \textit{component}, va usato il \textit{decorator} \texttt{@Component}, in cui è possibile definire alcune proprietà, tra cui:
+\begin{itemize}
+	\item \textit{selector};
+	\item \textit{templateUrl};
+	\item \textit{providers}.
+\end{itemize}
+
+\paragraph*{Services}
+Forniscono funzionalità specifiche non correlate direttamente con le viste. I \textit{service} possono essere iniettati nei \textit{component} come dipendenze tramite \gls{dependency-injection}.
+
 %**************************************************************
-\section{Ciclo di vita del software}
-\label{sec:ciclo-vita-software}
+%\section{Ciclo di vita del software}
+%\label{sec:ciclo-vita-software}
 
 %**************************************************************
 \section{Progettazione}\label{sec:progettazione}
@@ -85,6 +190,7 @@ Inoltre, allo stesso livello di questi \textit{package} sarà presente la classe
 che avvia la \texttt{SpringApplication}.
 
 Ogni servizio potrà definire \textit{package} personalizzati per gestire logiche e modelli non riconducibili a \gls{spring}.
+
 
 \subsection{Progettazione dei microservizi}\label{prog-microservizi}
 
