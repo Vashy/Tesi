@@ -11,7 +11,7 @@
 
 \section{Casi d'uso}
 
-I casi d'uso (in inglese \emph{Use Case}) sono diagrammi di tipo \gls{uml} dedicati alla descrizione delle funzioni o servizi offerti da un sistema, così come sono percepiti e utilizzati dagli attori che interagiscono col sistema stesso.
+I casi d'uso (in inglese \emph{Use Case}) sono diagrammi di tipo \gls{uml}\gloss\ dedicati alla descrizione delle funzioni o servizi offerti da un sistema, così come sono percepiti e utilizzati dagli attori che interagiscono col sistema stesso.
 
 I casi d'uso sono per definizione puro testo, pertanto è stato concordato di non accompagnarli con dei diagrammi visuali.
 
@@ -26,7 +26,7 @@ Ogni codice presenta una forma del tipo:
 
 \begin{itemize}
 	\item \textbf{UC}: sta per \textit{use case}, l'equivalente inglese di ``caso d'uso''.
-	\item \textbf{Numero}: numero progressivo che si riferisce al caso. Se il caso d'uso è principale, è un semplice intero (e.g. 1 per il primo caso d'uso). Mentre se è un sotto caso, presenta due interi separati da un punto (e.g 1.1 per per il primo figlio del primo caso d'uso);
+	\item \textbf{Numero}: numero progressivo che si riferisce al caso. Se il caso d'uso è principale, è un semplice intero (e.g. 1 per il primo caso d'uso). Mentre se è un sotto caso, presenta due interi separati da un punto (e.g. 1.1 per per il primo figlio del primo caso d'uso);
 	\item \textbf{Servizio}: indica il servizio preso come riferimento per il caso d'uso.
 	\begin{itemize}
 		\item \textbf{ES}: Email Sender.
@@ -1292,40 +1292,27 @@ Ogni codice presenta una forma del tipo:
 
 Da un'attenta analisi dei requisiti e degli use case effettuata sul progetto SyncRec insieme al relatore aziendale è stata stilata la tabella che traccia i requisiti.
 
-Sono stati individuati diversi tipi di requisiti e si è quindi fatto utilizzo di un codice identificativo per distinguerli.
+Sono stati individuati diversi tipi di requisiti e si è quindi fatto utilizzo di un codice identificativo per distinguerli:
 
-%Il codice dei requisiti è così strutturato R(F/Q/V)(N/D/O) dove:
-%\begin{enumerate}
-%	\item[R =] requisito
-%    \item[F =] funzionale
-%    \item[Q =] qualitativo
-%    \item[V =] di vincolo
-%    \item[N =] obbligatorio (necessario)
-%    \item[D =] desiderabile
-%    \item[Z =] opzionale
-%\end{enumerate}
-%Nelle tabelle \ref{tab:requisiti-funzionali}, \ref{tab:requisiti-qualitativi} e \ref{tab:requisiti-vincolo} sono riassunti i requisiti e il loro tracciamento con gli use case delineati in fase di analisi.
-
-%Ad ogni requisito viene assegnato il codice identificativo univoco:
 \begin{center}
 	\texttt{R[Tipo][Priorità]-[Numero]}
 \end{center}
-in cui ogni parte ha un significato preciso:
+in cui ogni \textit{token} ha un significato preciso:
 \begin{itemize}
-	\item \textbf{R}: requisito;
-	\item \textbf{Tipo}: la la tipologia di requisito che può essere di:
+	\item \texttt{R}: requisito;
+	\item \texttt{[Tipo]}: la la tipologia di requisito che può essere di:
 	\begin{itemize}
-		\item \textbf{F}: funzionalità;
-		\item \textbf{Q}: qualità;
-		\item \textbf{V}: vincolo.
+		\item \texttt{F}: funzionalità;
+		\item \texttt{Q}: qualità;
+		\item \texttt{V}: vincolo.
 	\end{itemize}
-	\item \textbf{Priorità}: indica il grado di urgenza di un requisito di essere soddisfatto, come:
+	\item \texttt{[Priorità]}: indica il grado di urgenza di un requisito di essere soddisfatto, come:
 	\begin{itemize}
-		\item \textbf{O}: obbligatorio;
-		\item \textbf{D}: desiderabile;
-		\item \textbf{F}: facoltativo.
+		\item \texttt{O}: obbligatorio;
+		\item \texttt{D}: desiderabile;
+		\item \texttt{F}: facoltativo.
 	\end{itemize}
-	\item \textbf{Numero}: numero progressivo che segue la struttura dei documenti;
+	\item \texttt{[Numero]}: numero progressivo;
 \end{itemize}
 
 Esempio: \texttt{RFD-3} indica il terzo requisito di funzionalità ed è desiderabile.
@@ -1466,7 +1453,7 @@ Nella tabella \ref{tab:requisiti-vincolo} sono riassunti i requisiti di vincolo.
 		\textbf{Requisito} & \textbf{Descrizione}\\
 		\toprule
 
-		\reqtwocol{RVO}{I microservizi implementati vanno sviluppati utilizzando il framwork Spring}
+		\reqtwocol{RVO}{I microservizi implementati vanno sviluppati utilizzando il framework Spring}
 		\subreqtwocol{RVD}{I microservizi vanno sviluppati utilizzando il modulo Spring Boot}
 		\subreqtwocol{RVD}{I microservizi vanno sviluppati utilizzando il modulo Spring Data REST}
 		\reqtwocol{RVO}{La gestione delle risorse nei microservizi va effettuata seguendo il paradigma RESTful}
