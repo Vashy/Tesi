@@ -8,7 +8,7 @@
 
 % Autore
 \newcommand{\myName}{Timoty Granziero}
-\newcommand{\myTitle}{Approccio a Microservizi nello sviluppo di Web Application moderne}
+\newcommand{\myTitle}{Approccio a Microservizi nello sviluppo di  Application moderne}
 % Tipo di tesi
 \newcommand{\myDegree}{Tesi di laurea triennale}
 
@@ -65,17 +65,9 @@
 
 \setlength\bibitemsep{1.5\itemsep} % spazio tra entry
 
-%\DeclareBibliographyCategory{opere}
 \DeclareBibliographyCategory{web}
 
-% \addtocategory{opere}{womak:lean-thinking}
-% \addtocategory{web}{site:agile-manifesto}
-
-%\defbibheading{opere}{\section*{Riferimenti bibliografici}}
 \defbibheading{web}{\section*{Siti Web consultati}}
-
-\glossarystyle{listgroup}
-
 
 %**************************************************************
 % Impostazioni di caption
@@ -91,8 +83,6 @@
 %**************************************************************
 % Impostazioni di glossaries
 %**************************************************************
-%\renewcommand{\acronymname}{Acronimi e abbreviazioni}
-%\renewcommand{\glossaryname}{Glossario}
 
 \makeglossaries
 \input{glossario} % database di termini
@@ -137,14 +127,13 @@
     pdfauthor={\textcopyright\ \myName, \myUni, \myFaculty},
     pdfsubject={},
     pdfkeywords={},
-    pdfcreator={pdfLaTeX},
-    pdfproducer={LaTeX}
+%    pdfcreator={pdfLaTeX},
+%    pdfproducer={LaTeX}
 }
 
 %**************************************************************
 % Impostazioni di itemize
 %**************************************************************
-%\renewcommand{\labelitemi}{$\ast$}
 
 \renewcommand{\labelitemi}{$\cdot$}
 \renewcommand{\labelitemii}{$\circ$}
@@ -198,9 +187,6 @@
 \addto\captionsitalian{\renewcommand{\figurename}{Figura}
                        \renewcommand{\tablename}{Tabella}}
 
-% \newcommand{\glsfirstoccur}{\ap{{[g]}}}
-%\newcommand{\gloss}[1]{\textit{#1}\ped{\tiny{G}}}
-
 \newcommand{\gloss}{\ped{\tiny{G}}}
 
 \newcommand{\intro}[1]{\emph{\textsf{#1}}}
@@ -221,13 +207,6 @@
 }{
     \par\medskip
 }
-
-\newcommand{\riskname}{Rischio}
-
-\newcommand{\riskdescription}[1]{\textbf{\\Descrizione:} #1.}
-
-\newcommand{\risksolution}[1]{\textbf{\\Soluzione:} #1.}
-
 
 %********************
 % * Indici personalizzati *
@@ -294,17 +273,16 @@
 \newcommand{\usecasealt}[1]{\textbf{\\Scenario Alternativo:} #1.}% \vspace{4pt}}
 
 \newenvironment{ucitemize}%
-{\begin{itemize}[topsep=0pt, partopsep=0pt]%
+{\itemize[topsep=0pt, partopsep=0pt]%
 		\setlength{\itemsep}{2pt}%
 		\setlength{\parskip}{0pt}}%
-	{\end{itemize}}
+	{\enditemize}
 
 \newenvironment{ucenumerate}%
 {\enumerate[topsep=3pt, partopsep=0pt]%
 		\setlength{\itemsep}{2pt}%
 		\setlength{\parskip}{0pt}}%
 	{\endenumerate}
-
 
 \newenvironment{ucestensioni}[0]{%
 	\vspace{4pt}%
@@ -334,7 +312,6 @@
 %**************************************************************
 
 \newcounter{reqcounter}
-%\setcounter{reqcounter}{0}
 \newcounter{subreqcounter}[reqcounter]
 
 \newcommand{\reqrow}[3]{%
