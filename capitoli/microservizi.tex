@@ -135,9 +135,9 @@ Con essa, sviluppatori e ingegneri devono tenere conto di molti più fattori, qu
 
 \paragraph*{Comunicazione} Per poter funzionare, i microservizi necessitano di meccanismi per poter comunicare e scambiare messaggi tra loro.
 
-\subsection{Monolite vs. Microservizi: casi d'uso}
-% TODO
-Monolite
+%\subsection{Monolite vs. Microservizi: casi d'uso}
+%% TODO
+%Monolite
 
 % ------------------------------------------------------------------
 
@@ -174,11 +174,11 @@ Segue la discussione solo di alcuni di essi, quelli ritenuti di maggior interess
 
 L'applicazione in questione potrebbe mettere a disposizione i seguenti servizi (sotto forma di microservizi):
 \begin{itemize}[noitemsep]
-	\item servizio informativo;
-	\item servizio di login;
-	\item servizio di registrazione;
-	\item servizio di inventario;
-	\item e così via.
+	\item Servizio informativo;
+	\item Servizio di login;
+	\item Servizio di registrazione;
+	\item Servizio di inventario;
+	\item E così via.
 \end{itemize}
 
 \begin{figure}[H]
@@ -200,8 +200,8 @@ mappandole verso i servizi che si occupano di quel compito specifico oppure espa
 Ci sono almeno un paio di varianti dell'\textit{API Gateway}:
 
 \begin{itemize}
-	\item esporre \gls{api} diverse, differenziate per tipo di client;
-	\item definire un \textit{API Gateway} differente per ogni tipo di client.
+	\item Esporre \gls{api} diverse, differenziate per tipo di client;
+	\item Definire un \textit{API Gateway} differente per ogni tipo di client.
 \end{itemize}
 
 % ------------------------------------------------------------------
@@ -217,7 +217,7 @@ manda la risposta finale ai consumatori.
 
 Ci sono due modi di fare ciò:
 \begin{itemize}
-	\item un \gls{microservizio} composto che fa le chiamate ai servizi necessari
+	\item Un \gls{microservizio} composto che fa le chiamate ai servizi necessari
 	unificando e trasformando i dati;
 	\item Come detto in precedenza, un \textit{API Gateway} stesso può occuparsi di coprire il ruolo di \textit{aggregator}.
 \end{itemize}
@@ -228,9 +228,9 @@ Ci sono due modi di fare ciò:
 
 \paragraph*{Problema} Ci sono alcuni concetti da tenere in considerazione quando si va a progettare un sistema a \glsdisp{microservizio}{microservizi}:
 \begin{itemize}[noitemsep]
-	\item i servizi vanno tenuti scarsamente accoppiati;
-	\item alcune transazioni hanno bisogno di ottenere dati presenti in diversi servizi;
-	\item i database hanno bisogno di essere replicati per poter scalare.
+	\item I servizi vanno tenuti scarsamente accoppiati;
+	\item Alcune transazioni hanno bisogno di ottenere dati presenti in diversi servizi;
+	\item I database hanno bisogno di essere replicati per poter scalare.
 \end{itemize}
 
 \paragraph*{Soluzione} Per risolvere i problemi sopra descritti, in fase di progettazione va previsto il paradigma di \textit{database per service}.
