@@ -127,10 +127,10 @@ da attuare. Ad esempio, alcuni servizi potrebbero essere momentaneamente non dis
 \paragraph*{Complessità architetturale} I \glsdisp{microservizio}{microservizi} portano con sé complessità architetturale che in un monolite non è presente.
 Con essa, sviluppatori e ingegneri devono tenere conto di molti più fattori, quali:
 \begin{itemize}
-	\item latenza della rete;
-	\item \textit{fault tolerance}: capita spesso che un servizio non sia disponibile. Per questo va previsto un meccanismo di gestione delle
+	\item Latenza della rete;
+	\item \textit{Fault tolerance}: capita spesso che un servizio non sia disponibile. Per questo va previsto un meccanismo di gestione delle
 	condizioni di errore (\hyperref[circuit-breaker]{Circuit Breaker pattern});
-	\item \textit{message parsing}: per la comunicazione molto spesso vengono usati messaggi in formato \acrshort{json}.
+	\item \textit{Message parsing}: per la comunicazione molto spesso vengono usati messaggi in formato \acrshort{json}.
 \end{itemize}
 
 \paragraph*{Comunicazione} Per poter funzionare, i microservizi necessitano di meccanismi per poter comunicare e scambiare messaggi tra loro.
@@ -168,8 +168,8 @@ Segue la discussione solo di alcuni di essi, quelli ritenuti di maggior interess
 
 \paragraph*{Problema} Immaginiamo di avere un applicativo che  che debba supportare diversi tipi di interfaccia utente, quali: 
 \begin{itemize}[noitemsep]
-	\item una pagina web che utilizza le normali tecnologie del web, quali \acrshort{html} 5, \acrshort{css} e \gls{javascript};
-	\item applicazione Android e iOS.
+	\item Una pagina web che utilizza le normali tecnologie del web, quali \acrshort{html} 5, \acrshort{css} e \gls{javascript};
+	\item Applicazione Android e iOS.
 \end{itemize}
 
 L'applicazione in questione potrebbe mettere a disposizione i seguenti servizi (sotto forma di microservizi):
@@ -286,7 +286,7 @@ L'attività di ``scoperta'' dei \glsdisp{microservizio}{microservizi} è chiamat
 	\item \textit{Client-side discovery};
 	\item \textit{Server-side discovery}.
 \end{itemize}
-Alcuni esempi saranno discussi in \S\ref{cap:spring-cloud}.
+Alcuni esempi concreti saranno discussi in \S\ref{cap:spring-cloud}.
 
 % ------------------------------------------------------------------
 
